@@ -1,0 +1,6 @@
+The purpose of this file is to have a place to put wishes for the VM/370 IXPACK distribution.
+
+1) The updated BREXX and GCCLIB versions, which have stabilized and extended the BREXX implementation for SixPack 1.3-beta
+2) An updated logo screen, this one states 1.2
+3) An easy way to extend it with DASD, maybe in the form of an EXEC
+4) A procedure to build APL\360 from the IBM provided source
