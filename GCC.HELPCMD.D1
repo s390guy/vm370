@@ -1,0 +1,82 @@
+GCC                                                                    CMS EXEC
+ 
+Use the GCC command to compile and assemble a C source file using the GNU C
+compiler.  Then use the LOAD and START commands to run the program:
+ 
+   gcc hello
+   load hello
+   start
+ 
+The format of the GCC command is:
++----------+------------------------------------------------------------------+
+| GCC      | [fn [ft|C [fm|A]]] [( [options]                                  |
+|          | options:                                                         |
+|          |    ASM|NOASM     CSECT|NOCSECT     KEEP|NOKEEP     LIB fn        |
+|          |    OS|CMS        PARM fn                                         |
++----------+------------------------------------------------------------------+
+where:
+ 
+fn [ft [fm]]
+         identifies the C source file to be compiled.  ft defaults to C and fm
+         defaults to A.
+ 
+Options:
+ 
+ASM|NOASM
+         specifies whether the ASSEMBLE output file from the C compiler is to
+         be assembled or not.  ASM is the default.
+ 
+CSECT|NOCSECT
+         specifies that the blank CSECT statement produced by GCC is to be
+         given a label. NOCSECT is the default.  CSECT is required only when
+         building a library of C routines.
+ 
+KEEP|NOKEEP
+         specifies whether or not the assembler output files from the C
+         compiler are to be kept or erased.  NOKEEP is the default.
+ 
+LIB fn   specifies the runtime library with which the program is to be
+         compiled.  GCC will link and access the appropriate disk containing
+         the C header files.  Two runtime libraries are available:
+ 
+         GCCLIB  uses only "native" CMS functions for system services.  Using
+                 this library it is possible to write programs that may be
+                 loaded into resident memory as extensions of the CMS nucleus.
+ 
+                 Ensure GCCLIB is in your list of GLOBAL TXTLIBs to run your
+                 compiled progam.  Type HELP GCCLIB for more information.
+ 
+         PDPCLIB uses simulated OS functions for system services.
+ 
+                 Ensure PDPCLIB is in your list of GLOBAL TXTLIBs to run your
+                 compiled progam. Type "HELP PDPCLIB" for more information.
+ 
+         LIB PDPCLIB is the default.
+ 
+OS|CMS   OS is shorthand for LIB PDPCLIB.  CMS is shorthand for LIB GCCLIB.
+ 
+PARM fn  specifies a file of type PARM containg arguments to pass to GCC.  By
+         the default file 'GCC PARM *' is used.
+ 
+Notes:
+ 
+         1. The GCC compiler is V3.2.3 and so is missing some features modern
+            code relies on.
+ 
+         2. Both PDPCLIB and GCCLIB only implement the C90 standard. See the
+            appropriate HELP files for more details
+ 
+         3. As the GCC EXEC calls the normal VM Assembler and LOADER external
+            names are limited to 8 characters. As a result when porting code
+            you will often get duplicate external names. One way round this
+            is to create a ".h" file that redefines the names and include
+            this in each module of your project.
+ 
+         4. The include (<xxx.h>) files are specific to to the compiler.
+            This for PDPCLIB are on the GCCCMS 201 disk, those for GCCLIB
+            on the GCCCMS 202. The GCC EXEC links and accesses the appropriate
+            before calling the compiler.
+ 
+ For more information on PDPCLIB and GCC see the project web site at:-
+ 
+                   https://gccmvs.sourceforge.net/

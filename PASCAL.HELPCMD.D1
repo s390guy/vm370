@@ -1,0 +1,19 @@
+PASCAL                                                                 CMS EXEC
+ 
+The PASCAL exec runs the following EXEC to Compile a PASCAL source program
+into a CMS Module file. The format of the PASCAL command is
++--------+--------------------------------------------------------------------+
+| PASCAL | filename                                                           |
++--------+--------------------------------------------------------------------+
+where:
+ 
+filename
+        The name of the file to be compiled. It must have a filetype of "PASCAL"
+ 
+Notes:
+ 
+The PASCAL exec calls the following EXECS:
+ 
+PASCOMP - Compile the PASCAL tp p-code
+PASC370 - Convert the P-Code to IBM Object Code
+PASLINK - Call the CMS loader and GENMOD commands to create a module.

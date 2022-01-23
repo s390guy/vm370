@@ -1,0 +1,90 @@
+ 
+PDPCLIB - An implemention of the C90 Library for GCC
+ 
+    PDPCLIB is an implemntation of the C90 runtime library. It has been
+    implemented on several platforms and the CMS port is based on the
+    MVS code with minor adaptations to allow it to work in CMS.
+ 
+    The C90 standard is over 30 years old and so the library does NOT
+    contain many of the routines a modern programmer expects. Specifically
+    it includes the routines described in the following header files:-
+ 
+    <assert.h>
+    <ctype.h>
+    <errno.h>
+    <float.h>
+    <limits.h>
+    <locale.h>
+    <math.h>
+    <setjmp.h>
+    <signal.h>
+    <stdarg.h>
+    <stddef.h>
+    <stdio.h>
+    <stdlib.h>
+    <string.h>
+    <time.h>
+ 
+    If your "C" program uses a system include that is not in that list, its not
+    part of PDPCLIB and you may have to port it yourself.
+ 
+    Using PDPCLIB
+    =============
+ 
+    The GCC EXEC that runs the GCC compiler and the CMS Assembler
+    uses PDPCLIB by default. The necessary ".h" files
+    are stored on the GCCCMS 201 disk and the EXEC will link and access
+    this disk by default.
+ 
+    The PDPCLIB TXTLIB Y contains the object modules necessary to load
+    "C" programs that use this library. It must be specified in a
+    "GLOBAL TXTLIB" command before loading a "C" program.
+ 
+    As PDPCLIB uses OS QSAM emulation to read and write files, a
+    "FILEDEF" command is needed for each file that is open. To ease
+    the burden on "C" programmers and to simpify porting code from
+    other platforms, the PDPCLIB open routines will issue a FILEDEF
+    command to create a Dataset Descriptor (DD) for it to use.
+ 
+    The DD names used are of the form "PDP<00000>" and these may
+    appear in error messages. If you wish to issue your own FIELDEF
+    commands use a filename of the form:
+ 
+     "DD:<ddname>"
+ 
+    and PDPCLIB will not issue a FILEDEF, but expect a DD of <ddname>
+    to exist. This allows non-disk files such as tapes and printers
+    to be accessed.
+ 
+    IO Redirection
+    ==============
+ 
+    The PDPCLIB startup routine uses the following DD names for
+    the standard "C" streams.
+ 
+    C Stream Name       DD name
+     stdin              SYSIN
+     stdout             SYSTERM
+     stderr             SYSPRINT
+ 
+     If there are no existing FILEDEFS for these streams the startup routine
+     will issue FILEDEFs to assign them to the VM Console.
+ 
+     If they are defined it will attempt to use them which permits standard
+     IO to be re-directed in a clunky way.
+ 
+     PARM File
+     =========
+ 
+     When PDPCLIB was first ported to CMS there was an issue with passing
+     the command line to the program. As released VM/CMS splits the command
+     line into tokens, truncating each token to 8 chacaters. This makes
+     running tradional "C" programs challenging. In order to allow a full
+     un-edited command line to be passed the PARMFILE mechanism was concocted.
+     When the C startup code runs it checks to see if a DD of PARMFILE is
+     allocated. If it is, it will read the command line from the file and
+     pass it to main() in argv[].
+ 
+     Its not usually necessary to use this as CMS has been modified to
+     allow access to a full command line, this mechanism remains in place
+     to permit EXECs that use it to continue to work.

@@ -1,0 +1,19 @@
+FORTH                                                                CMS COMMAND
+ 
+Invokes the FORTH interpreter, Release 1 Version 1.
++-----------------------------------------------------------------------------+
+| FORTH                                                                       |
++-----------------------------------------------------------------------------+
+On loading FORTH, it will attempt to load your extensions from the file
+FORTH $PROG$ A.
+ 
+If this file does not exist, it remains in the forth interpreter, and prints
+the error.
+ 
+         'FORTH $PROG$ A'  File does NOT exist
+         FORTH ready
+         ?
+ 
+To exit forth type "END" or "end" at the '?' prompt.
+ 
+Enter .HELP in FORTH for more information.

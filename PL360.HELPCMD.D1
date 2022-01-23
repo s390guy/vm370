@@ -1,0 +1,37 @@
+PL360                                                                CMS MODULE
+ 
+Runs the PL360 Compiler.
++-----------------------------------------------------------------------------+
+| PL360    | fn-1 [fn-2 ... fn-n] [( options  ]                               |
+|          |                                                                  |
+|          | Options:                                                         |
+|          |  LIst|NOLIst   LOad|NoLoad   Deck|NODeck  Print|Noprint          |
+|          |  TErm|NOTErm   DIsk|NODIsk                                       |
++-----------------------------------------------------------------------------+
+where:
+ 
+fn-1 [fn-2 ... fn-n]
+           is the filename of the PL360 file, or files to be compiled.
+Options:
+ 
+ LIst|NOLIST
+          enables or disables a source listing.
+ 
+ LOad|NOLoad
+          controls loading the compiled program.
+ 
+ Deck|NODeck
+          controls generating an OBJECT deck.
+ 
+ Print|NoPrint
+          put the output on DISK.
+ 
+ TErm|NOTErm
+          write diagnostics to the terminal.
+ 
+ DISK|NODISK
+          put the listing on DISK.
+ 
+Notes:
+ 
+1. The user manual is available as PL360MAN LISTING U

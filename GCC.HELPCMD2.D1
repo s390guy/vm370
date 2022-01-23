@@ -1,0 +1,52 @@
+Usage Notes:
+ 
+1.  To compile a C program called HELLO C A, type
+       GCC HELLO
+    To run the program, you must have the appropriate TXTLIB specified.  Use
+    the GLOBAL command to do this:
+       GLOBAL TXTLIB PDPCLIB
+    Now you can load and run the program:
+       LOAD HELLO
+       START
+    Alternatively you can create a module of your program:
+       LOAD HELLO
+       GENMOD HELLO
+    Now you can invoke the program by typing its name:
+       HELLO
+ 
+2.  When opening a file you may simply specify the name e.g.
+ 
+    fptr=fopen("TEST DATA A", "W")
+ 
+    To simplifiy porting the "." character may also be used to separate the
+    components of the file, e.g, "TEST.DATA.A" refers to the same file.
+ 
+    PDPCLIB uses OS emulation and needs a FILEDEF. In this case it will
+    issue a FILEDEF command "under the covers" with an FD of the form
+ 
+    FILEDEF PDPnnnnn DISK TEST DATA A (RECFM V
+ 
+    to allow access to the file. You may see these DD names
+    in error messages.
+ 
+    Should you wish to issue your own FILEDEF commands you may use a
+    fie name of the form
+ 
+           DD:<ddname>
+ 
+    and therefore coding an open as follows:-
+ 
+       fopen("DD:TEST", "w");
+ 
+    and issuing the followings FILEDEF command before running the program:
+                                                                         :
+       FILEDEF TEST DISK TEST DATA A (LRECL 80 RECFM V
+ 
+    would access the same data. Type HELP PDPCLIB for more information.
+ 
+3.  The source code for the GCC compiler and runtime libraries is on the
+    GCCCMS userid disks.
+ 
+4.  An alternate runtime library called GCCLIB is available for C programs.
+    This runtime library lets you code C programs that directly access CMS
+    system services.  Type HELP GCCLIB for more information.

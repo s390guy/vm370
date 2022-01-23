@@ -1,0 +1,18 @@
+WATFIV                                                                 CMS EXEC
+ 
+Runs the WATERLOO load and go FORTRAN compiler WATFIV
++--------+--------------------------------------------------------------------+
+| WATFIV |  fn [ ( XDEBUG|NOXDEBUG , DEBUG|DEBUGS|NODEBUG , TEST|NOTEST       |
++--------+--------------------------------------------------------------------+
+where:
+ 
+fn
+          is the name of file containing the FORTRAN source, the WATFIV
+          control files, and optionally data to be read on Unit 5.
+          The Filetype can be FORTRAN or WATFIV but it must contain
+          WATFIV control cards as well as the FORTRAN source.
+ 
+The options are ordered. If you want to specify TEST then you must also
+specify XDEBUG and DEBUG.
+ 
+For more information refer to WATFIV USERGUID U

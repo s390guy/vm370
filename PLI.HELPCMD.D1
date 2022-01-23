@@ -1,0 +1,297 @@
+PLI                                                                  CMS MODULE
+ 
+The PLI command invokes the PL/I (F) compiler to compile programs in PL/I
+source language into machine code, and to provide program listings and
+diagnostics.
++---------+-------------------------------------------------------------------+
+| PLI     | fname1 ... fnameN  [( option1 ... optionN [)]]                    |
++---------+-------------------------------------------------------------------+
+where:
+ 
+fname1 ... fnameN
+         are the names of PLI files to be compiled. A separate compilation
+         is performed for each filename specified.
+ 
+Options:
+ 
+option 1...option N
+         are one or more of the options described below.
+ 
+Control Options:
+ 
+SIZE
+         nnnnnn
+                specifies that nnnnnn bytes of main storage available for the
+                compilation.
+ 
+         nnnK
+                specifies that nnnK bytes of main storage are available.
+                Leading zeroes need not be specified.
+ 
+         999999* instructs the compiler to obtain as much main storage as
+                 possible.
+ 
+OPT n    n=0,1*,2
+         specifies the type of optimization required. "0" instructs
+         the compiler to keep object-program storage requirements
+         to a minimum at the expense of object-program execution
+         time;   1 causes object-program execution time to be
+         reduced at the expense of storage;  2  has the same effect
+         as 1, plus it requests the compiler to optimize the
+         machine instructions generated for certain types of DO-
+         loops and expressions in subscript lists.
+ 
+ST|STMT*
+         requests the compiler to produce additional instructions
+         that allow statement numbers from the source program to
+         be included in diagnostic messages produced during execu-
+         tion of the compiled program.
+ 
+NOSTMT|NST
+         suppresses the inclusion statement numbers in diagnostic
+         messages during program execution.
+ 
+ 
+OBJNM|N aaaaaaaa
+         allows the user to name the load module created for object
+         decks used with the OS/360 Linkage Editor.  This option
+         has no meaning with the CMS loader.
+ 
+OBJIN
+         specifies that the compiled program is to be executed on
+         an IBM System/360 Model 91 or 195.
+ 
+OBJOUT*
+         specifies that the compiled program is not to be executed
+         on an IBM System/360 Model 91 or 195.
+ 
+EXTDIC|ED
+         causes the compiler to extend the size of the dictionary
+         by 1.5 times if the dictionary block size is 1K bytes, and
+         by 3.5 times if the block size is greater than 1K bytes.
+ 
+NOEXTDIC|NED*
+         specifies that the compiler is to use the normal dictionary.
+ 
+SYNCHKE|SKE
+         terminates the compilation if errors of severity ERROR or
+         above are found during the syntax checking stages of com-
+         pilation.
+ 
+SYNCHKS|SKS
+         terminates the compilation if errors of severity SEVERE
+         or above are found during the syntax checking stages of
+         compilation.
+ 
+SYNCHKT|SKT*
+         terminates the compilation immediately after an erro
+         severity TERMINATION is encountered; therefore, in effect,
+         the option is turned off.
+ 
+MACRO|M
+         requests the compiler to invoke the compiler preprocessor.
+ 
+NOMACRO|NM*
+         requests the compiler preprocessor not be
+         invoked.
+ 
+COMP|C*
+         requests the compiler to continue compiling the source
+         module after the preprocessor phases.
+ 
+NOCOMP|NC
+         requests the compiler not continue after the preprocessor.
+ 
+MACDCK|MD
+         requests the compiler to place the output from the pre-
+         processor in the TEXT file.
+ 
+NOMACDCKNMD*
+         requests the output from the preprocessor not placed
+         the TEXT file.
+ 
+Input Options:
+ 
+CHAR60|C60
+          specifies that the source statements are written in the
+          PL/1 60-character set.
+ 
+CHAR48|C48
+          specifies that the source statements are written in the
+          48-character set.  This option accepts source programs
+          written in either character set.
+ 
+BCD|B
+          specifies that source statements are represented in binary
+          coded decimal (BCD).
+ 
+EBCDIC|EB*
+          specifies that source statements are represented in
+          extended binary-coded-decimal interchange code.
+ 
+SORMGIN mm,nn,cc  mm=1,n=72
+          specifies the extent of the input record that contains PL/I source
+          statements.
+          mm   represents the number of the first character of the field
+               containing source statements,
+          nn   represents the number of the last character of the
+               source statement field, and
+          cc   represents the number of the character containing
+               the carriage control character. cc must be outside the limits
+               set by mm and nn.  The default position of cc may be
+               nullified by setting it to 0.  Source statements
+               generated by the preprocessor have a source margin of 2,72.
+ 
+Output Options:
+ 
+DECK|D*
+          specifies that the compiler output is to be placed in a
+          TEXT file.
+ 
+NODECK|ND
+          specifies that the compiler output is not to be placed
+          into the TEXT file.
+ 
+Listing Options:
+ 
+LINECNT|LC xxx
+          specifies the number of lines to be included in each page
+          of a listing, including heading and blank lines.  The
+          default is 55 lines.
+ 
+OPLIST|OL
+          requests a list of the status of all compiler options
+          the start of the compilation.
+ 
+NOOPLIST|NOL
+          suppresses this list of options.
+ 
+SOURCE2|S2*
+          requests a listing of the PL/1 source statements
+          input to the preprocessor.
+ 
+NOSOURCE2|NS2
+          suppresses this listing of input to the preprocessor.
+ 
+SOURCE|S*
+          requests a listing of the PL/1 source statements proce
+          by the compiler.  The source statements are either those
+          of the original source program or the output from the pre-
+          processor.
+ 
+NOSOURCE|NS
+          suppresses the listing of source statements.
+ 
+NEST|NT*
+          specifies that the source program listing indicate for
+          each statement the block and nesting level for DO-groups.
+ 
+NONEST|NNT
+          suppresses the indication of block and nesting level
+          for DO-groups.
+ 
+ATR|A*
+          requests a table of source program identifiers and their
+          attributes.  Attributes of precision (15,0) or less are
+          flagged '********'.  An Aggregate Length Table, giving
+          the length in bytes of all major structures and non-
+          structured arrays in the source program, is also produced.
+ 
+NOATR|NA
+          suppresses the inclusion of source program identifiers and
+          their attributes in the LISTING.
+ 
+XREF|X
+          requests a cross-reference table of identifiers in the
+          source program.  If  ATR  has also been specified, the two
+          tables are combined.  An Aggregate Length Table is produced.
+ 
+NOXREF|NX
+          suppresses the cross-reference table.
+ 
+EXTREF|E
+          requests a listing of the external symbol dictionary (ESD).
+ 
+NOEXTREF|NE
+          suppresses the external symbol dictionary.
+ 
+LIST|L
+          requests a LISTING of the machine instructions generated
+          by the compiler.
+ 
+NOLIST|NL
+          suppresses a LISTING of the machine instructions generated
+          by the compiler.
+ 
+FLAGS|FS
+          lists only severe and termination errors.
+ 
+FLAGW|FW
+          lists all diagnostic messages.
+ 
+FLAGE|FE
+          lists all diagnostic messages except 'warning' messages.
+ 
+DUMP|DP
+          requests a formatted listing in the LISTING file of the
+          compiler modules, compiler storage, and compiler control
+          blocks in the event of an unrecoverable error.
+ 
+CMS Options:
+ 
+PUNCH|PU
+          specifies that the TEXT file produced by the compiler is
+          to be punched onto the offline punch.
+ 
+TDECK|TD
+          specifies that the TEXT file produced by the compiler is
+          to be written onto a magnetic tape mounted at symbolic
+          address TAP2.
+ 
+PRINT|P
+          specifies that the LISTING file produced by the compiler
+          is to be printed on the offline printer.
+ 
+NOPRINT|NP
+          specifies that no LISTING file is to be produced.
+ 
+TLIST|TL
+          specifies that the LISTING file is to be written onto a
+          magnetic tape mounted at symbolic address TAP2.
+ 
+NODIAG|NDG
+          specifies that compiler diagnostics are not to be
+          typed at the user's terminal.
+ 
+If neither P nor NP is specified, the LISTING file is placed on the same disk
+as the PL/1 source program.
+ 
+Usage:
+ 
+The PLI command compiles files of PL/I source language into machine-language
+object code. Input files must have a filetype of PLI and a record length less
+than 100 characters.
+ 
+The options governing compiler operation and output are specified in any order
+in a set of parentheses following the last filename. Any combination of
+options is valid.
+ 
+When conflicting options are specified, the last specified option is used.
+Unsupported or misspelled options are ignored. One set of options governs
+all compilations performed by one command.  Each of the options has a default
+value which is selected when none is specified.
+ 
+These defaults are marked with a "*" in "Options" above.
+ 
+For a complete discussion of PL/I usage, refer to:
+ 
+IBM System/360 System PLI/F Programmer's Guide GC28-6594
+ 
+and
+ 
+IBM System/360 Operating System PLI/F Language Reference Manual GC28-8201.
+ 
+An introduction to PL/I is provided in Manual GC28-6808, A PL/I Primer.
+ 
+There is also more information in PLICOMP MEMO U2 from which this help
+file is adapted.

@@ -1,0 +1,23 @@
+BASIC                                                              CMS Command
+ 
+Acronym for Beginners' All-purpose Symbolic Instruction Code, runs CALL-OS
+BASIC as supplied with VM/370 R1.
++----------+-----------------------------------------------------------------+
+| BASIC    | fn [( <LONG> [)]                                                |
++----------+-----------------------------------------------------------------+
+where:
+ 
+fn      Is the filename of the file to be run. It must have a filetype
+        of BASIC.
+ 
+option:
+ 
+LONG    Tells BASIC to use LONG form numbers.
+ 
+For more details see
+ 
+GC20-1803-1 VM370 BASIC Language Reference Manual Rel 1
+ 
+which may be downloaded from BITSAVERS in the folder
+ 
+http://bitsavers.org/pdf/ibm/370/VM_370/Release_1/

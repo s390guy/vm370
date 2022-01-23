@@ -1,0 +1,567 @@
+EXECUTIL                                                             CMS MODULE
+ 
+Places information about the CP and CMS environment on the stack.
++----------+------------------------------------------------------------------+
+| EXECUTIL | function <options>                                               |
++----------+------------------------------------------------------------------+
+| Functions:                                                                  |
+|                                                                             |
+|  FREEADDR - unused virtual addresses                                        |
+|  FREEMODE - unused disk mode letters                                        |
+|  INFO     - useful constants                                                |
+|  QDISK    - CMS disks                                                       |
+|  QFILE    - CMS disk files                                                  |
+|  QLIB     - currently globaled libraries                                    |
+|  QREADER  - spooled reader files                                            |
+|  QSTACK   - CMS console stack                                               |
+|  READ     - read records from CMS disk files                                |
+|  TYPE     - type lines at the terminal                                      |
+|  WRITE    - write records to CMS disk files                                 |
+|                                                                             |
+| Options:                                                                    |
+|                                                                             |
+|  See the desription of each function below for details of the options       |
+|                                                                             |
+|  **NOTE**                                                                   |
+|  There is no "(" between the funcion and the options                        |
++-----------------------------------------------------------------------------+
+ 
+Functions:
+ 
+FREADDR
+ 
+Syntax:
+EXECUTIL FREEADDR [ cuu 191 [ n 1 ] ]
+ 
+The FREEADDR function stacks (LIFO) a single line containing the next 'n'
+unused virtual addresses equal to, or higher than, the given 'cuu' parameter.
+The value 'n' must be positive and an arbitrary limit of 30 addresses can be
+stacked.  The highest valid virtual address is 5FF, and if there are fewer than
+'n' unused virtual addresses in the range 'cuu' to 5FF, then nothing is stacked
+and a return code of 1 is returned.
+ 
+Errors:
+ 
+1  Insufficient unused virtual addresses
+ 
+ 
+EXECUTIL FREEMODE [ mode * A ]
+ 
+The FREEMODE function stacks (LIFO) a single line containing all of the
+currently unused mode letters, in alphabetical order and separated by blanks.
+If the 'mode' parameter is specified, then only unused mode letters in the
+range 'mode' to Z are stacked.  If it is specified as '*', this is equivalent
+to 'A', and hence all unused mode letters are stacked (i.e. range A to Z).  The
+'mode' parameter can consist of either just a mode letter by itself, or both
+the mode letter and a mode number.
+ 
+Errors:
+ 
+1  No unused mode letters available
+ 
+ 
+INFO Function
+ 
+Syntax:
+ 
+EXECUTIL INFO
+ 
+The INFO function stacks (LIFO) a single line containing the following useful
+items of information:
+   current date as MM/DD/YY
+   current time of day as HH:MM:SS
+   day of the week (Mon, Tue, Wed, Thu, Fri, Sat, Sun)
+   name of the current month (Jan, Feb, ...)
+   userid of the virtual machine
+   current size of the machine's virtual memory, given as nnnK
+   account number used for accounting purposes (or '*' if none available)
+   CPU model number (e.g. 158, 168, 3031, 3033, 4341)
+   CPU serial number (6 decimal digits). This is useful for uniquely
+      identifying a physical processor, especially if there are several with
+      the same model number.
+ 
+Errors:
+ 
+None.
+ 
+ 
+QDISK Function
+ 
+Syntax:
+ 
+EXECUTIL QDISK [ mode * A ]
+EXECUTIL QDISK ADDress [ cuu 191 ]
+EXECUTIL QDISK LABel [ label TDISK1 ]
+ 
+The QDISK function stacks information about accessed CMS disks.  There are
+three ways of selecting the disk or disks for which you want this information,
+each corresponding to one of the syntax forms show above.  The first form
+accepts a 'mode' parameter, which specifies the disk for which you want the
+information to be stacked.  If it is specified as '*', then the information is
+stacked for all currently accessed disks.  In this case the lines are stacked
+such that you will read them in alphabetical order by disk mode.
+ 
+The other two forms allow you to select the disk by specifying either; 1) the
+keyword ADDRESS and the virtual address of the disk, or 2) the keyword LABEL
+and the label of the disk.  All of the currently accessed disks are scanned to
+search for the first one with the given address or label.
+ 
+For each disk selected, the following information is stacked:
+ 
+   the mode used in the ACCESS command for this disk (e.g. 'B' or 'C/A')
+   virtual address of the disk (cuu)
+   the size of the disk in cylinders
+   the number of files on the disk
+   the number of disk blocks in use
+   the number of unused disk blocks either 'R/O' or 'R/W'
+   the 6-character disk label mode letter at which the disk is accessed. This
+      is usually the same as 'accmode', but saves you having to check if
+      'accmode' is in the "mode/parent" format (e.g. 'C/A'), if all you want is
+      the mode letter.
+   the size of the disk blocks being used.
+ 
+Errors:
+ 
+1  Disk specified is not accessed
+ 
+ 
+QFILE Function
+ 
+Syntax:
+ 
+EXECUTIL QFILE fn * ft * [ fm * A1 [ fm ... ]]
+[ ( [ FIRST ] [ EXT ] [ LIFO FIFO ] ]
+ 
+Description:
+ 
+The QFILE function stacks information about CMS disk files.  The 'fn' and 'ft'
+parameters must be specified and give the filename and filetype of the file or
+files for which you want this information.  Unfortunately QFILE does not
+support the same pattern matching abilities of the LISTFILE command, but it
+does allow the filename and/or filetype to be given as '*', which matches any
+filename or filetype.  You can specifically list all of the filemodes to be
+searched, or you can specify '*', indicating that all filemodes are to be
+searched.
+ 
+The FIRST option indicates that searching is to stop as soon as the first file
+is found.
+ 
+The EXT options specifies that any read/only extension disks for the given
+filemodes are also to be searched (by default they are not searched).
+ 
+The FIFO and LIFO options specify the order in which the lines are to be
+stacked, LIFO being the default.
+ 
+For each file selected, the following information is stacked:
+   the filename, filetype, and filemode of the file
+   the record format of the file, either 'F' or 'V'
+   the logical record length of the file
+   the number of records in the file
+   the size of the file in disk blocks
+   the date the file was last written (MM/DD/YY)
+   the time of day the file was last written (HH:MM:SS)
+Errors:
+ 
+28    File not found
+ 
+ 
+QLIB Function
+ 
+Syntax:
+ 
+EXECUTIL QLIB MACLIB TXTLIB DOSLIB
+ 
+The QLIB function stacks (LIFO) a single line containing the names of the
+specified libraries (MACLIB, TXTLIB, or DOSLIB), that are currently globaled.
+ 
+Errors:
+ 
+1  No libraries globaled
+ 
+ 
+QREADER Function
+ 
+Syntax:
+ 
+EXECUTIL QREADER [ Name fn ft ] [ FRom userid ]
+[ Type DSK PRT CON PUN RDR DMP MON UNK ]
+[ CLass c ] [ Hold ] [ NOHold ]
+[ spoolid spoolid ... ]
+[ FIRST ] [ LAST ] [ EXCLude ]
+ 
+The QREADER function stacks information about spool files in your virtual
+reader.  The output lines are stacked LIFO, such that the order you read the
+lines is the same as the order of the files in the reader.  The order of the
+files in the reader is not changed.
+ 
+The first set of parameters select a particular subset of the reader files for
+which you want the information.  If no selection parameters are specified,
+information on all the reader files is returned.
+ 
+The 'Name' parameter must be followed by the filename and filetype of the
+reader files to be selected.  Either can be '*', which matches any filename or
+filetype.
+ 
+The 'FRom' parameter selects only those files sent to you from the given
+userid.
+ 
+The 'CLass' parameter selects only those files in the given class.
+ 
+The 'Type' parameter selects only the files of the given type as follows:
+   PRT printer files
+   CON console files
+   RDR card-image files without header records (real card files or created by
+      the PUNCH command with the NOHEADER option)
+   PUN card-image files with header records (created using the PUNCH command
+      with the HEADER option)
+   DSK card-image files in DISK DUMP format (created by the DISK DUMP command)
+   DMP system DUMP files (either from CP VMDUMP command or CP abend dumps)
+   MON system MONITOR files
+   UNK unknown type. This will select only those card-image files (PUN, RDR, or
+      DSK) that are in SYSTEM-hold.  (Thus their type is "unknown" since
+      EXECUTIL is unable to read them to determine the format.)
+ 
+The 'Hold' and 'NOHold' parameters select only files in USER-hold or not in
+USER-hold, respectively.
+ 
+Finally, a specific set of files can be selected by listing their spoolids
+(4-digit spool file identification numbers).  Only files from that set of
+numbers will be selected.
+ 
+The selection parameters can be given in any order and several can be combined
+to select a group of files.  For example,
+QREADER TYPE CON FROM HELP
+will stack information only about CONSOLE files sent from userid HELP.
+ 
+The remaining options further define the files for which you wish the
+information to be stacked.  Specifying 'FIRST' or 'LAST' indicates that you are
+only interested in either the first or the last reader file which matches all
+of the selection parameters.  The 'EXClude' option reverses the effect of all
+the selection parameters except FIRST and LAST.  If 'EXClude' is specified then
+information is returned about all files that do NOT match the selection
+criteria.  These options can also be combined.  For example,
+QREADER CLASS Z EXCLUDE FIRST HOLD
+will stack information about the first file in the reader that is not a class Z
+file in HOLD status.
+ 
+The following information is stacked for each reader file selected:
+   spoolid (4 decimal digits)
+   1-character class code
+   number of records in the file
+   number of copies of the file
+   type code indicating the format of the file (PRT, CON, RDR, PUN, DSK, DMP,
+      MON, UNK)
+   hold status
+   NONE - file not held
+   USER - file in USER-hold
+   SYS - file in SYSTEM-hold
+   USYS - file in USER- and SYSTEM-hold
+   userid that created the reader file
+   creation date (MM/DD/YY)
+   time of day the file was created (HH:MM:SS)
+   distribution code
+   filename and filetype of the file (may be null strings if not known)
+ 
+Errors:
+ 
+1  No reader files selected
+ 
+ 
+QSTACK Function
+ 
+Syntax:
+ 
+EXECUTIL QSTACK [ n 0 ]
+ 
+The QSTACK function stacks (LIFO) a single line containing the number of lines
+currently in the CMS console stack, and the difference between that number and
+the given parameter 'n'.  (i.e. if there are 'x' lines in the stack, it stacks
+'x' and 'x-n'.
+ 
+It is most useful in situations where a command or function will place a
+variable number of lines in the stack, such as in the following example.
+ 
+* GET NUMBER OF LINES IN THE STACK NOW
+EXECUTIL QSTACK
+&READ VARS &NUMLINS
+* GET INFO ON THE FILES
+EXECUTIL QFILE * &FTYPE *
+&IF &RETCODE ^= 0 &GOTO -ERR1
+* GET NUMBER OF LINES JUST STACKED
+EXECUTIL QSTACK &NUMLINS
+&READ VARS &JUNK &NUMLINS
+ 
+Errors:
+ 
+None.
+ 
+ 
+READ Function
+ 
+Syntax:
+ 
+EXECUTIL READ fn ft [ fm * ]
+[ recno * [ nrecs * [ truncol * ]]]
+[ ( FIFO LIFO ]
+ 
+The READ function reads records from a CMS disk file and stacks the lines in
+the CMS console stack.  The first two parameters, the filename and filetype of
+the file, must always be specified.  The filemode parameter can be omitted,
+even if the 'recno' parameter is given.  If the parameter following the
+filetype looks like a valid filemode (i.e. a mode letter, a mode letter and
+mode number, or '*'), then it is taken as the filemode, otherwise the parameter
+is assumed to be the 'recno' parameter and the default filemode is used.  The
+default filemode is '*' which causes all disks to be searched for the file to
+be read.
+ 
+The 'recno' parameter gives the record number at which to start reading.  The
+READ function does not close the file after reading so specifying 'recno' as
+'*' (the default) causes reading to continue from where you left off.  If this
+is the first call to read this file, reading starts at the beginning.
+ 
+The 'nrecs' parameter indicates the number of records to be read.  Starting at
+'recno', the next 'nrecs' records will be read, or, if 'nrecs' is negative, the
+preceding 'nrecs' records will be read in reverse order.  Specifying '*' causes
+all records from 'recno' to the end of the file to be read and stacked.
+Similarly, '-*' causes all records from 'recno' to the start of the file to be
+read in reverse order.  The default is to read only one record.
+ 
+The 'truncol' parameter gives the truncation column.  The entire record is
+read, but only columns 1 to 'truncol' of each record are stacked.  If 'truncol'
+is not specified or is given as '*', the entire record is stacked.  The main
+use for this parameter is to prevent the serialization numbers of some
+fixed-length files from being stacked.  Although the READ function will allow
+lines of greater than 130 characters to be stacked, the result of reading these
+lines is largely unpredictable.
+ 
+Lastly, the 'FIFO' and 'LIFO' options indicate the order in which the lines are
+to be stacked, the default being FIFO.
+ 
+The lines are stacked exactly as they are read from the file.  You must
+remember that if these lines are subsequently read by EXEC using the &READ
+statement, the EXEC processor will tokenize the lines.
+ 
+The READ function does not close the file after reading, thus the next time the
+READ function is invoked you can continue reading from where you left off.  If
+you wish to start reading the file from the start again, or use the file for
+some other purpose, you must explicitly close the file via the FINIS command.
+An attempt to read past the end of the file results in a return code of -12.
+ 
+Errors:
+ 
+-12   EOF reached
+28    File not found
+40    Error reading the file
+ 
+Typed Error Messages:
+ 
+EXCUTL040E ERROR 'nn' READING 'fileid'.
+ 
+See the documentation for the FSREAD macro in the CMS Command and Macro
+Reference manual for the error numbers for return code 40.
+ 
+ 
+TYPE Function
+ 
+Syntax:
+ 
+EXECUTIL TYPE [ n * ] [ NOCR ] [ ( text ) ]
+[ TAB [ +9 READ [nn +nn -nn] ... ]]
+ 
+The TYPE function reads lines from the CMS console stack and types them on the
+terminal, or types a single line from text given on the command line.
+ 
+The first parameter is the number of lines which are to be read from the CMS
+console stack.  If this parameter is omitted, specified as '*', or if there are
+fewer than 'n' lines in the stack, then lines are read and typed until the
+stack is empty.
+ 
+The 'NOCR' option causes the lines to be typed without a carriage return and
+linefeed at the end.  This feature is useful when issuing prompts to the
+terminal (as shown in the example below), or if reading from the CMS console
+stack this allows several short lines to be concatenated.  This option has no
+effect when using a 3270-type display terminal.
+ 
+Instead of reading from the CMS console stack, the text to be typed can be
+specified on the command line by enclosing it in parentheses.  Again, this is
+useful for issuing prompts as in the following example:
+ 
+EXECUTIL TYPE NOCR (Filename ?)
+which (on a non-display terminal) would type
+Filename ? _
+and leave the cursor at the end of the line as shown. The text on the command
+line can also contain the concatenation operator ('||'), which causes the two
+adjacent tokens to be concatenated. This circumvents the problems caused by
+tokenization. For example,
+EXECUTIL TYPE ( Invalid para || meters || : )
+will type 'Invalid parameters:'.
+ 
+Normally, lines read from the stack are typed exactly as they are, or, if text
+is given on the command line, the output line is formed by inserting a single
+blank between the tokens (subject to tokens being concatenated together via '
+').  However, the TAB option allows the output line to be formatted into
+specific columns before being typed out.  The tab settings can either be read
+from a line in the console stack, or be specified following the keyword 'TAB'
+on the command line.  Because there can be an indefinite number of tabs
+specified, the TAB option must be the last on the command line.  Tab settings
+can be specified in three ways:
+ 
+[ nn +nn -nn ] ...
+ 
+Specifying 'nn' sets the next tab at column number nn.  The forms '+nn' and
+'-nn' set the next tab at the given positive or negative offset from the last
+tab position.  A positive offset (+nn) has a special meaning when it is the
+last (or only) tab specification on the line.  In this case it causes a tab to
+be set 'every nn' positions from the current column.  For example:
+ 
+TAB +7
+TAB 1 8 15 +7
+TAB 1 8 15 22 29 36 43 ...
+ 
+are equivalent tab specifications.  Any combination of absolute column numbers,
+positive and negative offsets can be used, as long as all tabs are set at
+positive column positions.  An arbitrary maximum of 35 tab settings is allowed.
+If you only specify the keyword 'TAB', then a default setting of 'TAB +9' is
+used.  If you specify 'TAB READ', then a single line is read from the CMS
+console stack (or terminal) and decoded as tab settings.  This helps prevent
+command lines from becoming too long.  Thus:
+ 
+&STACK LIFO 4 +6 -1 24 +15
+EXECUTIL TYPE * TAB READ
+is equivalent to
+EXECUTIL TYPE * TAB 4 +6 -1 24 +15
+ 
+When tab settings are given, the line read from the CMS console stack or the
+text from the command line, is first separated into fields delimited by blanks,
+then, working left to right, each field is positioned according to the tab
+settings.
+ 
+&STACK LIFO Value= ******* ( Canadian ) $3
+EXECUTIL TYPE 1 TAB 1 10 +8 +1 +8 -18
+ 
+results in the following line being typed:
+        Value=   $3****** (Canadian)
+columns 123456789*123456789*123456789*123456789*
+ 
+Notice that because it works left to right, the '$3' field overlaid the first
+part of the '********' field.
+ 
+Errors:
+ 
+16 Invalid tab sequence
+ 
+Typed Error Messages:
+ 
+EXCUTL016E INVALID TAB SEQUENCE.
+ 
+ 
+WRITE Function
+ 
+Syntax:
+ 
+EXECUTIL WRITE fn ft [ fm * A1 ]
+[ recno * [ nrecs * 1 [ recfm [ lrecl ]]]]
+[ ( text ) ] [ LCASE ]
+[ TAB [ +9 READ [nn +nn -nn] ... ] ]
+ 
+The WRITE function writes records to CMS disk files.  The data to be written is
+obtained from the stack, the terminal, or the command line.
+ 
+The first two parameters, the filename and filetype of the file to be written,
+must always be specified.  The filemode parameter can be omitted, even if the
+'recno' parameter is given.  The rule is that if it looks like a valid filemode
+(i.e. a mode letter, a mode letter and mode number, or '*'), then it is taken
+as the filemode, otherwise the parameter is assumed to be the 'recno' parameter
+and the default filemode (A1) is used.  If the filemode is given as '*', then
+all read/write disks will be searched for the given file.  If the file already
+exists and is on a read/write disk, then the file is updated or appended to,
+depending upon the other parameters.  If the file does not already exist on a
+read/write disk, it is automatically created on your A-disk.
+ 
+The 'recno' parameter is the starting record number to be written.  Specifying
+'*' (the default) causes the records to be appended to the file.  If the file
+is a variable-length file, the WRITE function forces the records to be
+appended.
+ 
+If the file is fixed-length, any individual record can be written or rewritten.
+If you give a record number that is past the current end of the file, then null
+records containing hexadecimal zeroes will be inserted.
+ 
+The 'nrecs' parameter gives the number of records to be written.  If 'nrecs' is
+given explictly as a decimal number, then precisely 'nrec' reads will be issued
+to the stack, or if the stack is empty or becomes empty, the reads will be
+presented at the terminal.  If 'nrecs' is given as '*' (the default), then
+there are two possible actions, depending upon the initial state of the console
+stack.  If initially there are lines in the stack, then reads are issued until
+the stack is empty.  However, if the stack is initially empty, then reads are
+issued to the terminal until a null line is entered.  (Note:  if 'nrecs' is
+given explicitly and reads are presented to the terminal, entering a null line
+is equivalent to entering a single blank.)
+ 
+The 'recfm' and 'lrecl' parameters are used only if a new file is being
+created.  If the file specified already exists, then both parameters are
+totally ignored.  The valid 'recfm' values are 'F' (fixed-length) which is the
+default, and 'V' (variable-length).  The default 'lrecl' for fixed- files is 80
+characters.  The 'lrecl' parameter is meaningless for variable-length files as
+the logical record length is always the length of the longest record in the
+file.  However, specifying 'lrecl' in this case, will not cause a error.
+ 
+If the line to be written to the file is only a few tokens, it can be specified
+on the command line by enclosing it in parentheses.  The special concatenation
+token (' ') can be used exactly as described in the documentation for the TYPE
+function.
+ 
+If lines are being read from the terminal or the stack, the 'LCASE' option
+prevents the read routines from converting the input to upper case.
+ 
+The lines to be written can be formatted to some extent by specifying tab
+settings to be used.  Again, the 'TAB' parameter is exactly as described for
+the TYPE function.
+ 
+Errors:
+ 16   Invalid tab sequence
+ 40   Error writing the file.
+ 
+Typed Error Messages:
+ 
+EXCUTL016E INVALID TAB SEQUENCE.
+ 
+EXCUTL040E ERROR 'nn' WRITING 'fileid'.
+ 
+See the CMS Command and Macro Reference manual under the FSWRITE macro for the
+error numbers for return code 40.
+ 
+An easy way to see the format of the output stacked by any of the first set of
+functions is to use EXECUTIL EXEC.  This EXEC simply consists of the following:
+ 
+&CONTROL ERROR
+EXECUTIL &1 &2 &3 &4 &5 &6 &7 &8 &9 ...
+EXECUTIL TYPE *
+ 
+The second line executes the EXECUTIL module with whatever parameters you give,
+and the EXECUTIL TYPE command then types out all of the lines that were
+stacked.  For example,
+ 
+executil info
+06/13/80 16:39:16 Fri Jun LEW  800K C1234 3031 970137
+R;
+ 
+ 
+Error Conditions
+ 
+Any errors or special conditions are reflected in the return code.  Error
+messages typed at the terminal are edited in accordance with the current EMSG
+setting.  Each function has its own specific return codes, but the following
+apply to all functions:
+ 
+0     Normal exit
+77    Invalid parameter
+88    Missing parameter
+99    Unknown function
+ 
+ 
+Error Messages:
+ 
+EXCUTL077E INVALID 'function' PARAMETER - 'parameter'.
+EXCUTL088E 'function' OPERAND MISSING.
+EXCUTL099E UNKNOWN FUNCTION - 'function'.

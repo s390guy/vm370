@@ -1,0 +1,177 @@
+GCCLIB, The "Native CMS" GCC Runtime Library
+ 
+Version 0.7.1 - 21 Feb 2020
+ 
+Robert O'Hara, Redmond Washington, July 2010
+rpohara@msn.com
+ 
+Many thanks to Paul Edwards and Dave Wade
+ 
+ 
+Introduction:  What is a "Native CMS" runtime library?
+------------------------------------------------------
+ 
+Language processors in CMS such as the assembler, FORTRAN, and PL/I, have
+traditionally been ports of the versions that run on OS or MVS.  These programs
+use OS macros, and therefore OS SVCs, to access system services.  CMS supports
+this by simulating a limited set of OS services.  Thus, for example, a call to
+allocate memory (GETMAIN) is mapped to the native CMS service (DMSFRE).
+ 
+So what is the problem?  Because many OS programs (given the batch heritage of
+that operating system) do not free the memory they use, CMS automatically frees
+all OS memory after each command is run.  Thus it is not possible for a program
+that uses OS services to call another such program as a CMS command.  The
+obvious example of such a situation is the REXX processor (BREXX or Regina
+REXX).  As things stand, since the REXX processor is uses C, and the existing
+C runtime library uses OS simulation, it cannot call another program (such as a
+compiler) that also uses OS simulation.
+ 
+GCCLIB is a "Native" CMS GCC runtime library.  It removes these restrictions,
+and uses only CMS services to access operating system functions.  If your goal
+is to write C programs that are portable across operating systems, then this
+library is probably not what you want to use.  But if you want to write
+programs just for CMS, then this library will give you the best access to CMS
+system services.
+ 
+In CMS it is possible to load programs into memory and have them reamin their
+for the rest of your session.  These are called "resident" programs.  Starting
+with VM/SP, IBM made it possible for users to create resident programs via the
+NUCXLOAD command.  In VM/370 we have the RESLIB command which performs a
+similar function.  Using the RESLIB command, the GCCLIB library can be loaded
+into memory.  When a C program is then loaded, it is linked to the memory-
+resident runtime through some small stub routines.  The difference in program
+size is dramatic:  a simple hello world program is 60K bytes in size, when all
+of the needed runtime code is linked in.  The same program is less than 800
+bytes in size using the resident library.
+ 
+This means it is now possible to write programs that execute in the 8K CMS
+transient area, and can be called in CMS Subset mode from within EDIT or other
+programs.  Type HELP RESLIB for more information.
+ 
+In the VM/370 Sixpack version 1.2, VM/370 CE V1R1M1, and following, the GCCLIB
+runtime library is automatically loaded into CMS resident memory during CMS
+initialization.
+ 
+ 
+Using GCCLIB
+------------
+ 
+To compile programs with GCCLIB, put this command in your PROFILE EXEC:
+   GLOBAL TXTLIB GCCLIB
+ 
+Use the GCC command to compile and assemble a C program, specifying the CMS or
+LIB GCCLIB option.  Type HELP GCC for information on it the GCC command.  Use
+the standard CMS LOAD and GENMOD commands to build an executable.  For example,
+to compile the HELLO C program (copy it from the U disk to your A disk first):
+   GLOBAL TXTLIB GCCLIB
+   GCC HELLO (CMS
+   LOAD HELLO
+   START
+ 
+ 
+CMS-Specific Functions in GCCLIB
+--------------------------------
+ 
+Beyond the functions provided by the standard C runtime library , GCCLIB
+implements the following CMS-specific functions:
+   CMSargstring()        return the unedited argument string
+   CMScardPunch()        write a line to the virtual card punch
+   CMScardRead()         read a line from the virtual card reader
+   CMSclock()            return the system clock time
+   CMScommand()          issue a CMS command
+   CMSconsoleRead()      read a line from the console or program stack
+   CMSconsoleWait()      wait for console I/O to complete
+   CMSconsoleWrite()     write a line to the console
+   CMSdebug()            call a debug routine where a breakpoint can be set
+   CMSfileClose()        close a CMS file
+   CMSfileErase()        erase a CMS file
+   CMSfileOpen()         open a CMS file
+   CMSfilePoint()        set the read or write pointer to a record in a file
+   CMSfileRead()         read one or more records from a CMS file
+   CMSfileRename()       rename a CMS file
+   CMSfileState()        determine if a file exists
+   CMSfileWrite()        write one or more records to a CMS file
+   CMSgetClock()         get the system clock time
+   CMSmemoryAlloc()      allocate memory
+   CMSmemoryFree()       release allocated memory
+   CMSprintLine()        write a line to the virtual printer
+   CMSstackLine()        stack a line on the CMS program stack
+   CMSstackQuery()       determine the number of lines in the program stack
+ 
+For more details on these, see the CMSSYS H file, located on GCCCMS 202.
+ 
+ 
+Limitations
+-----------
+ 
+GCCLIB does not yet implement the complete C runtime library.  The following
+routines are not yet implemented:
+   snprintf()        stdio.h
+ 
+ 
+Since GCCLIB does not use OS simulation, it is not necessary (or possible) to
+use the FILEDEF command to define a file via an OS DDNAME.  Instead, the
+fopen() function has been extended:
+ 
+   FILE * fopen(const char * filespec, const char * access)
+ 
+   Open the specified file and return a stream associated with that file.
+      filespec is a pointer to a string containing the specification of the
+               file to be opened:
+         "CONSOLE"   terminal console (read or write)
+         "PRINTER"   printer (write only)
+         "PUNCH"     card punch (write only)
+         "READER"    card reader (read only)
+         filename filetype filemode [F|V [recordLength]]
+                     disk file (read or write), where:
+                     filename is the up to 8 character name.
+                     filetype is the up to 8 character type.
+                     filemode is the up to 2 character disk mode leter and
+                              optional number.
+                     F|V      specifies the record format fixed or variable.
+                              It is ignored when opening a file for reading.
+                     reclen   specifies the record length.  It is required for
+                              fixed-length files, and is taken as the maximum
+                              record length for variable-length files.  It is
+                              ignored when opening a file for reading
+                     Each of the above items must be separated by one or more
+                     blanks.
+ 
+      access   specifies how the file will be accessed (i.e. for input, output,
+               etc):
+               "r"   Open a text file for reading
+               "w"   Create a text file for writing
+               "a"   Append to a text file
+               "rb"  Open a binary file for reading
+               "wb"  Create a binary file for writing
+               "ab"  Append to a binary file
+ 
+   Notes:
+      1.  The maximum record length is 65535 bytes.
+      2.  The maximum number of records in a file is 32768.
+      3.  The maximum number of 800-byte blocks in a file is 16060.
+      4.  When writing a text file, a newline character signals the end of the
+          current record.
+      5.  When reading a text file, a newline character is inserted at the end
+          of each record.
+      6.  When writing a fixed-length text file the buffer will be padded with
+          blanks if needed.
+      7.  When writing a fixed-length binary file the buffer will be padded
+          with NULLs if needed.
+      8.  Opening a file for writing causes the existing file of that name to
+          be erased, if it exists.
+ 
+GCCLIB does not support I/O redirection.  If you need that, use the standard
+GCC library, PDPCLIB.  In GCCLIB, printf() always prints on the console, and
+scanf() always reads from the console.
+ 
+ 
+Finally
+-------
+ 
+This code has not been thoroughly tested.  Don't use it for anything important
+like controlling a nuclear reactor.  I'm just a hobbyist!
+ 
+Questions, comments?  Post them to the H390-VM group on Yahoo!
+ 
+Robert O'Hara
