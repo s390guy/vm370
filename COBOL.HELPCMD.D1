@@ -1,0 +1,29 @@
+COBOL                                                                  CMS EXEC
+ 
+Use the COBOL exec to compile COBOL programs using the OS MVT/MFT Cobol V3
+compiler described in GC28-6399 which may be downloaded from www.bitsavers.org.
+ 
+The format of the COBOL command is
+ 
++------------+----------------------------------------------------------------+
+|   COBOL    | filename                                                       |
++------------+----------------------------------------------------------------+
+ 
+where:
+ 
+filename  Is the name of a file with filetype COBOL and fixed length 80 byte
+          records.
+ 
+Options:
+ 
+The command does not accept any options but passes the following options to
+the COBOL compiler:
+ 
+Notes:
+ 
+1.  The compiler outputs two files "filename TEXT" containing the generated
+    object code, and "filename LISTING" which contains the compiler listing
+    including diagnostic messages.
+ 
+2.  The COBOL runtime is contained in "COB360 TXTLIB Y". Issue a GLOBAL TXTLIB
+    referencing this file before loading a cobol program.

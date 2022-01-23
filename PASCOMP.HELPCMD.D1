@@ -1,0 +1,17 @@
+PASCOMP                                                                CMS EXEC
+ 
+The PASCOMP exec is used to translate a PASCAL source program into P-CODE
+The format of the command is
++---------+-------------------------------------------------------------------+
+| PASCOMP | filename                                                           |
++---------+-------------------------------------------------------------------+
+where:
+ 
+filename
+        The name of the file to be compiled. It must have a filetype of
+        "PASCAL"
+ 
+        The output is a P-CODE file.
+ 
+Notes:
+1.  Is called by the PASCAL EXEC.

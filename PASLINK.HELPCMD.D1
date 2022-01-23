@@ -1,0 +1,15 @@
+PASLINK                                                                CMS EXEC
+ 
+The PASLINK exec runsis used to load a compiled PASCAL program
+into a CMS Module file. The format of the PASLINK command is
++----------+------------------------------------------------------------------+
+| PASCLINK | filename-1 [filename-2 ... filename-n3]                          |
++----------+------------------------------------------------------------------+
+where:
+ 
+filename-1, filename-2, filename-n
+        Are the names of "TEXT" files to be loaded.
+        The generated module is saved as filename-1 MODULE A.
+ 
+Notes:
+1.  Is called by the PASCAL EXEC.
