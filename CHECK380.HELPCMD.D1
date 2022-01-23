@@ -1,0 +1,17 @@
+CHECK380 - Check for 380 mode                                         CMS MODULE
+                                                                                
+Check for 380 mode and sets the return code if its available                    
+                                                                                
+The format of the CHECK380 command is                                           
+                                                                                
+    +------------------------------------------------------------------------+  
+    |                                                                        |  
+    | CHECK380                                                               |  
+    |                                                                        |  
+    +------------------------------------------------------------------------+  
+                                                                                
+    Return Codes:-                                                              
+                                                                                
+        RC = 380 - 380 Mode enabled                                             
+        RC = 370 - 380 Mode is not enabled                                      
+                                                                                

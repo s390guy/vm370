@@ -1,0 +1,12 @@
+DROP                                                                CMS Exec    
+                                                                                
+Release and detach a CMS mini-disk.  Syntax:                                    
+                                                                                
++----------------------------------------------------------------------------+  
+|  DROP mode                                                                 |  
++----------------------------------------------------------------------------+  
+                                                                                
+Where:-                                                                         
+                                                                                
+mode - the mode of a linked and accessed disk                                   
+                                                                                

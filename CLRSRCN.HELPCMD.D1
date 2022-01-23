@@ -1,0 +1,12 @@
+CLRSCRN - Clears the screen on a 3270 terminal                     CMS MODULE   
+                                                                                
+    Use the CLRSCRN commands clear the screen on a 3270 terminal.               
+    The format of the command is:-                                              
+                                                                                
+    +----------------+-------------------------------------------------------+  
+    |                |                                                       |  
+    |  CLRSCRN       |                                                       |  
+    |                |                                                       |  
+    +----------------+-------------------------------------------------------+  
+                                                                                
+                                                                                

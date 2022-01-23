@@ -1,0 +1,30 @@
+DIFF - Compare two files                                            CMS MODULE  
+                                                                                
+Compare files line by line.  - CMS port of the GNU DIFF command                 
+                                                                                
+Usage:-                                                                         
+                                                                                
++----------------------------------------------------------------------------+  
+|                                                                               
+|   diff <options>   file-1 file-2                                              
+|                                                                               
++----------------------------------------------------------------------------+  
+                                                                                
+Notes:-                                                                         
+                                                                                
+1. This is a straight port of the GNU utility the command format is UNIX        
+   style with the options before the file names.                                
+                                                                                
+2. The files must be entered on the command line using "." to separate the      
+   components. e.g.                                                             
+                                                                                
+   profile.exec.a                                                               
+                                                                                
+3. There are no folders or directories in CMS therefore some of the options are 
+   non-functional.                                                              
+                                                                                
+4. UNIX style ">" to re-direction does not work. To write the output            
+   to a file issue a FILEDEF for "SYSTERM" before calling the command           
+                                                                                
+5. Do "DIFF --help" for details of the options.                                 
+                                                                                

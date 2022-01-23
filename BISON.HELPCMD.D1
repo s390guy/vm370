@@ -1,0 +1,18 @@
+BISON - CMS port of GNU BISON                                CMS EXEC           
+                                                                                
+The format of the BISON command is                                              
+                                                                                
++----------------------------------------------------------------------------+  
+|                                                                            |  
+| BISON ifn ift ifm ofn oft ofm dfn dft dfm                                  |  
+|                                                                            |  
+| where:-                                                                    |  
+|                                                                            |  
+|    ifn,ift,ifm are the name, type and mode of the input file               |  
+|                                                                            |  
+|    ofn,oft,ofm are the name, type and mode of the output file              |  
+|                                                                            |  
+|    dfn,dft,dfm are the name, type and mode of the definitions tile         |  
+|                                                                            |  
++----------------------------------------------------------------------------+  
+                                                                                

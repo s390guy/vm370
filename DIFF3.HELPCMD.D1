@@ -1,0 +1,37 @@
+DIFF3 GNU 3-way compare program.                                    CMS COMMAND 
+                                                                                
+Compare three files line by line.                                               
+                                                                                
++-----------------------------------------------------------------------------+ 
+|                                                                               
+|  diff3 <options> MYFILE OLDFILE YOURFILE                                      
+|                                                                               
++-----------------------------------------------------------------------------+ 
+                                                                                
+Notes:-                                                                         
+                                                                                
+  1. This is a port of an open source utility so it does not follow the normal  
+     CMS paradigms. The options precede the file names. The file names are      
+     entered with "."s separating the components not spaces.                    
+                                                                                
+Options:-                                                                       
+                                                                                
+  -e  --ed  Output unmerged changes from OLDFILE to YOURFILE into MYFILE.       
+  -E  --show-overlap  Output unmerged changes, bracketing conflicts.            
+  -A  --show-all  Output all changes, bracketing conflicts.                     
+  -x  --overlap-only  Output overlapping changes.                               
+  -X  Output overlapping changes, bracketing them.                              
+  -3  --easy-only  Output unmerged nonoverlapping changes.                      
+                                                                                
+  -m  --merge  Output merged file instead of ed script (default -A).            
+  -L LABEL  --label=LABEL  Use LABEL instead of file name.                      
+  -i  Append `w' and `q' commands to ed scripts.                                
+  -a  --text  Treat all files as text.                                          
+  -T  --initial-tab  Make tabs line up by prepending a tab.                     
+  --diff-program=PROGRAM  Use PROGRAM to compare files.                         
+                                                                                
+  -v  --version  Output version info.                                           
+  --help  Output this help.                                                     
+                                                                                
+If a FILE is `-', read standard input.                                          
+                                                                                
