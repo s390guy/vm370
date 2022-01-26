@@ -1,26 +1,32 @@
-CPYFILE port of GNU COPYFILE utility                                CMS MODULE  
-                                                                                
-Copy a files byte by byte.                                                      
-                                                                                
-The format of the CPYFIL command is                                             
-                                                                                
-    +------------------------------------------------------------------------+  
-    |                                                                        |  
-    |    CPYFILE  [-bb/-tt/-tb/-bt] <inile> <outfile>                        |  
-    |                                                                        |  
-    | where:-                                                                |  
-    |                                                                        |  
-    |   <infile> and <outfile> as the input and output file names            |  
-    |   entered as filename.filetype<.fm>                                    |  
-    |                                                                        |  
-    | <options> are:-                                                        |  
-    |                                                                        |  
-    |  -bb - Binary to Binary                                                |  
-    |  -tt - Text to Text                                                    |  
-    |  -tb - Text to Binary                                                  |  
-    |  -bt - Binary to Text                                                  |  
-    |                                                                        |  
-    | the default is text to text copy                                       |  
-    |                                                                        |  
-    +------------------------------------------------------------------------+  
-                                                                                
+CPYFIL                                                              CMS MODULE
+ 
+Port of GNU command. Copy a files byte by byte.
++----------+------------------------------------------------------------------+
+| CPYFILE  | [-bb|-tt|-tb|-bt] fileidi fileido                                |
++----------+------------------------------------------------------------------+
+where:
+ 
+fileidi
+        input file name.  Each file identifier (filename, filetype, and
+        filemode) must be specified.
+ 
+fileido
+        output file name. Each file identifier (filename, filetype, and
+        filemode) must be specified.
+ 
+Options:
+ 
+-bb
+        Binary to Binary.
+ 
+-tt
+        Text to Text.
+ 
+-tb
+        Text to Binary.
+ 
+-bt
+        Binary to Text.
+ 
+The default is -tt, text to text, copy.
+ 

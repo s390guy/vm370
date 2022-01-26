@@ -1,18 +1,17 @@
-BISON - CMS port of GNU BISON                                CMS EXEC           
-                                                                                
-The format of the BISON command is                                              
-                                                                                
-+----------------------------------------------------------------------------+  
-|                                                                            |  
-| BISON ifn ift ifm ofn oft ofm dfn dft dfm                                  |  
-|                                                                            |  
-| where:-                                                                    |  
-|                                                                            |  
-|    ifn,ift,ifm are the name, type and mode of the input file               |  
-|                                                                            |  
-|    ofn,oft,ofm are the name, type and mode of the output file              |  
-|                                                                            |  
-|    dfn,dft,dfm are the name, type and mode of the definitions tile         |  
-|                                                                            |  
-+----------------------------------------------------------------------------+  
-                                                                                
+BISON                                                                 CMS EXEC
+ 
+Bison is a parser generator in the style of yacc. It should be upwardly
+compatible with input files designed for yacc. This is a port of GNU bison.
++---------+------------------------------------------------------------------+
+| BISON   | fileidi [ fileido [ fileidd ]]                                   |
++---------+------------------------------------------------------------------+
+where:
+ 
+fileidi  is the name, type and mode of the input file. Each file identifier
+         (filename, filetype, and filemode) must be specified.
+ 
+fileido  is the name, type and mode of the output file. If fileido is not
+         specifiled, the file FILE OUT A is created.
+ 
+fileidd  is the name, type and mode of the definitions file. If fileidd is not
+         specified, the file FILE DEFINED A is created.

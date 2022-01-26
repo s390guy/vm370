@@ -1,4 +1,44 @@
-GCIC - Module that implements the GCIC full screen editor.                      
-                                                                                
-This module is call from the RUNGCIC EXEC.                                      
-See GCIC MEMO U for details of GCIC.                                            
+GCIC                                                                CMS MODULE
+ 
+GCIC is a full screen editor for VM370/r6, that uses the DIAL facility of CP,
+to peform full screen editng and browsing of CMS files.
++----------------------------------------------------------------------------+
+| GCIC     |                                                                 |
++----------------------------------------------------------------------------+
+ 
+Usage Notes:
+ 
+Execute the RUNGCIC (PROFILE) EXEC file to start the GCIC monitor.  GCIC will
+then issue a CP DISCONN(ect), continuing to run in the  background.
+ 
+From any connected 3270 emulator (including the one you started GCIC from),
+issue a:
+ 
+   DIAL <VM-USER-WHERE-GCIC-WAS-INSTALLED>
+ 
+e.g.   DIAL CMSUSER
+ 
+You should then be greeted by the GCIC Logon screen :
+-------------------------------------------------------------------
+ PRODUCT OF ROC
+                          VV        VV    MM        MM
+                          VV        VV    MMM      MMM
+                   3333333333     777777777777    MM00000000
+                  333333333333    77777777777MM  MM0000000000
+                  33      VV33    77VV    77  MMMM00MM      00
+                           V33     VV    77M   MM 00MM      00
+                            33    VV    77MM      00MM      00
+                         3333VV  VV    77 MM      00MM      00
+                         3333 VVVV     77 MM      00MM      00
+                            33 VV      77 MM      00MM      00
+                            33         77         00        00
+                  33        33         77         00        00
+                  333333333333         77          0000000000
+ 
+                       MULTI-USER FULL SCREEN INTERFACE
+        YOUR VM USER-ID ->  ________ <- PWRD (NDSP) ->    ________  <-
+-------------------------------------------------------------------
+ 
+This module is called from the RUNGCIC EXEC.
+ 
+See the file, GCIC MEMO U, for details of GCIC.
