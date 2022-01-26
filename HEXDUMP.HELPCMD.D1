@@ -1,5 +1,17 @@
-HEXDUMP - Dump a file in HEX -                                    CMS MODULE
+HEXDUMP                                                             CMS MODULE
  
-Format:-
+Dump a file in in text and in hexadecimal format.
++----------------------------------------------------------------------------+
+| HEXDUMP  | fn1.ft1.fm1 [ start [ end ]]                                    |
++----------------------------------------------------------------------------+
+where:
  
-  HEXDUMP filename.filetype<.filemode> <start <end>>
+fn1.ft1.fm1
+        is the file to be displayed in text and in hexadecimal.
+ 
+start
+        starting offset in bytes from the beginning of the file. The default
+        is zero (0).
+end
+        ending offset in bytes from the beginning of the file. The default is
+        the last byte of the file.

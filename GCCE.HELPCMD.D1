@@ -1,11 +1,26 @@
-GCCE                                                                   CMS EXEC
+GCCE                                                                  CMS EXEC
+ 
+Wrapper EXEC to run GCC and then assemble the output
++----------------------------------------------------------------------------+
+| GCCE    | [fn [ft [fm]]] [( [NOASM] [PARM fn] ]                            |
++----------------------------------------------------------------------------+
+where:
+ 
+fn, ft, fm
+        specify a C language file to be compiled.
+ 
+NOASM
+        overrides the default behaviour and does not call the assembler.
+ 
+PARM fb
+        specifies an PARM file containg arguments to be passed to GCC.
+        By default the file, GCC PARM, is used.
+ 
+Usage Notes:
  
 Use the GCCE command is used in the C build process to compile C programs.
 Users should use the GCC exec which sets up the environment.
  
- For more information on PDPCLIB and GCC see the project web site at:-
+For more information on PDPCLIB and GCC see the project web site at:
  
                    https://gccmvs.sourceforge.net/
- 
- 
- 

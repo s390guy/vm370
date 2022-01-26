@@ -1,16 +1,18 @@
-BWBASIC - Runs the "Bywater" Basic Interpreter
+BWBASIC                                                            CMS Command
  
-Format:-
+The Bywater BASIC Interpreter (bwBASIC) implements a large superset of the ANSI
+Standard for Minimal BASIC (X3.60-1978) and a significant subset of the ANSI
+Standard for Full BASIC (X3.113-1987) in C.
++---------+------------------------------------------------------------------+
+| BWBASIC | [ fn.ft ]                                                        |
++---------+------------------------------------------------------------------+
+Where:
  
-BWBASIC [fn.ft]
- 
-Where:-
- 
-      fn      Is the name of the file to be run.
-      ft      Is the filetype of the file to be run. It must be specified if fn is specified
+fn.ft    is the name of the file to be run. If no fileid is specified, bwbasic
+         enters an interactive mode where a program can be entered, listed,
+         and run.
  
 For more details see the release site on SourceForge
  
      https://sourceforge.net/projects/bwbasic/
- 
  

@@ -1,9 +1,13 @@
-DISCOMM - Send parameters to user                                      CMS EXEC
+ DISCOMM                                                              CMS EXEC
  
-Usage
+Spool a single record with up to seventeen (17) parameters to a user.
++----------+-----------------------------------------------------------------+
+| DISCOMM  | userid [parameters]                                             |
++----------+-----------------------------------------------------------------+
+where:
  
-+-------------------------------------------------------------------+
-|
-| DISCOMM userid <paramers>                                         |
-|                                                                   |
-+-------------------------------------------------------------------+
+userid
+        is the user to whom you want the parameters sent.
+ 
+parameters
+        from one to seventeen (17) 1 to 8 character words.
