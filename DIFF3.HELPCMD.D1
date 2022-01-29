@@ -61,18 +61,3 @@ too.
  
 -v, --version
        output version information and exit
- 
-Usage Notes:
- 
-The  default output format is a somewhat human-readable representation
-of the changes.
- 
-The -e, -E, -x, -X (and corresponding long) options cause an ed script
-to be output instead of the default.
- 
-Finally,  the  -m (--merge) option causes diff3 to do the merge
-internally and output the actual merged file.  For unusual input, this  is
-more robust than using ed.
- 
-If  a  FILE is '-', read standard input.  Exit status is 0 if success?
-ful, 1 if conflicts, 2 if trouble.
