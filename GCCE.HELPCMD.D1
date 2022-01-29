@@ -15,12 +15,3 @@ NOASM
 PARM fb
         specifies an PARM file containg arguments to be passed to GCC.
         By default the file, GCC PARM, is used.
- 
-Usage Notes:
- 
-Use the GCCE command is used in the C build process to compile C programs.
-Users should use the GCC exec which sets up the environment.
- 
-For more information on PDPCLIB and GCC see the project web site at:
- 
-                   https://gccmvs.sourceforge.net/
