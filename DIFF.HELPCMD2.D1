@@ -1,0 +1,12 @@
+Usage Notes:
+ 
+1. This is a straight port of the GNU utility the command format is UNIX style
+   with the options before the file names.
+ 
+2. There are no folders or directories in CMS therefore some of the options are
+   non-functional.
+ 
+3. UNIX style ">" I/O re-direction does not work. To write the output to a
+   file issue a FILEDEF for "SYSTERM" before calling the command
+ 
+4. Enter, "DIFF --help" for details of the options.
