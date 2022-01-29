@@ -1,0 +1,31 @@
+Usage Notes:
+ 
+1.  The jump profile produced contains a whole number of 4K pages. CP rounds
+    down the hex1oc1 operand to a 4K boundary if its value is not a multiple
+    of 4K.  CP rounds up the hex10c2 operand to a 4K boundary minus one.
+ 
+2.  Due to 4K boundary rounding for the hex1oc1 operand, additional dumps of
+up to 4095 more bytes than the user specified can occur.
+ 
+3.  If the user enters the FORMAT operand followed by another valid keyword of
+    the VMDUMP command (for example, SYSTEM), CP uses the keyword following
+    FORMAT as the vmtype and CP ignores the normal meaninq of the keyword
+    following FORMAT.
+ 
+4.  If the user omits a dash or a colon between the hex1oc1 and hex1oc2
+    operands, and he separates the operands with one or more blanks, CP dumps
+    only the storage contents at those two specific hexadecimal addresses.
+    The user must insert blanks to separate operands or sets of operands if
+    he specifies more than one operand on the command line. The user must not
+    insert blanks to the left or right of the rancre or length delimiters (-,
+    :, or .) unless he intends to use the default value of the missing operand
+    that the blank represents.
+ 
+5.  First level storage is real main storage. CP, however, dumps only second
+    1eve1 storaqe (that is, storage that VM/370 creates for the guest virtual
+    machine.) Operating systems running in a guest virtual machine such as
+    OS/VS and DOS/VS, have virtual (third level) storage of their own. CP
+    cannot dump this third level storage direct1v. The user or the virtual
+    operating system is responsible for converting any third level storage
+    addresses to second level storage addresses before issuing the VMDUMP
+    command.

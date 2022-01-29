@@ -1,0 +1,15 @@
+1.  Special messages do not appear on the specially programmed virtual
+    machine's  screen because the messages are designed to be
+    instcactions that are passed as data parameters.  The special
+    messaqes are stored in the prespecified VMCF data receiving
+     area as they are received, and the instructions are processed
+     by the proqrammed virtual machine.
+ 
+2.  Virtual machines can only receive and process special messages
+    ander these two conditions: (1) the virtual machine has issued the
+    SET SMSG ON command, and (2) the user wishing to receive special
+    messaqes has issued an AUTHORIZE with the Virtual Machine
+    Communication Facility (VMCF) of VM/370.
+ 
+    Note: Refer to VM/370 System Programmer's Guide for more
+    information on the AUTHORIZE function of VMCF.

@@ -1,0 +1,31 @@
+SMSG                                                     CP Privilege Class: G
+ 
+Use the SMSG command to send a special message to a virtual machine
+proqrammed to accept and process the message. The format of the SMSG command
+is:
++----------------------------------------------------------------------------+
+| SMsg     | userid msgtext                                                  |
++----------------------------------------------------------------------------+
+where:
+ 
+userid
+      is the receiving virtual machine's logon ID; if you specify aserid as "*",
+      it indicates the message is to be sent to yourself.
+ 
+msgtext
+ 
+      is the text of the message that is to be transmitted.  Because
+      the input baffers on various console devices differ, the
+      length of the message is limited by the number of characters
+      remaining on the input line after entering the command and the
+      userid.  For example: A 3270 display device contains a 139 character
+      input buffer. If you enter:
+ 
+         smsg pd58gh1c          special  message
+      ------------------       -------------------
+      14 characters used       125  character left
+ 
+      Note: Althouqh the 3270 display unit contains 139 characters
+      in its input area, CP only reads 134 characters of data. When
+      the SMSG command is issued using DIAGNOSE X'08', only 132
+      characters are read by CP.

@@ -1,0 +1,67 @@
+IPL                                                      CP Privilege Class: G
+ 
+Use the IPL =ommand to simulate an initial program load function for a
+virtual machine. The format of the 1PL command is:
++---------+------------------------------------------------------------------+
+| IPL     | { vaddr [cylno ] [ CLear | NOCLear ] [ STOP ] }                  |
+|         |  [PARM {p1 p2 .t.t.t l]
++---------+------------------------------------------------------------------+
+where:
+ 
+vaddr [volno] [ CLEAR | NOCLear ] [ STOP ]
+        simulates the IPL function when loading by device address.
+vaddr
+        is the virtual address (cuu) of the device that contains the
+        nucleus to be loaded.
+cylno
+        is the cylinder containing the IPL data. If this operand is
+        specified, CP loads the IPL data from the specified virtual
+cylinder
+        instead of from virtual cylinder zero. Virtual cylinder zero
+        is the default when cylno is not specified. This operand is valid
+        only for virtual direct storage devices.
+CLEAR
+        sets the virtual storage space to binary zeros before the
+        operating system is loaded. This operand is invalid if you
+        specify a systemname in the IPL command line.
+NOCLEAR
+        allows the contents of your virtual storage space to remain
+        unchanqed prior to program load. This operand is invalid if
+        you soecify a systemname in the IPt command line.  NOCLEAR is
+        the default if you IPL by device (vaddr).
+STOP
+        halts the virtual machine during the IPL procedure just before
+        the initial PSW is loaded. It provides the virtual simulation
+        of the IPL procedure for a real machine in instruction step mode.
+        The STOP operand is invalid if systemname is specified in the IPL
+        command.  When the virtual machine stops, you can issue CP commands.
+        For example, if you are loading OS or OS/VS into your virtual machine,
+        you can use CP commands to store data into low storage, to load an
+        alternate nucleus, or to alter the apparent size of virtual storage.
+        to restart the virtual machine, issue the BEGIN command.
+systemname
+        simulates the IPL function when loading a named system that
+        was previously saved via the SAVESYS command. It is loaded
+        into virtual storage and qiven control.  For information about
+        saved systems, see the VM/370 System Programmer's Guide.
+        Note: You cannot load a shared system or one that uses
+        discontiguous saved segments into a virtual machine running in
+        the V=R area.  An attempt to do so results in an error message.
+PARM { p1 p2 ... ]
+        passes up to 64 bytes of data (excluding the first blank
+        character after the keyword, PARM, but including all other
+        embedded blanks) to your virtual machine's general registers
+        (4 bytes per register), starting with the high order byte of
+        general register 0. Since the registers are not cleared
+        before use, the PARM value should be some multiple of 4 bytes
+        to avoid having extraneous characters present in the low order
+        positions of the register. For example, you could key in
+ 
+        PARM CMS~
+ 
+        where ~ represents a blank to ensure that the low order
+        positions of register 0 contain a hexadecimal 40. Whenever
+        PARM is specified, the remaining characters in the command
+        line are treated as parameters to be passed to your virtual
+        machine; therefore, PARK must be the last operand entered on
+        the command line.

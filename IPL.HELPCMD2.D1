@@ -1,0 +1,79 @@
+Usage Notes
+1.  IPL simulates the LOAD button and the device address switches on
+    the real computer console. The specified virtual address is
+    accessed and the required input/output operations are performed to
+    retrieve the IPL data.
+2.  Optionallv, the IPL procedure can be stopped just before loading
+    the virtual PSW except when initial program loading a named system.
+    Also, parameters can be passed to the virtual machine's general
+    registers.  When the simulated load function is complete, CP
+    initiates execution of the virtual machine by loading the 1PL PSi
+    which was stored during the simulation process.
+3.  Care must be used when passing parameters to a named system
+    (systemname).  Named systems expect certain registers to be
+    initialized when they are given control. Indiscriminate use of the
+    PARM operand could overlay a previously initialized register
+    causing unpredictable results.
+4.  The IPL simulator program occupies one page (4096 bytes) of storage
+    in your virtual machine.  Therefore, if the system being loaded
+    utilizes data remaining in storage by the previous system, care
+    should be taken as to where that data is located.  The starting
+    address of the overlaid virtual storage is:
+      Virtual Storage Size       Location of IPL Simulator Page
+        256K and above           = 20,000
+ 
+        Less than 256K           = 1/2 the storage size
+ 
+        For example:
+          storage size=200K then the IPL Simulator is loaded at 100K.
+5.  Any logical lines following the 1PL command are ignored since the
+    execution of the IPL command transfers control from the CP
+    environment to the virtual machine environment.
+ 
+6.  Some CMS routines and programs are stored on disks and loaded into
+    storage as needed.  Since this storage area is not contiguous with
+    your virtual storage, the saved segments that are loaded in this
+    area are called discontiguous segments (DCSS). However, the only
+    discontiquous saved seqment.  The user can indicate an alternate
+    segment to be loaded bV issuinq an IPL command with this format:
+ 
+        IPL [CUU | systemname ] PARM SEG=segmentname
+ 
+where:
+SEG=segmentname
+        indicates the name of the saved segment to be loaded whenever
+        the CMS Editor, EXEC processor, or as simulation routines are
+        needed.  Eiqht characters must be entered for segmentname;
+        either assiqn an 8-character segment name when you code the
+        NAMESYS macro for your installation, or be sure that the
+        operator enters trailing blanks if segment name is less than
+        eight characters long.
+        The CMS batch facility loads whatever segment is specified
+        on the first IPL command issued for the batch virtual machine.
+        Thus, if the first 1PL command for a CKS batch facility
+        machine is:
+ 
+        IPL CMS PARM SEG=CMSSEG02
+ 
+        all subsequent IPL commands issued by the CMS batch facility
+        specify the same segment name (CMSSEG02).
+7.  The BATCH option in the PARM operand indicates that the CMS initial
+    proqram load is beinq performed in a batch instead of an interactive
+    virtual machine.  This option causes the :KS nucleus to issue the
+    CMSBATCH command to load the batch processor.  Specifying
+    the BATCH option eliminates the need for operator intervention
+    between jobs.  Consult VM/370 CMS Command and Macro Reference for
+    information on the CMSBATCH facility.
+8.  CMS users can use the PARM operand to pass the AUTO:R (automatic
+    carriage return) option to the CMS initialization routine.  AUTOCR
+    simulates the pressing of the ENTER key as input to the virtual machine.
+    This results in automatic execution of the user's PROFILE EXEC, if it
+    exists on virtual minidisk 191.
+ 
+    Note: For a disconnected CMS service virtual machine, this mechanism
+    can prove to be very useful.  The name of a CMS restart routine may
+    be specified in the CMS nucleus. In the event of an ABEND, the specified
+    restart routine receives control instead of the service virtual machine
+    entering a disabled wait state. If this routine issues an 1PL CMS PARM
+    AUTOCR command, the PROFILE EXEC executes initial setup procedures that
+    allow the service virtual machine to reestablish itself.

@@ -1,0 +1,31 @@
+LOADVFCB                                                 CP Privilege Class: G
+Use the LOADVFCB command to specify the forms control buffer image for a
+virtual spooled 3203 or 3211 printer.  The format of the LOADVFCB
+command is:
++-----------------------------------------------------------------------
+| LOADVFCB | vaddr Fcb name [Index [nn]]
++-----------------------------------------------------------------------
+where:
+ 
+vaddr
+        is the virtual device address (cuu) of the virtual spooled
+        3203 or 3211 printer.
+ 
+FCB
+        is a required reserved keyword meaning Forms Control Buffer.
+ 
+name
+        is a system-defined name for the 3203 or 3211 FCB image which
+        is to be the controlling virtual FCB image.
+ 
+INDEX [nn]
+        for the 3211 only, is the number of the print position that is
+        the first print position.  The value, nn, must be a number
+        from 1 through 31; a leading zero need not be specified. If
+        the keyword INDEX is specified without a value, the index
+        defaults to the value specified in the FCB macro.  See the
+        VM/370 System Programmer's Guide for a discussion of the FCB
+        macro and forms control images.
+ 
+        The 3203 does not support the index feature and rejects any
+        attempt to issue the INDEX operand.

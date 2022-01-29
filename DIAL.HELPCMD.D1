@@ -1,0 +1,17 @@
+DIAL                                                   CP Privilege Class: Any
+ 
+Use the DIAL command to logically connect a switched line, leased line, or
+locally attached terminal to a previously logged-on multiple-access virtual
+machine. The format of the DIAL is:
++----------------------------------------------------------------------------+
+|  DIAL     | userid [ vaddr ]                                               |
++----------------------------------------------------------------------------+
+where:
+ 
+userid
+        is the identification of a virtual machine that is currently logged
+        on.
+ 
+[vaddr]
+        is the address of the virtual communication line to which the
+        connection is to be made.

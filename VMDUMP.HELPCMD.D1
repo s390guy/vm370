@@ -1,0 +1,154 @@
+VMDUMP
+ 
+The VMDUMP command, when used with the VM/lnteractive Problem Control
+system Extension (VM/IPCS Extension) program product, dumps storage for
+quest virtual machines (that is, the virtual ~torage that VM/370 creates
+for the virtual machine user).  See Usage Note 5.  The VM/IPCS Extension
+debugs errors, as well as stores and maintains error information about
+the virtual machine.  The VM/IPCS Extension displays this information at
+the user's terminal.  VMDUMP provides the VM/IPCS Extension with header
+information to identify the owner of the dump; it also maintains dump
+information, writes the dump to a spool file, and formats the dump. In
+addition to saving the storage contents of the virtual machine, the
+VMDUMP command also dumps:
+ 
+* virtual program status word (PSW)
+* General registers
+* Floating point registers
+* Control reqisters
+* storaqe protection keys
+* Virtual machine type identification
+* Timer values
+ 
+VMDUMP also provides the user with the ability to send dumps to other
+users.
+ 
+The VMDUMP command, when issued without the V~/IP:S Extension
+installed, only writes an unformatted dump to a spool file.
+It does not format the dump without the VM/IPCS Extension.
+However, a user may write routines that perform this function.
+For more information on the VM/IPCS Extension,
+refer to VM/370 InteractiveProblem Control System Extension (VM/IPCS
+Extension) Program Product User's Guide and Reference, Order No. SC34-2019.
+ 
+Except for the *dumpid operand, the user can specify the operands of
+the VMDUMP command in any order. The *dumpid operand must be the last
+operand specified on the command line.
++----------+------------------------------------------------------------------+
+| VMDUMP   | [ hexloc1 | 0 ] [ -: [ hexloc2 | END ]]                          |
+|          |                 [ . [ bytecount | END ]]                         |
+|          |                                                                  |
+|          | [ TO [ * | userid ] | SYSTEM ]                                   |
+|          |                                                                  |
+|          | [ FORMAT vmtype ]                                                |
+|          |                                                                  |
+|          | [ DSS ]                                                          |
+|          |                                                                  |
+|          | [ *dumpid ]                                                      |
++----------+------------------------------------------------------------------+
+where:
+ 
+hexloc1 | 0
+        is the first or only hexadecimal virtual storage address dumped. If
+        the user omits the hexloc1 operand, the default is zero, the beginning
+        of virtual vmachine storaqe. The user may also specify the hexloc2 or
+        bytecount operands with the hexloc1 operand when he knows the dump
+        size he wants. If the user specifies hexloc2 with hexloc1, CP takes a
+        dump of the storage contents within the range of addresses between
+        hexloc1 and hexloc2. For example, when the user enters:
+ 
+            vmdump 1000-2000
+                  or
+            vmdump 1000:2000
+ 
+        CP dumps the contents of virtual machine storage at the hexadecimal
+        addresses between 1000 and 2000. If the user specifies the bytecount
+        operand with hexloc1, hexloc1 specifies the beginning address of the
+        dump and the hexadecimal number of bytes dumped. If the user enters:
+ 
+            vmdump 1000.8A
+ 
+        CP dumps the contents of virtual machine storage beqinninq at
+        hexadecimal address 1000 for a total of 8A bytes. The user can
+        specify a maximum of three different areas of virtual storage that he
+        wants dumped each time he issues the VMDUMP command. See Usage Notes
+        1, 2, and 4.
+ 
+[ -: ] [ hexloc | END ]
+        is the last hexadecimal virtllal storage address dumped. If the user
+        does not specify the hexloc2 operand, the default is END, and CP dumps
+        the contents of virtual machine storage starting from hexloc1 to the
+        end of virtual storage.  The user must precede the hexloc2 operand
+        with one of the allowable delimiters {either a dash or a colon} to
+        dump the contents of more than one location by storage address. For
+        example, if the user enters:
+ 
+            vmdump :2000
+                  or
+            vmdump -2000
+ 
+        CP takes a dump of the contents of virtual storage from hexadecimal
+        location zero (the default for hexloc1) to hexadecimal address 2000.
+        See Usage Notes 1 and 4 for an expanded explanation of the use of
+        delimiters.  The user may specify up to a maximum of three different
+        virtual machine storage areas he wishes to dump each time he issues the
+        VMDUMP command.  The user must specify a value for hexloc2 which is
+        greater than hexloc1 value. The hexloc2 value must not exceed the
+        limit of virtual storage.
+ 
+[ . ] [ bytecount | END ]
+ 
+        is the hexadecimal number of bytes dumped, starting with the first
+        byte of virtual storage at hexloc1. If the user does not specify the
+        bytecount, the default is END, and CP takes a dump of the contents of
+        virtual machine storage from the first byte at hexloc1 to the end of
+        virtual storage. The user must specify a period (.) delimiter if he
+        wants to dump the contents of more than one storage location by
+        bytecount.  When the user enters:
+ 
+            vmdump 1000. 20
+ 
+        CP takes a dump of the virtual storage contents from hexadecimal
+        location 1000 for a length of X'20' bytes. See Usage Note 2 for an
+        expanded explanation of delimiter use.
+ 
+[ TO userid | * ]
+ 
+        transfers the dump to the virtual card reader of the userid specified.
+        If the user enters an asterisk after TO, CP transfers the dump to the
+        user's own virtual card reader.
+ 
+SYSTEM
+ 
+        transfers the dump to the virtual card reader of the userid specified
+        on the SYSDUMP operand of the SYSOPR system generation macro
+        instruction. The user must not specify TO preceding the keyword
+        SYSTEM.
+ 
+FORMAT vmtype
+ 
+        provides VM/IPCS Extension with the virtual machine type (vmtype)
+        which VM/IPCS Extension uses to format the dump.  The vmtype keyword
+        is a one-to-eight byte name of the operating system running in a
+        virtual machine (for example, CMS). CP also uses the specified vmtype
+        as the virtual card reader filetype.  CP does not validity check the
+        vmtype.  Any vmtype longer than eight bytes generates an error
+        message and halts further VMDUMP processing.  The dump header record
+        includes the user specified vmtype and the VM/IPCS Extension uses the
+        vmtype information to format the dump.  If the user enters FORMAT, he
+        must also specify a vmtype.  If he does not specify FORMAT, the
+        default vmtype is FILE. See Usage Note 3.
+ 
+DSS
+        specifies that CP take a dump of all discontiguous saved segments in
+        use by the user's virtual machine.
+ 
+*dumpid
+        is a line of user input up to 100 characters long including imbedded
+        blanks and asterisks which the user can enter for his own benefit
+        (that is, for descriptive purposes, such as the time and date of the
+        dump, or what was being processed at the time of the dump). If the
+        user specifies this operand, it becomes the DMPDMPID field in the
+        dump file information record (DMPINREC) data area. If specified, the
+        user must enter *dumpid as the last operand on the VMDUMP command
+        line.
