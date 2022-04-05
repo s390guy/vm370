@@ -1,0 +1,41 @@
+SNOBOL4                                                        CMS EXEC
+ 
+Runs the version 3.5 of the SNOBOL4 compiler as described in the
+Prentice-Hall Book:- 'THE SNOBOL4 PROGRAMMING LANGUAGE' (1971).
+ 
+Format:-
+ 
+SNOBOL4  file  <Options>
+ 
+Where:-
+ 
+file        Is a the sourcefile. It must have a filetype of SNOBOL4
+ 
+Options:-
+ 
+DISK        Keeps the printer output (File 6) on disk in file '<file> LISTING'
+PRINT       Prints the printer output
+TERM        Directs the printer output to the terminal
+CDISK       Keeps the card output (File 7) on disk in file '<file> CARDS'
+CPUNCH      Directs card output to the punch.
+CTERM       Directs the punch output to the terminal.
+R           The amount of storage reserved for other uses.
+L           Is the low bound on dynamic storage- Default 35200
+H           Is the high bound on dynamic storage - Default 20000
+ 
+The default memory allocation is 10000.
+ 
+The timing statistics returned by SNOBOL4 under CMS are not reliable.
+ 
+EXAMPLES:
+ 
+SNOBOL4 EPA
+               WILL RUN A SNOBOL PROGRAM IN FILE 'EPA SNOBOL4',
+               KEEPING PRINTER AND PUNCH OUTPUT IN DISK FILES
+               'EPA LISTING' AND 'EPA CARDS', RESPECTIVELY.
+ 
+SNOBOL4 VALUE CPUNCH TERM H 300000
+               Will execure a SNOBOL program in file
+               'VALUE SNOBOL4', directing printer output to the
+               termianl aand punch output to the punch.
+               The compiler H value will be 300000 bytes.

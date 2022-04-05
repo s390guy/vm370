@@ -1,0 +1,21 @@
+WAITC                                                          CMS COMMAND
+ 
+The WAITC command may be used as a substitute for the CP SLEEP command
+within an EXEC to avoid the problems of escaping from sleep loops.
+ 
+    +-----------+------------+
+    |  WAITC    |  seconds   |
+    +-----------+------------+
+ 
+Where
+ 
+"seconds"        specifies the number of (almost - you know how the
+                 time of day clock is scaled) seconds to wait.
+                 After waiting, WAITC returns with RC=0.
+ 
+If WAITC is terminated because ATTN was hit, the return is with
+RC=4, allowing the calling EXEC to recognize the condition and terminate.
+ 
+WAITC uses the clock comparator, and hence will only run in an EC mode
+machine.
+ 

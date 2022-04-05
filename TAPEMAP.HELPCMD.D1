@@ -1,0 +1,234 @@
+ TAPEMAP
+ 
+TapeMap describes the contents of a tape.
+ 
+ 
++-----------+--------------------------------------------------------+
+|           |                                                        |
+| TAPEMAP   | <options...>                                           |
+|           |                                                        |
++-----------+--------------------------------------------------------+
+ 
+ 
+Options:-
+ 
+BBCopy=<Yes|no> The BBCOPY option specifies how blocks containing errors are
+       No       to be handled.  Specify NO to cause blocks that may contain
+                errors to be skipped by MAP=DATA, MAP=ALTDATA, and OUTPUT
+                option processing.  The default is YES.
+ 
+BBLimit=n       The BBLIMIT option specifies the number of input errors that
+                will be allowed.  TapeMap execution will terminate when the
+                specified number of recoverable errors have occurred.  The
+                default is 32.  Note that TapeMap may terminate before this
+                limit is reached if certain serious errors occur.
+ 
+BLKsize=n       The BLKSIZE option is used to specify the block size of the
+                input and output files for OUTPUT option processing.  If no
+                value is specified, the value from the file label or the
+                actual block size will be used.
+ 
+Blocks=<n|All|Actual|5>
+                The BLOCKS option is used in conjunction with the MAP and
+                OUTPUT options to specify the number of blocks from each file
+                to be processed.  Specify ALL or ACTUAL to process all blocks.
+                The default value is 5.
+ 
+BLP             The BLP option will bypass label processing.  This will cause
+                labels to be treated as data files and the tape to be treated
+                as unlabeled.
+ 
+CC=<None|Yes|Ansi|Asa|Ibm|M>
+                The CC option specifies whether or not input records are
+                assumed to contain carriage control characters when processed
+                by the OUTPUT option.  YES, ANSI, and ASA all indicate that
+                ANSI standard control characters are present.  IBM and M
+                indicate that IBM machine codes are present.  The default is
+                taken from the tape labels for labeled tapes, otherwise the
+                default is NONE.
+ 
+Code=Ebcdic|Ascii
+                The CODE option specifies the character set used when MAP=DATA
+                or MAP=ALTDATA is specified.  The default is EBCDIC unless the
+                tape contains ANS labels.
+ 
+Data=<n|All|Actual|80>
+                The DATA option is used in conjunction with the MAP=DATA and
+                MAP=ALTDATA options to limit the number of bytes of data
+                    ted from each block.  Specify ALL or ACTUAL to print all
+                the data in the blocks.  The default value is 80.
+ 
+DATAFrom=n      The DATAFROM (or DFROM) option is used in conjunction with the
+DFrom           MAP=DATA and MAP=ALTDATA options to specify a starting point
+                for data printing within each block.  The default value is 0
+                (the start of the block).
+ 
+ 
+DFrom=n         The DFROM option is the same as DATAFROM (described above).
+ 
+DIsk            The DISK option will cause the printed output to be directed
+                to a disk file named TAPEMAP LISTING.  The filemode is deter-
+(CMS Only)      mined by the OUTFMODE option.  This option is meaningful only
+                under CMS.
+ 
+Eot             The EOT option will cause processing to stop when the logical
+                end-of-tape is reached.  This is usually indicated by two
+                consecutive tape marks with no intervening data blocks (an
+                empty file).  EOT is the default.
+ 
+FOR=n           The FOR option specifies the number of files to be processed
+                by the MAP and OUTPUT options.  There is no default limit.
+                This option should be specified after the FROM option if both
+                are used.
+ 
+From=n          The FROM option specifies the first file on the tape to be
+                processed by the MAP and OUTPUT options.  The default is 1,
+                the first file.
+ 
+LEAVE           The LEAVE option causes the tape to be left at the end (or
+                wherever mapping stops) when TapeMap ends.  The default is
+                REWIND.  The NOREWIND option affects tape positioning before
+                mapping.  REWIND and LEAVE affect the position after mapping.
+ 
+LINecount=n     The LINECOUNT option specifies the number of data lines on
+                each page of output.  The number of lines printed on each page
+                is the LINECOUNT value plus five heading lines.  The default
+                is 55.
+ 
+LOng            The LONG option causes extended information to be listed from
+                tape labels.  The additional information includes the gener-
+                ation number and version, the name of the job that created the
+                file, and tape drive and system identification.
+ 
+LRecl=n         The LRECL option is used to specify the logical record length
+                of the input and output files for OUTPUT option processing.
+                If no value is specified, TapeMap will select a value based on
+                any available label information, the BLKSIZE, and RECFM.
+ 
+Map=<Labels|DSN|Files|Blocks|Data|Altdata>  r
+                The MAP option is used to specify the type of printed map to
+                be produced.  LABELS will cause only data from tape labels to
+                be printed.  DSN is similar to LABELS, but will stop
+                processing after the header of the last file to be processed
+                when limited by the THRU or FOR option.  FILES will cause a
+                summary of each file to be printed (this includes block size
+                data, block counts, and an estimate of the length of each file
+                in feet).  BLOCKS will cause a description of the data blocks
+                to be printed.  DATA will cause data from the blocks to be
+                printed in both hexadecimal and character forms. ALTDATA will
+                cause data from the blocks to be printed in character form
+                with sixty-four characters per line.  The number of blocks
+                from each file printed is controlled by the BLOCKS option, and
+                the number of bytes of data printed from each block is
+                controlled by the DFROM and DATA options.  The default for IBM
+                and ANS labeled tapes is LABELS.  FILES is the default for
+                unlabeled tapes.
+ 
+NODETail        The NODETAIL option will suppress the detailed listing of the
+                contents of files in CMS TAPE or VMFPLC2 format.  DETAIL is
+                the default.
+ 
+NODIsk          The NODISK option will suppress the creation of the TAPEMAP
+                LISTING disk file.  This is the default.  This option is
+                 eaningful only under CMS.
+ 
+NOEOT           The NOEOT option will cause processing to continue after the
+                logical end-of-tape is encountered.  This may be useful for
+                unlabeled tapes that do not follow the normal end-of-tape
+                convention (two consecutive tape marks with no intervening
+                data blocks).  This option should be used carefully and only
+                when absolutely necessary.  The Operations Supervisor should
+                be notified when a job using this option is submitted, since
+                operator intervention may be required to prevent running the
+                tape off the reel.  The THRU option can be used to specify the
+                last file to be processed if the number of files actually on
+                the tape is known.
+ 
+NOPrint         The NOPRINT option will suppress spooled print output under
+                CMS.  NOPRINT is the default under CMS.  SYSPRINT output under
+(CMS Only)      OS can be suppressed by not supplying a SYSPRINT DD statement.
+ 
+NOREWind        The NOREWIND option suppresses the initial rewind of the tape.
+                When NOREWIND is specified mapping begins wherever the tape is
+                positioned.  This means that the file counts and length
+                estimates may be incorrect.  The NOREWIND option affects tape
+                positioning before mapping.  REWIND and LEAVE affect the
+                position after mapping.
+ 
+NOTerminal      The NOTERM option will suppress console output under CMS.
+                SYSTERM output under OS may be suppressed by not supplying a
+(CMS Only)      SYSTERM DD statement.
+ 
+NOType          NOTYPE is a synonym for NOTERMINAL.
+ 
+OUTFmode=fm     The OUTFMODE option supplies the filemode for the disk output
+                files created for the DISK and OUTPUT options under CMS.  A
+                disk must be accessed at the specified mode.  The default is
+(CMS Only)      A1.  This option is ignored under OS.
+ 
+Output          The OUTPUT option will cause the data from the tape to be
+                formatted and sent to SYSOUT (under OS) or to disk files named
+                TAPEMAP FILEnnnn (under CMS).  The BLKSIZE, CC, LRECL, and
+                RECFM options and label information (if available) are used to
+                determine the output format.  BLKSIZE, CC, and RECFM should
+                reflect the actual format of the input file or there may be
+                undesirable results.  The filemode under CMS is determined by
+                the OUTFMODE option.  Under OS, it will generally not be
+                possible to OUTPUT more than one file from a tape unless the
+                files are in the same format.  Use the FROM and THRU options
+                to select a specific file or files.
+ 
+Print           The PRINT option will cause printed output to be sent to
+                SYSPRINT (under OS) or the spooled printer (under CMS).  PRINT
+                is the default under OS if the SYSPRINT DD statement is
+                present.
+ 
+Recfm=<Auto|?|F|FB|V|VB|VBS|VS>
+                The RECFM option specifies the input and output record format
+                to be used with processing for the OUTPUT option.  AUTO (or ?)
+                will cause TapeMap to determine the format from the label
+                information (if present) or the data itself.  The default is
+                AUTO.  Spanned records (VS and VBS) are not currently
+                supported.
+ 
+REWind          The REWIND option causes the tape to be rewound after it is
+                mapped.  REWIND is the default; see also the LEAVE option.
+                The NOREWIND option affects tape positioning before mapping.
+                REWIND and LEAVE affect the position after mapping.
+ 
+Short           The SHORT option will cause abbreviated data to be printed
+                from tape labels.  This will include file number and name,
+                format, and the creation and expiration dates.  SHORT is the
+                default.  Specify LONG for additional information about each
+                file.
+ 
+TAPn            The TAPn option specifies the input tape unit when running
+                under CMS.  The default is TAP1.
+ 
+TErminal        The TERMINAL option will cause printed output to be directed
+                to SYSTERM (under OS) or the console (under CMS).  TERMINAL is
+                the default under CMS, and under OS if the SYSTERM DD
+                statement is present.
+ 
+Through=<n|Eot|End> n
+                The THRU option specifies the number of the last file on the
+                tape to be processed.  The default value EOT will cause all
+                files to the logical end-of-tape to be processed.
+ 
+TO=<n|Eot|End>  The TO option is used to specify a limit for the number of
+                files processed.  The number of the last file processed will
+                be one less than the TO option value.  The default value EOT
+                will cause all files to the logical end-of-tape to be
+                processed.
+ 
+TYpe            TYPE is a synonym for TERMINAL.
+ 
+Volume          The VOLUME (or VOLSER) option will cause only the tape
+Volser          density, format, and volume name (if any) to be printed.
+                Specifying this option will cause TapeMap to read only the
+                first block on the tape.
+ 
+ 
+TapeMap was written by David Elbon at the University of Kentucky.
+ 
+Adapted from the unpublished Seventh Edition of the UKCC CMS Reference

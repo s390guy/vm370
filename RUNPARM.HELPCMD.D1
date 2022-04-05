@@ -1,0 +1,4 @@
+RUNPARM will issue a LOAD SVC for a module loaded above RUNPARM in the
+user  area.  Any tokens past the command name on the command line are condensed
+and passed to the program as an OS parm field.  An option allows the COMPSWT
+flag to be ON or OFF during execution.

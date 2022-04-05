@@ -1,0 +1,81 @@
+SFBROWSE                                                  CMS COMMAND
+ 
+SFBROWSE allows a CMS Spool file to be browsed on a 3270 screen
+ 
+Format:-
+ 
+SFBROWSE <spool-file-id>
+ 
+Where:-
+ 
+spool-file-id      Is the ID of a spool file to be browsed. If omitted
+                   the first file on the reader is opened.
+ 
+SFBROWSE understands the following commands:-
+ 
+  Again         -CAUSES THE LAST COMMAND TO BE RE-EXECUTED.
+ 
+  Backward  n   -MOVE THE CURRENT LINE TOWARDS THE BEGINNING OF THE
+                -FILE BY ONE OR (N) DISPLAY PAGES.
+  BOttom        -MOVE THE CURRENT LINE TO THE LAST RECORD IN THE FILE.
+ 
+  Case    m|u   -"M"IXED OR "U"PPER CASE INPUT IS ALLOWED.
+ 
+  Down      n   -MOVE CURRENT LINE DOWN ONE OR (N) LINES.
+ 
+  FInd   string -TO SEARCH FOR THE STRING STARTING AT CURRENT VIEW
+                -(USEFUL FOR SEARCHING FOR FIXED POSITION DATA STRINGS.
+  Hold          SAME AS QUIT & WILL CHG CURRENT RDR FILE TO USR STATUS
+ 
+  Forward   n   -MOVE THE CURRENT LINE TOWARDS THE END OF THE FILE
+                -BY ONE OR (N) DISPLAY PAGES.
+  LEft    0|n   -MOVE SCREEN LEFT 0 (POSTION 1) OR (N TH) POSTION.
+ 
+  Locate string -TO LOCATE THE LINE CONTAINING THE DEFINED STRING.
+ 
+  Next      n   -CAUSES THE FILE TO APPEAR TO MOVE UP 1 OR N LINES.
+ 
+  NUmber on|off -DISPLAYS LINE NUMBERS ON THE SCREEN.
+ 
+  Point  .aaaa  -NAME THE LINE CURRENT LINE ALPHA-NUMERIC < 7 POSTIONS
+ 
+  PRint         -PLACES A COPY OF THE FILE ON THE PRINT QUEUE.
+ 
+  PUrge         -PURGES THE FILE BEING DISPLAYED AND EXITS.
+ 
+  Quit          -RETURNS FILE BEING DISPLAYED TO RDR QUEUE AND EXITS.
+ 
+  Right   1|n   -SAME AS LEFT EXCEPT POSTIONS ARE RELATIVE NOT EXACT.
+ 
+  Scroll        -SAME AS FORWARD.
+ 
+  SEarch        -SAME AS LOCATE EXCEPT WILL WRAP TO BEGINNING OF FILE.
+ 
+  SET   on|off  -SAME AS NUMBER.
+ 
+  Top           -POSITION THE CURRENT LINE TO THE FIRST ITEM IN THE FIL
+ 
+  UFind  string -SAME AS FIND EXCEPT THAT THE FILE SCAN IS UPWARDS.
+ 
+  ULocate  "    -SAME AS LOCATE EXCEPT THAT THE FILE SCAN IS UPWARDS.
+ 
+  Up       n    -CAUSES THE FILE TO APPEAR TO MOVE UP N LINES.
+ 
+  UScroll       -SAME AS BACKWARD
+ 
+  USEarch       -SAME AS SEARCH EXCEPT THAT THE FILE SCAN IS UPWARDS.
+ 
+  View          -DISPLAY THE FIELDS BEING DISPLAYED OR CHANGE THEM.
+ 
+  =             -SAME AS AGAIN COMMAND.
+ 
+  /    string   -A SHORTENED FORM OF THE SEARCH COMMAND.
+ 
+  ?             -DISPLAY THE LAST COMMAND ENTERED UNLESS "=" OR "?".
+ 
+  .      aaaa   -MAKE THE LINE NAMED .AAAA THE CURRENT LINE
+ 
+  NNNN          -MAKE THE NNNN'TH LINE THE CURRENT LINE.
+ 
+  " "           -(blank line) SAME AS AGAIN.
+ 

@@ -1,0 +1,14 @@
+SCRIPT                                                             CMS COMMAND
+ 
+Use the SCRIPT to invoke the Waterloo Script processor.
+ 
+SCRIPT <source-file> ( options
+ 
+Where :-
+ 
+source-file       is the name of a file containg Waterloo Script. It must
+                  have a file type of script.
+ 
+options           options for the script file.
+ 
+See "SCRIPT LISTING U" for details of the options.

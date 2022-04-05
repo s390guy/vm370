@@ -1,0 +1,44 @@
+SDIFF                                                   CMS PORT of UNIX COMMAND
+ 
+Usage: sdiff [OPTION]... FILE1 FILE2
+Side-by-side merge of file differences.
+ 
+  -o FILE  --output=FILE  Operate interactively, sending output to FILE.
+ 
+  -i  --ignore-case  Consider upper- and lower-case to be the same.
+  -E  --ignore-tab-expansion  Ignore changes due to tab expansion.
+  -b  --ignore-space-change  Ignore changes in the amount of white space.
+  -W  --ignore-all-space  Ignore all white space.
+  -B  --ignore-blank-lines  Ignore changes whose lines are all blank.
+  -I RE  --ignore-matching-lines=RE  Ignore changes whose lines all match RE.
+  --strip-trailing-cr  Strip trailing carriage return on input.
+  -a  --text  Treat all files as text.
+ 
+  -w NUM  --width=NUM  Output at most NUM (default 130) columns per line.
+  -l  --left-column  Output only the left column of common lines.
+  -s  --suppress-common-lines  Do not output common lines.
+ 
+  -t  --expand-tabs  Expand tabs to spaces in output.
+ 
+  -d  --minimal  Try hard to find a smaller set of changes.
+  -H  --speed-large-files  Assume large files and many scattered small changes.
+  --diff-program=PROGRAM  Use PROGRAM to compare files.
+ 
+  -v  --version  Output version info.
+  --help  Output this help.
+ 
+If a FILE is `-', read standard input.
+ 
+Notes:-
+ 
+As this is a straight port of a UNIX program it expects file names to be
+specified as :-
+ 
+  <filename.filetype.fm>
+ 
+or
+ 
+  DD:<ddname>
+ 
+where "ddname" is the name of a Dataset Description that has been created by a
+FILEDEF command.
