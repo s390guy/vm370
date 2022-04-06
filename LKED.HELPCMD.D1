@@ -1,0 +1,154 @@
+LKED                                                              CMD COMMAND
+ 
+Use the CKS LKED command is a port of the OS/VS Linkage editor and loader.
+ 
+It primary purpose in VM/370 is to create the 3704/3705 control program load
+module from the 3705 Assembler object files. However it can be used to create
+LOADLIBS which can be used for other purposes.
+ 
+The format of the LKED command is:
+ 
+  LKED   filename <(Options<)>>
+ 
+  Options:-
+ 
+   [NCAL] [LET] [ALIGN2] [NE] [OL] [RENT]
+ 
+   [REUS] [REFR] [OVLY] [XCAL][O
+ 
+   [NAME membername] [LIBE libraryname]
+ 
+   [XREF|MAP|LIST]  [TERM|NOTERM] [PRINT|DISK|NOPRINT]
+ 
+Where:-
+ 
+  filename   specifies the filename of the object file to be processed.
+             The file must have a filetype of TEXT and fixed length
+             8O-character records.
+ 
+Options:-
+ 
+  If duplicate or conflicting linkage editor options are specified, the
+  resolution is performed by the linkage editor in accordance with its
+  normal procedures. If duplicate or conflicting eMS-related options
+  are specified, the last one entered on the command line is in effect.
+  The CMS-related options are: TERM, NOTERM, PRINT, DISK, NOPRINT,
+  NAME, and LIBE.
+ 
+  NCAL       suppresses the automatic library call function of the
+             linkage editor.
+ 
+  LET        suppresses marking of the load module "not executable" in
+             the event of some linkage editor error condition. ble
+ 
+  ALIGN2     indicates that boundary alignment specified in th
+             linkage editor input file is to be performed on the basis
+             of 2048-byte boundaries. If this option is omitted,
+             alignment is performed on the basis of 4096-byte
+             boundaries.
+ 
+ NE          marks the load module output as "not to be edited" such
+             that it cannot be processed again by the linkage editor.
+ 
+ OL          marks the load module output "only loadable".
+ 
+ RENT marks the load module reenterable.t
+ 
+ REUS        marks the load module reuseable.
+ 
+ REFR        marks the load module refreshable.
+ 
+ OVLY        processes an overlay structure.
+ 
+ XCAL        allows valid exclusive CALLs in the overlay structure.
+ 
+ NAME Membername
+             is the member name to be used for the load module
+             created. The member name specified here overrides the
+             default name, but it cannot override a name specified via
+             the linkage editor NAME control statement.
+ 
+ LIBE Librarayname
+             is the filename of a LOADLIB file where the output load
+             module is to be placed. The LOADLIB file specified here
+             may also be used for auxiliary input to the linkage
+             editor via the INCLUDE statement.
+ 
+  XREF       produces an external symbol cross-reference for the
+             modules being processed.
+ 
+  MAP        produces only a module map for the processed module(s).
+ 
+  LIST       includes only linkage editor control messages in the
+             printed output file.
+ 
+  TERM       displays any linkage editor diagnostic messages at the
+             user terminal.
+ 
+  NOTERM     suppresses the displaying of diagnostic messages.
+             spools the linkage editor printed output file to the
+             printer.
+ 
+  DISK       stores the linkage editor output in a CMS disk file with
+             a filetype of LKEDIT.
+ 
+  NOPRINT    produces no output file.
+ 
+The default options are LIST TERM DISK.
+ 
+Linkage Editor Control Statments
+================================
+ 
+  Only a subset of the possible linkage editor control statements are
+  meaningful in CMS. Since the CMS interface program cannot examine the
+  input data for the LKED command, all of the control statements are
+  allowed, even though several of them result in the creation of a load
+  module file which cannot be used under CMS. For both command options
+  and control statements, see the publication OS/VS 1inkage editor and loader.
+ 
+Files Created by the LKeD Command
+=================================
+ 
+Temporary Workfile
+==================
+ 
+ The LKED ,command produces one temporary file:
+ 
+          fname SYSUTl
+ 
+ This file is temporarily created for each link-edit steo: any existina
+ file with the same file identifier is erased at the beginning of the
+ link edit. This file is placed on the read/write disk with the most
+ available space. Work space is automatically allocated as needed during
+ the link edit and returned to available status when the link edit is
+ complete. Insufficient space causes abnormal termination of the link
+ edit.
+ 
+Permanent Files
+===============
+ 
+The LKED command produces two permanent files:
+ 
+      fname LOADLIB
+      fname LKEDIT
+ 
+ The 'fname LOADLIB' file contains the load module created by the
+ linkage editor. This file is in CMS simulated partitioned data set
+ format, as created by the CMS OS data management macros. The filename
+ of the input file becomes the filename of the LOADLIB file, unless the
+ LIBE option is specified. The filename of the input file also becomes
+ the member name of the output load module, unless either the NAME option
+ or a NAME control statement is used. One or more load modules may be
+ created during a single LKED command execution if the NAME linkage
+ editor control statement is used in the input file. When the NAME
+ control statement is used, that name becomes the member name in the
+ LOADLIB file. The replace option of the NAME statement determines
+ whether existing members with the same name are replaced or retained.
+ 
+ The 'fname LKEDIT' file contains the printed output listing produced
+ according to the IREF, MAP, or LIST options. This file is created on
+ disk unless the PRINT or NOPRINT option is specified. The LOADLIB and
+ LKEDIT files are placed on (1) the disk from which the input file was
+ read, (2) the parent disk, or (3) the primary disk. Failure to obtain
+ sufficient space for these files results in abnormal termination of the
+ linkage editor.
