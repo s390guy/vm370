@@ -1,0 +1,24 @@
+DOSPLI                                                  CMS EXEC
+ 
+Calls the DOS PLI Optinmizing compiler if installed
+ 
++------------------------------------------------------------+
+| Format:-                                                   |
+|                                                            |
+|   DOSPL1 <source>                                          |
+|                                                            |
++------------------------------------------------------------+
+ 
+Where:-
+ 
+   <Source> is the name of a file of type PLI containing the source
+ 
+Notes:-
+ 
+1. The CMSDOS environment must be active.
+ 
+2. Refer to the manual
+ 
+        SC33-0051 DOS PLI Optimizing Compiler - CMS Users Guide
+ 
+   for details of how to use the compiler.

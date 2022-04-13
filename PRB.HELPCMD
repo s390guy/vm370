@@ -1,0 +1,23 @@
+PRB                                                              IPCS COMMAND   
+                                                                                
+THE FORMAT IS:-                                                                 
+                                                                                
+    PRB NNNNN|HELP OPERAND (DATA)                                               
+                                                                                
+          OPERAND MAY BE:IBM    APAR   PTFIS  PTFON  DUPOF                      
+                         USER   CLOSE  DSPLY  SEV    NEEDINFO                   
+                                                                                
+          DATA MAY BE:                                                          
+                            A. IF OPERAND IS APAR THE APAR NUMBER               
+                               E.G. PRB 1 APAR A000123                          
+                                                                                
+                            B. IF OPERAND IS PTFIS (FILENAME) FILETYPE OF PTF   
+                               FILENAME DEFAULTS TO PRBNNNNN IF NOT SPECIFIED   
+                               E.G. PRB 1 PTFIS PRB00001 PTF0001                
+                                                                                
+                            C. IF OPERAND IS DUPOF THE PROBLEM OF WHICH THIS    
+                               PROBLEM IS A DUPLICATE.                          
+                               E.G. PRB 2 DUPOF 1                               
+                                                                                
+                            D. IF OPERAND IS SEV THE NEW SEVERITY               
+                               E.G. PRB 1 SEV 3                                 

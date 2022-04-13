@@ -1,0 +1,112 @@
+GENERATE                                                         SERVICE EXEC   
+                                                                                
+ The GENERATE may be used to-re-build components of VM370.                      
+                                                                                
+ +---------------------------------------------------------------------------+  
+ |      GENERATE  VM370|SRVCPGM|DIRECT <ONLY>|DMKRIO <ONLY>|DMKSYS <ONLY>|   |  
+ |                DMKFCB <ONLY>|DMKSNT <ONLY>|                               |  
+ |                (CP|CMS) NUCLEUS <NOLOAD>|<IPLDECK>|<RSCS <BUILD>>         |  
+ +---------------------------------------------------------------------------+  
+                                                                                
+  OPTIONS-                                                                      
+  1. VM370 -        READS FROM THE CARD READER IN THE FOLLOWING ORDER:          
+                                                                                
+                        'FN' DIRECT,                                            
+                         DMKRIO,                                                
+                         DMKSYS,                                                
+                                                                                
+                   WHERE 'FN' IS THE NAME OF YOUR DIRECTORY. THE                
+                   DIRECTORY WILL THEN BE GENERATED, FOLLOWED BY                
+                   ASSEMBLY OF DMKRIO AND DMKSYS. A CHECK IS THEN               
+                   MADE TO SEE IF SOURCE HAS BEEN PROVIDED FOR DMKFCB           
+                   AND/OR DMKSNT. IF FOUND, THEY WILL BE ASSEMBLED              
+                   ACCORDINGLY.   IF AN ERROR  OCCURS                           
+                   DURING ONE OF THESE STEPS, THE ROUTINE WILL EXIT             
+                   AFTER THE STEP CURRENTLY BEING PROCESSED. IF NO              
+                   ERRORS OCCUR, THE ROUTINE WILL GO ON TO MAKE AN              
+                   IPLABLE TAPE  CONTAINING THE NEW CP NUCLEUS AND              
+                   THEN IPL THE TAPE.                                           
+                                                                                
+ 2. <DIRECT <ONLY>> - READS IN A DIRECTORY FILE FROM                            
+                   FROM THE CARD READER AND GENERATES A NEW                     
+                   DIRECTORY. PROCESSING WILL THEN CONTINUE WITH                
+                   DMKRIO, AND DMKSYS READ IN UNDER THE OPTION                  
+                   'VM370'. IF NO ERRORS OCCUR, PROCESSING WILL                 
+                   CONTINUE AS UNDER THE OPTION 'VM370'.                        
+                   USE OF THE 'ONLY' OPTION WILL RESULT IN AN                   
+                   EXIT AFTER DIRECTORY PROCESSING.                             
+                                                                                
+ 3. <DMKRIO <ONLY>> - READS IN DMKRIO ASSEMBLE FILE                             
+                   AND ASSEMBLES IT. PROCESSING CONTINUES WITH                  
+                   DMKSYS, READ IN UNDER THE 'VM370' OPTION.                    
+                   IF NO ERRORS OCCUR, PROCESSING WILL CONTINUE                 
+                   AS UNDER THE OPTION 'VM370'. 'ONLY' WILL CAUSE               
+                   AN EXIT AFTER PROCESSING OF DMKRIO.                          
+                                                                                
+ 4. <DMKSYS <ONLY>> - READS IN DMKSYS ASSEMBLE FILE                             
+                   AND ASSEMBLES IT. IF NO ERRORS OCCUR, PROCESSING             
+                   WILL CONTINUE AS UNDER THE OPTION 'VM370'. 'ONLY'            
+                   WILL CAUSE AN EXIT AFTER PROCESSING OF DMKSYS.               
+                                                                                
+ 5. <DMKFCB <ONLY>> - READS IN DMKFCB ASSEMBLE FILE                             
+                   FROM THE CARD READER AND ASSEMBLES IT. A CHECK IS            
+                   THEN MADE TO SEE IF SOURCE EXISTS FOR DMKSNT. IF             
+                   FOUND, IT WILL BE ASSEMBLED. IF NOT, PROCESSING              
+                   CONTINUES WITH THE GENERATION OF AN IPL'ABLE                 
+                   CP TAPE. 'ONLY' RESULTS IN AN EXIT AT THE END                
+                   OF PROCESSING FOR DMKFCB. IF AN ERROR OCCURS                 
+                   DURING PROCESSING, THE ROUTINE WILL EXIT.                    
+                                                                                
+ 6. <DMKSNT <ONLY>> - READS IN DMKSNT ASSEMBLE FROM                             
+                   THE CARD READER. IF NO ERRORS OCCUR PROCESSING WILL          
+                   CONTINUE WITH THE GENERATION OF AN IPL'ABLE CP               
+                   TAPE. 'ONLY' RESULTS IN AN EXIT AT THE END OF                
+                   PROCESSING FOR DMKSNT.                                       
+                                                                                
+ 7. SRVCPGM -      PUNCHES ALL STANDALONE SERVICE PROGRAMS                      
+                                                                                
+ 8. IPLDECK -      CREATES THE STANDALONE SERVICE PROGRAMS                      
+                   FROM THEIR ASSOCIATED TEXT DECKS. THE USER WILL BE           
+                   PROMPTED FOR THE NAME OF THE SERVICE PROGRAMS HE             
+                   WISHES TO CREATE. A RESPONSE OF 'ALL' RESULTS IN             
+                   IN 'DDR', 'DIR', AND 'FMT' BEING BUILT. IF THE               
+                   OPTION 'ALL' IS SELECTED IN CONJUNTION WITH THE              
+                   THE NAME OF AN OTHER IPL DECK, THE 'ALL' OPTION              
+                   WILL OVERRIDE THE INDIVIDUAL NAME(S) PROVIDED.               
+                                                                                
+ 9. <(CP | CMS) NUCLEUS <NOLOAD>> - RESULTS IN THE CP                           
+                   NUCLEUS BEING GENERATED ON TAPE OR A CMS NUCLEUS             
+                   BEING GENERATED. IN THE CASE OF CMS, THE USER                
+                   WILL BE PROMPTED TO SEE IF HE WISHES TO MAINTAIN             
+                   A COPY OF THE NUCLEUS ON DISK. THE THIRD OPTION              
+                   'NOLOAD', WILL RESULT IN THE NUCLEUS' S NOT                  
+                   BEING IPL' ED. IN THE CASE OF CMS, THE NEW                   
+                   NUCLEUS WILL REMAIN IN THE CARD VIRTUAL CARD                 
+                   READER IF THE 'NOLOAD' OPTION IS IN EFFECT.                  
+                                                                                
+ 10. <RSCS <BUILD>> - PROMPTS THE USER TO SET UP THE                            
+                   RSCS STAGING AREA, AS DESCRIBED IN THE PLANNING              
+                   AND SYSTEM GENERATION GUIDE. THE 'BUILD' OPTION              
+                   TRANSFERS THE NECESSARY TEXT DECKS TO THE RSCS               
+                   SYSTEM DISK AND BUILDS AN RSCS NUCLEUS.                      
+                                                                                
+ ASSUMPTIONS-   VIRTUAL CP NUCLEUS TAPE ADR= 182, VIRTUAL ADR OF CMS            
+                BUILD AREA = 190, VIRTUAL ADR OF CP BUILD AREA= 194,            
+                VIRTUAL CARD READER= 00C, VIRTUAL RSCS TAPE ADR=181.            
+                                                                                
+ DEFAULTS-      NONE.                                                           
+                                                                                
+ ERROR CODES-   RETURN CODE  ERROR                                              
+                -----------  --------------------------------------             
+                    1        INVALID OPERAND FOR GENERATE EXEC.                 
+                    2        INVALID OPERAND FOR IPLDECK OPTION.                
+                    6        ERROR CREATING DIRECTORY.                          
+                    8        ERROR ENCOUNTERED DURING ASSEMBLY                  
+                    10       ERROR READING CMS NUCLEUS TO DISK.                 
+                    36       TARGET DISK A IS READ ONLY.                        
+                    100      TARGET DISK ADDRESS NOT ATTACHED.                  
+                                                                                
+ NOTES-         ALL OPENING AND CLOSING PARENTHESIS WILL BE STRIPPED            
+                FROM THE SUPPLIED PLIST PRIOR TO PROCESSING.                    
+                                                                                
+                                                                                

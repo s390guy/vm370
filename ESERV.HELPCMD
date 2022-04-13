@@ -1,0 +1,17 @@
+ESERV                                                      CMS EXEC
+ 
+   Prepares the environemnt the DOS/VS ESERVE utility
+ 
+   The EXEC will perform some housekeeping needed to run the utility.
+   It also cleans up at the end of the ESERV run.
+ 
++-----------------------------------------------------------------+
+| Format:-
+|     ESERV <filename>                                            |
++-----------------------------------------------------------------+
+Where:-
+ 
+   filename - The name of the file containing the name of the
+              control statements as input. It will also be used
+              as the name of the listing and output files.
+ 

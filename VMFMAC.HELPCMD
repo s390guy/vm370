@@ -1,0 +1,14 @@
+VMFMAC                                                          SERVICE EXEC    
+                                                                                
+  VMFMAC applies updates to macros and the re-bulds the affected library        
+                                                                                
++---------------------------------------------------------------------+         
+|   VMFMAC LIBNAME CTLFILE                                                      
++---------------------------------------------------------------------+         
+                                                                                
+Where:-                                                                         
+                                                                                
+ LIBNAME is the name of the library                                             
+                                                                                
+ CTLFILE is the control file which specifies which updates are to be applied.   
+                                                                                

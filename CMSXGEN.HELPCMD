@@ -1,0 +1,18 @@
+CMSXGEN                                            CMS EXEC
+ 
+    CMSXGEN Will generate a CMS segnment containg the OS Simulation
+    routines, the EXEC processor and the CMS Editor.
+ 
++-----------------------------------------------------------------+
+| Format:-                                                        |
+|                                                                 |
+|   CMSXGEN  LOCATION  ( SEGNAME ).                               |
+|                                                                 |
++------------------------------------------------------------------
+ 
+Where:-
+ 
+   Location - The HEX address at which the Segment is to be loaded
+ 
+   Segname  - The name of the Segment to be saved.
+ 

@@ -1,0 +1,18 @@
+VMFASM                                                       SERVICE EXEC       
+                                                                                
+VMFASM applies updates to an ASSEMBLER source and then assembles the file       
+                                                                                
++--------------------------------------------------------------------------+    
+|                                                                          |    
+| VMFASM source cntrl-file (<options>                                      |    
+|                                                                          |    
+| Where:-                                                                  |    
+|                                                                          |    
+|     source      The name of the ASSEMBLER source to be assembled         |    
+|                                                                          |    
+|     cntrl       The name of the control file specifying which updates are|    
+|                 to be applied                                            |    
+|                                                                          |    
+|    options      Standard ASSEMBLER options                               |    
+|                                                                          |    
++--------------------------------------------------------------------------+    

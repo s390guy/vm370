@@ -1,0 +1,24 @@
+FCOBOL                                                  CMS EXEC                
+                                                                                
+Calls the DOS COBOL compiler if installed                                       
+                                                                                
++------------------------------------------------------------+                  
+| Format:-                                                   |                  
+|                                                            |                  
+|   FCOBOL <source>                                          |                  
+|                                                            |                  
++------------------------------------------------------------+                  
+                                                                                
+Where:-                                                                         
+                                                                                
+   <Source> is the name of a file of type COBOL containing the source           
+                                                                                
+Notes:-                                                                         
+                                                                                
+1. The CMSDOS environment must be active.                                       
+                                                                                
+2. Refer to the bmanual:-                                                       
+                                                                                
+    SC28-6469 - IBM CMS Users Guide for Cobol                                   
+                                                                                
+  for more details on using FCOBOL                                              
