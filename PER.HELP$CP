@@ -1,0 +1,581 @@
+PER                                                       CP Privilege Class: G
+ 
+Use the PER ccommand to trace specified program events and to record the
+results  at the  terminal,  on a  virtual spooled  printer,  or on  both
+terminal and printer.  The format of the PER command is:
++----------+------------------------------------------------------------------+
+| PER      | Branch    [addr-range]     [controls, modifiers and options]     |
+|          | Greg[n]   [hex-number]     [controls, modifiers and options]     |
+|          | Ifetch    [hex-data]       [controls, modifiers and options]     |
+|          | Mask       addr hex-data   [controls, modifiers and options]     |
+|          | PAgetrace [page-size]      [controls, modifiers and options]     |
+|          | STore      addr-range      [controls, modifiers and options]     |
+|          | STore      addr hex-data   [controls, modifiers and options]     |
+|          |                                                                  |
+|          | controls:                                                        |
+|          |   Dump                                                           |
+|          |   SAve   traceset-name                                           |
+|          |   GET    traceset-name                                           |
+|          |   Clear [traceset-name]                                          |
+|          |   ENd                                                            |
+|          |   Query  traceset-name | *                                       |
+|          | modifiers:                                                       |
+|          |   OFF                                                            |
+|          |   Range addr-range                                               |
+|          | options:                                                         |
+|          |   CMd cmd1[;cmd2[;...cmdn]]                                      |
+|          |   SKip dec-number                                                |
+|          |   STEp dec-number                                                |
+|          |   RUn|NORun        PRint|NOPrint        TErminal|NOTerminal      |
++----------+------------------------------------------------------------------+
+where:
+ 
+BRANCH [addr-range]
+         causes successful branch instructions to be traced.  If addr-range is
+         not specified all successful branch instructins will be displayed;  if
+         addr-range is specified a traceback of the last five successful branch
+         instructions will be displayed when a branch into that range occurs.
+ 
+GREG[n] [hex-number]
+         causes the alteration of either all general registers or the register
+         specified by n to be traced.  If hex-data is specified only
+         alterations to the given value are traced.  Whenever an alteration
+         occurs the instruction doing the altering and the new contents of the
+         register are displayed.
+ 
+         Note: Emulation of the hardware support required for GREG is not
+               implemented in Hercules at the time of writing.
+ 
+IFETCH [hex-data]
+         causes instruction fetches to be traced. If hex-data is specified only
+         instructions that match the hex-data will be traced.
+ 
+MASK addr hex-data
+         causes the alteration of the bits at address addr specified by the
+         hex-data mask to be traced.
+ 
+PAGETRACE [page-size]
+         causes the transfer of control between segments of main storage to be
+         traced and time stamped.  If pagesize is specified memory is divided
+         into segments of that size.  Memory may also be segmented by using the
+         RANGE keyword in conjuction with PAGETRACE.
+ 
+STORE [addr-range] | [addr hex-data]
+         causes storage alterations to be traced.  If addr-range is specified
+         then only alterations of storage within that range are traced.  If
+         addr hex-data is specified then only alteration of the storage at addr
+         to the given hex-data is traced.
+ 
+         Note: If more than one addr-range is specified, there may be spurious
+               triggers when addresses between the two ranges are modified.
+ 
+DUMP     causes the traceback table containing the last six successful branches
+         to be displayed on the terminal.  A traceback table is maintained only
+         if a branch trace is in effect.
+ 
+SAVE traceset-name
+         causes a copy of the current trace set to be saved under the given
+         name.  The current trace set is still active and unchanged.
+ 
+GET traceset-name
+         causes the current trace set (if any) to be replaced by a copy of the
+         named trace set.  The named trace set is unchanged.
+ 
+CLEAR [traceset-name]
+         causes the current trace set to be  cleared, or if a trace set name is
+         given the named trace set to be cleared.
+ 
+END      causes all PER trace sets to be cleared.
+ 
+QUERY [traceset name] | [*]
+         causes the contents of the current trace set to be displayed if no
+         operand is given.  If an * is specified the names of the saved trace
+         sets are displayed.  If traceset-name is specified the contents of the
+         named trace set are displayed.
+ 
+OFF      halts tracing of the specified type (BRANCH, IFETCH, etc.).
+ 
+RANGE addr-range
+         causes the tracing for a given trace type to be limited to
+         instructions fetched from within the specified range.  The range
+         keyword may be omitted if there is no ambiguity as to the application
+         of the range.
+ 
+SKIP dec-number
+         causes the specified number of events to be skipped between displays.
+ 
+STEP dec-number
+         causes the number of displays specified to be made between entries to
+         CP command environment.
+ 
+TERMINAL | NOTERMINAL
+         causes output to be directed to the terminal; NOTERMINAL stops output
+         to the terminal.
+ 
+RUN | NORUN
+         continues the program execution after the PER output to the terminal
+         has completed and does not enter the CP command environment.  RUN is
+         equivalent to a STEP of infinity.  NORUN stops program execution after
+         the PER output to the terminal and enters the CP command environment.
+ 
+PRINT | NOPRINT
+         causes PER output to a virtual spooled printer.  Both PRINT and
+         TERMINAL may be specified at the same time.  NOPRINT causes output to
+         a virtual printer to be stopped.
+ 
+CMD cmd1[;cmd2[;...cmdn]]
+         specifies a CP command or a list of CP commands to be executed when
+         the given event occurs.
+ 
+PER operands:
+ 
+addr     is used to specify a logical storage location.  It must consist of one
+         to six contiguous hex digits.
+ 
+hex-data is used to specify hexidecimal data.  It must consist of an even
+         number of contiguous hex digits.
+ 
+hex-number
+         is used to specify a word of hex data.  It must consist of one to
+         eight contiguous hex digits.  It will be padded with zeros on the left
+         to fill out the word.
+ 
+addr-range
+         is used to specify a range of logical storage locations.  It may be
+         any of the following:
+         addr        specifies a single byte in storage.
+         addr-addr2  specifies all storage locations from addr to addr2
+                     inclusive.
+         addr-       specifies all storage locations from addr to FFFFFF
+                     inclusive.
+         -addr       specifies all storage locations from 0 to addr inclusive.
+         addr.hexl   specifies hexl number of contiguous storage locations
+                     starting at addr.
+         dec-number  is used to specify a decimal number.  It must be a number
+                     from 0 to 2147483647.
+         traceset    is used to specify a named trace set.  It must consist of
+                     one to eight contiguous nonblank characters.
+         page-size   is used to specify the size of the segments that memory is
+                     to be divided into with the PAGETRACE keyword.  It must
+                     consist of one of the following:
+                     nnnnnnnn  a decimal number.
+                     nnnnnK    a decimal number followed by a K.  This
+                               specifies a page size of nnnnn times 1024.
+ 
+Usage notes:
+ 
+1.  The keywords on the command line may be specified in any order.  Each
+    command may cause one or more PER elements to be built.  Each element has a
+    single type (BRANCH, IFETCH, etc.) plus associated RANGE and options (SKIP,
+    RUN, etc.).  If more than one PER trace type is specified an element for
+    each type is built.  Any options or modifiers specified on this command
+    line will be in effect for all the trace elements constructed from this
+    command line.
+ 
+2.  When an element is created STEP 1, SKIP 0, NORUN and TERMINAL are assumed
+    unless otherwise specified.
+ 
+3.  If modifiers or options are specified and no PER trace elements are
+    specified, the modifiers or options apply to all elements in the current
+    trace set.
+ 
+4.  If an instruction modifies a register that is used in one of its operand
+    addresses, PER may not be able to determine the operand address.
+ 
+5.  Address ranges are wrap around, that is if the second address in the range
+    is lower than the first, the storage locations specified are from the first
+    address to FFFFFF and from 0 to the second address.
+ 
+6.  PER trace output and consequent entry into the CP command environment
+    always occurs after the instruction execution is complete.
+ 
+7.  Self modifying instructions will cause erroneous processing of PER output.
+ 
+8.  When tracing in a virtual machine with only one printer, the PER data is
+    intermixed with other data sent to the virtual printer.  To seperate PER
+    information define another printer with a lower virtual address than the
+    previously defined printer.
+ 
+9.  Whenvever 10000 interupts of a given type (Ifetch, Branch, Greg or Store)
+    occur with no PER output a PER "blip" is produced.  This consists of an *
+    followed by the first character of the interupt type (i.e.  *I for Ifetch).
+ 
+10. If the type, options and data (if any) are the same in any two elements and
+    their ranges (if any) either overlap or are adjacent, those two elements
+    will be merged into a single element.
+ 
+Responses:
+ 
+The following symbols are used in the responses recieved from PER:
+   vvvvvv     virtual storage address
+   tttttt     virtual transefer address
+   xxxxxxxx   virtual instruction
+   zzzzzzzz   hexadecimal data
+   oooooo     virtual operand address
+   kkkkkkkk   virtual time in hex microseconds
+   zz         low order byte of register in an execute instruction
+   dddddddd   data
+   mnem       mnemonic for instruction
+   CC=n       condition code number
+   >          transfer of control
+   :          traceback table entry
+ 
+*PER TRAPS CLEARED*
+   This response is issued when all tracing is cleared.
+ 
+Branch instructions:
+   vvvvvv mnem  xxxxxxxx tttttt CC=n
+ 
+RR Instructions:
+   vvvvvv mnem  xxxx     CC=n
+ 
+RX or RS Instructions:
+   vvvvvv mnem  xxxxxxxx oooooo CC=n
+ 
+SS type Instructions:
+   vvvvvv mnem  xxxxxxxxxxxx oooooo oooooo CC=n
+ 
+General register alteration
+   vvvvvv mnem  xxxxxxxx oooooo CC=n Gnn=zzzzzzzz
+ 
+Execute instructions:
+   vvvvvv EX    xxxxxxxx zz vvvvvv mnem xxxxxxxx oooooo CC=n
+ 
+Page trace output
+   *PGT* vvvvvv kkkkkkkkkkkkkkkk
+ 
+Branch traceback:
+   TRACEBACK TABLE:
+   :vvvvvv mnem  xxxxxxxx tttttt  nnnnnnnn TIMES
+      up to six entries
+ 
+Data stop output:
+   DATA AT vvvvvv=zzzzzzzz  (for whatever data was specified)
+ 
+Usage Examples:
+ 
+Ifetch
+ 
+Ifetch specifies the tracing of the fetching of instructions from main storage.
+In the following example a trace of the fetching of all instructions is
+specified.
+   per i
+   >017A70 LTR   12F3     CC=0
+   CP
+   b
+   017A72 LM    980E0BE0 000BE0 CC=0
+   CP
+   b
+   017A76 BR    07FE     0170A6 CC=0
+   CP
+It is possible to restrict the PER trace output to only those instructions that
+match specified hex data as in the following example where only those
+instructions having a first byte of X'0A' are traced.
+   per i 0a
+   >016EFE SVC   0ACA     CC=0
+   DATA AT 016EFE=0A
+   CP
+   b
+   R;
+   >0173A0 SVC   0ACA     CC=0
+   DATA AT 0173A0=0A
+ 
+Store
+ 
+Store causes tracing of alterations of main storage.  In the following example
+all storage alterations are traced.
+   per st
+   >013B3C STM   900EF03C 00247C CC=1 *STORE*
+   CP
+   b
+   >013B44 MVI   9200D07A 0024BA CC=1 *STORE*
+   CP
+   b
+   013B48 OI    9620D1A6 0025E6 CC=1 *STORE*
+   CP
+It is  possible to restrict  the tracing of  store events to  only those
+that store  within a specified range  as in the following  example where
+only alterations of storage locations 7A0 to 800 are traced.
+   per st 7a0-800
+   R;
+   ind
+   >01C89C MVI   92403000 0007A0 CC=3 *STORE*
+   CP
+   b
+   01C8A0 MVC   D28030013000 0007A1 0007A0 CC=3 *STORE*
+   CP
+   b
+   >01C9A6 EX  4450C54E 02 01CBDE MVC   D20030004000 0007A0 000716 CC=2 *STORE*
+   CP
+It is also possible to restrict the trace to the alteration of a given storage
+location to a given value.  In the first of the following examples the storing
+of x'40' at location 7A0 is traced and in the second the storing of X'D840E4'
+at 7A0 is traced.
+   per st 7a0 40
+   R;
+   q u
+   >01C89C MVI   92403000 0007A0 CC=3 *STORE*
+   DATA AT 0007A0=40
+   CP
+   b
+   USERS=46 DIALED=42 PEAK=48
+   R;
+   per st 7a0 d840e4
+   R;
+   q u
+   >01C9A6 EX    4450C54E 02 01CBDE MVC   D20030004000 0007A0 000716 CC=2 *STORE
+   DATA AT 0007A0=D840E4
+   CP
+   b
+   USERS=46 DIALED=41 PEAK=48
+   R;
+ 
+Branch
+ 
+Branch specifies the tracing of successful branches.  Whenever a branch trace
+is in effect a table of the last 5 successful branches is maintained which can
+be displayed using the DUMP control.  It is also possible to specify that
+output is to be produced only if a branch into a given range occurs.  In the
+following example brances to the address 1BEE0 are traced.
+   per b 1bee0
+   R;
+   >01B5B6 BALR  05EF     01BEE0 CC=2
+   TRACEBACK TABLE:
+   :01C80A BALR  05EF     01B6C0
+   :01B6DC BZ    4780F026 01B6EC
+   :01B6F4 BZ    4780F044 01B70A
+   :01B536 BZ    4780C032 01B548
+   :01B550 BZR   078F     01B594
+   CP
+   b
+   q u
+   >01B5B6 BALR  05EF     01BEE0 CC=2
+   TRACEBACK TABLE:
+   :01C80A BALR  05EF     01B6C0
+   :01B6DC BZ    4780F026 01B6EC
+   :01B6F4 BZ    4780F044 01B70A
+   :01B536 BZ    4780C032 01B548
+   :01B550 BZR   078F     01B594
+   CP
+   b
+   USERS=44 DIALED=42 PEAK=48
+   R;
+ 
+Greg
+ 
+Greg causes the tracing of the alteration of general purpose registers.  In the
+following example the alteration of all registers is traced.
+   per g
+   >017A70 LTR   12F3     CC=0 G03=00000000 G15=00000000
+   CP
+   b
+    017A72 LM    980E0BE0 000BE0 CC=0 G01=000007A0 G02=00000000 G06=00000005
+       G12=00016E60 G14=500170A6
+   CP
+   b
+   >0170B4 LR    18DF     CC=1 G13=00000000
+   CP
+   b
+    0170B6 LA    4110B184 0025C4 CC=1 G01=000025C4
+   CP
+The trace output may be restricted to the alteration of a given register or
+registers to a given value or values as in the following example.
+   per g15 0
+   >017A70 LTR   12F3     CC=0 G15=00000000
+   CP
+   b
+   >013C32 SR    1BFF     CC=0 G15=00000000
+   CP
+   b
+   >011F5A SR    1BFF     CC=0 G15=00000000
+   CP
+ 
+Pagetrace
+ 
+Pagetrace causes the tracing of the transfer of control between specified
+segments of memory.  Memory may be segmented either by the pagesize operand of
+pagetrace or by use of the RANGE keyword.  In the following example memory is
+segmented into pieces of 4096 bytes.
+   per pag 4096
+   *PGT* 017A70 0000008239850000
+   CP
+   b
+   *PGT* 013B38 0000008239916000
+   CP
+   b
+   *PGT* 011CC0 0000008239A88000
+   CP
+   b
+   *PGT* 013BD2 0000008239CBE000
+   CP
+   b
+   *PGT* 0170C0 0000008239DA5000
+   CP
+   b
+   *PGT* 011F4C 0000008239E11000
+   CP
+ 
+Mask
+ 
+Mask causes tracing of the alteration of specified bits in main storage.  In
+the following example the alteration of the first bit in the byte at 25E7 is
+traced.
+   per m 25e7 80
+   R;
+   li
+   JTIME    @SSEMBLE
+   EP001P   ASM3705
+   EP001Q   ASM3705
+   hx
+   >01C156 OI    9680F1A7 0025E7 CC=1 *STORE*
+   DATA AT 0025E7=81
+   CP
+   b
+   CAIXXPRT DECK
+   RASPMAN  DISKLOAD
+   CP       EDIT
+   >004D20 MVI   920071A7 0025E7 CC=0 *STORE*
+   DATA AT 0025E7=00
+   CP
+   b
+   CMS
+ 
+Range
+ 
+Range is used to segment memory.  In the case of ifetch, branch, greg, mask and
+store is is used to restrict the range of the instruction addresses that will
+be traced.  In the case of pagetrace it is used to specify the segments of
+memory.  More than one range may be specified for any element.  If no range is
+specified a range of 0-FFFFFF is assumed.  In the following example the ifetch
+trace is restricted to only those instructions fetched from E000 to E00F and
+1FF00 to 1FFB0.
+   per i e000-e00f 1ff00-1ffb0
+   b
+   R; T=3.36/22.41 01:20:58
+   q n
+   >00E000 BALR  05C0     CC=0
+   CP
+   b
+    00E002 LA    4140CFFF 00F001 CC=0
+   CP
+   b
+    00E006 LA    41404001 00F002 CC=0
+   CP
+   b
+    00E00A ST    50E0CE4E 00EE50 CC=0
+   CP
+   b
+    00E00E LA    41201008 000850 CC=0
+   CP
+   b
+   >01FF08 LTR   1230     CC=0
+   CP
+   b
+    01FF0A BNP   47D0C12E 01FF8E CC=0
+   CP
+   b
+    01FF0E CLI   95402000 0007A0 CC=0
+ 
+Skip
+ 
+Skip causes the number of events specified to be skipped between displays.  In
+the following example skip causes every fifth event to be displayed.
+   per i skip 5
+   >0170AA BNZ   4770C254 0170B4 CC=1
+   CP
+   b
+   >013B38 L     58F00600 000600 CC=1
+   CP
+   b
+   >013B48 OI    9620D1A6 0025E6 CC=1
+   CP
+   b
+   >013B7E CLI   955C1010 0025D4 CC=0
+   CP
+ 
+Step
+ 
+Step causes the specified number of displays to be made between entries into
+the CP command environment.  In the following example 5 displays are made
+between entries into the CP command environment.
+   per i step 5
+   >017A70 LTR   12F3     CC=0
+    017A72 LM    980E0BE0 000BE0 CC=0
+    017A76 BR    07FE     0170A6 CC=0
+   >0170A6 CH    49F0C6C0 017520 CC=1
+    0170AA BNZ   4770C254 0170B4 CC=1
+   CP
+   b
+   >0170B4 LR    18DF     CC=1
+    0170B6 LA    4110B184 0025C4 CC=1
+    0170BA L     58F006F0 0006F0 CC=1
+    0170BE BALR  05EF     013B38 CC=1
+   >013B38 L     58F00600 000600 CC=1
+   CP
+ 
+Cmd
+ 
+Cmd causes specified CP commands to be executed when the associated per event
+occurs.  In the following example when a store at 7a0 occurs a message is sent,
+the per tracing cleared and the virtual machine put to sleep.
+   per st 7a0 run cmd m * store at 7a0 occurred;per c;sl
+   R;
+   ind
+   >01C890 MVI   92003000 0007A0 CC=0 *STORE*
+   12:01:08
+   MSG FROM KERRY   :  STORE AT 7A0 OCCURRED
+   *PER TRAPS CLEARED*
+   ZZZzzz..
+ 
+Dump
+ 
+Dump causes the current contents of the branch traceback table to be displayed.
+A traceback table is maintained whenever any sort of branch trace is in effect.
+In the following example a branch trace that will not be satisfied is turned on
+and dump is used to display the branches occuring before the SVC.
+   per b 0
+   tr svc
+   TRACE STARTED
+   q u
+   *** 017030 SVC   00CA ==> 01229C
+   CP
+   per dump
+   TRACEBACK TABLE:
+   :0176EC BNZ   4770F01E 0176F6
+   :017714 BXLE  8734F034 01770C     4 TIMES
+   :01772C BM    4740F088 017760
+   :01776E BXLE  8734F090 017768    34 TIMES
+   :01777C BR    07FE     016FFA
+   :016FFC BNZ   4770C1B2 017012
+ 
+Save, Get, Clear and Query
+ 
+Save, Get, Clear and query are used respectively to save, retrieve, delete and
+display PER trace sets.  The following are some examples of the use of these
+controls.
+   per i 83 print noterm 20000-
+   per st 250-300 70000-75000
+   per b 1fffc 20000- run
+   per q
+    IFETCH 83 RANGE 20000:FFFFFF PRINTER
+    STORE 250:300 RANGE 70000:75000 TERMINAL
+    BRANCH 1FFFC RANGE 20000:FFFFFF RUN TERMINAL
+   per save set1
+   per c
+   per q
+   TRACE SET DOES NOT EXIST
+   per i 60000-70000
+   per q
+    IFETCH RANGE 60000:70000 TERMINAL
+   per q set1
+    IFETCH 83 RANGE 20000:FFFFFF PRINTER
+    STORE 250:300 RANGE 70000:75000 TERMINAL
+    BRANCH 1FFFC RANGE 20000:FFFFFF RUN TERMINAL
+   per get set1
+   per q
+    IFETCH 83 RANGE 20000:FFFFFF PRINTER
+    STORE 250:300 RANGE 70000:75000 TERMINAL
+    BRANCH 1FFFC RANGE 20000:FFFFFF RUN TERMINAL
+   per cl set1
+   per c
+   *PER TRAPS CLEARED*
