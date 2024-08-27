@@ -20,7 +20,7 @@ terminal and printer.  The format of the PER command is:
 |          |   ENd                                                            |
 |          |   Query  traceset-name | *                                       |
 |          | modifiers:                                                       |
-|          |   OFF                                                            |
+|          |   Off                                                            |
 |          |   Range addr-range                                               |
 |          | options:                                                         |
 |          |   CMd cmd1[;cmd2[;...cmdn]]                                      |
