@@ -1,0 +1,22 @@
+CHARIN function
+
++-----------------------------------------------------------------------------+
+| CHARIN([stream], [start], [length])                                         |
++-----------------------------------------------------------------------------+
+
+Returns a string of up to length characters from from the specified stream,
+which defaults to the console or stack, starting at character position start,
+which defaults to 1.  If length is 0, the stream is positioned to the start
+position, but no data is read and a null string is returned.  If the stream
+cannot be positioned and start is specified, an error occurs.  If there are
+less than length characters available, and it is impossible for more to become
+available, the NOTREADY condition is raised.
+
+Examples:
+
+	CHARIN(mine,1,3) == 'MFC'    /* perhaps */
+	CHARIN(mine,1,0) == ''       /* now at start */
+	CHARIN(mine)     == 'M'      /* after last */
+	CHARIN(mine,,2)  == 'FC'     /* after last */
+	CHARIN()         == 'a'      /* perhaps */
+	CHARIN(,,5)      == 'abc d'  /* perhaps */

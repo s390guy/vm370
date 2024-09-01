@@ -1,0 +1,14 @@
+RIGHT function
+
++-----------------------------------------------------------------------------+
+| RIGHT(string, length, [pad])                                                |
++-----------------------------------------------------------------------------+
+
+Returns a string composed of the rightmost length characters of the string,
+extended on the left with the pad character as necessary.
+
+Examples:
+
+	RIGHT('abc  d',8)  == '  abc  d'
+	RIGHT('abc def',5) == 'c def'
+	RIGHT('12',5,0)    == '00012'

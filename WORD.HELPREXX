@@ -1,0 +1,16 @@
+WORD function
+
++-----------------------------------------------------------------------------+
+| WORD(string, pos)                                                           |
++-----------------------------------------------------------------------------+
+
+Returns the n'th blank-separated word in string with no leading or trailing
+blanks.  If pos exceeds the number of words in the string, a null string is
+returned.
+
+WORD(string, pos) is exactly equivalent to SUBWORD(string, pos, 1).
+
+Examples:
+
+	WORD('Now is the time',3) == 'the'
+	WORD('Now is the time',5) == ''

@@ -1,0 +1,14 @@
+WORDINDEX function
+
++-----------------------------------------------------------------------------+
+| WORDINDEX(string, pos)                                                      |
++-----------------------------------------------------------------------------+
+
+Returns the starting character position of the specified blank-separated word
+in string.  If pos exceeds the number of words in string, a null string is
+returned.
+
+Examples:
+
+	WORD('Now is the time',3) == 8
+	WORD('Now is the time',6) == 0

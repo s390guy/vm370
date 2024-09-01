@@ -1,0 +1,8 @@
+CHANGESTR function
+
++-----------------------------------------------------------------------------+
+| CHANGESTR(replace, target, replacement)                                     |
++-----------------------------------------------------------------------------+
+
+Returns a copy of the second argument string with all occurrences of the first
+argument replaced them with the third argument.

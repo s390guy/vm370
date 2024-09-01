@@ -1,0 +1,13 @@
+SQRT function
+
++-----------------------------------------------------------------------------+
+| SQRT(number)                                                                |
++-----------------------------------------------------------------------------+
+
+Returns the positive square root of the specified number, formatted according
+to the current NUMERIC DIGITS settings.
+
+Examples:
+
+	SQRT('4')    == 2
+	SQRT(2)      == '1.4142135624' /* perhaps */

@@ -1,0 +1,39 @@
+X2D function
+
++-----------------------------------------------------------------------------+
+|    X2D(hex-string, [length])                                                |
++-----------------------------------------------------------------------------+
+
+Returns a decimal value from the hexadecimal representation in the string,
+within the limits of the current value of NUMERIC DIGITS.  The value depends
+upon the optional length argument.
+
+If the length is specified as 0, the value is always 0.
+
+	Examples:
+
+		X2D('003l',0) == 0
+
+If the length is ommitted, the string is interpreted as an unsigned number.
+
+	Examples:
+
+		X2D('OE')    == 14
+		X2D('81')    == 129
+		X2D('F81')   == 3969
+		X2D('FF81')  == 65409
+		X2D('c6fO'X) == 240
+
+If the length is specified, the left-most bit of the string is taken as the sign,
+with 0 indicating a positive number and 1 negative.  The rest of the string is 
+either left-extended to the specified number of result characters with '0', or 
+truncated if it is smaller than the result.
+
+	Examples:
+
+		X2D('8l',l)   == -127
+		X2D('8l',4)   == 129
+		X2D('F08l',2) == -3967
+		X2D('F08l',3) == 129
+		X2D('F08l',2) == -127
+		X2D('F08l',l) == 1

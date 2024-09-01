@@ -1,0 +1,17 @@
+SPACE function
+
++-----------------------------------------------------------------------------+
+| SPACE(string, [count], [pad])                                               |
++-----------------------------------------------------------------------------+
+
+Returns the string with count pad characters between each pair of
+blank-separated words, and no leading or trailing blanks.  The count defaults
+to 1 and the pad character to blank.  If count is 0, all blanks are removed.
+
+Examples:
+
+	SPACE('abc  def')      == 'abc def'
+	SPACE('  abc def' ,3)  == 'abc   def'
+	SPACE('abc  def  ',1)  == 'abc def'
+	SPACE('abc  def  ',0)  == 'abcdef'
+	SPACE('abc def',2,'+') == 'abc++def'

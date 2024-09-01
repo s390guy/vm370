@@ -1,0 +1,16 @@
+SUBSTR function
+
++-----------------------------------------------------------------------------+
+| SUBSTR(string, start, [length], [pad])                                      |
++-----------------------------------------------------------------------------+
+
+Returns the portion of string starting at the start position and running for
+length characters, extended on the right with pad characters as necessary.  If
+length is omitted, the rest of the string is returned.  If start is more than
+the string's length, the returned string is composed only of pad characters.
+
+Examples:
+
+	SUBSTR('abe',2)       == 'bc'
+	SUBSTR('abc',2,4)     == 'bc'
+	SUBSTR('abc',2,6,'.') == 'bc....'

@@ -1,0 +1,14 @@
+LEFT function
+
++-----------------------------------------------------------------------------+
+| LEFT(string, length, [pad])                                                 |
++-----------------------------------------------------------------------------+
+
+Returns a string composed of the leftmost length characters of the string,
+extended with the pad character as necessary.
+
+Examples:
+
+	LEFT('abc d',8)     == 'abc d   '
+	LEFT('abc d',8,'.') == 'abc d...'
+	LEFT('abc  def',7)  == 'abc  de'

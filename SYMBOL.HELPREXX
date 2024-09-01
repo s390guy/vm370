@@ -1,0 +1,21 @@
+SYMBOL function
+
++-----------------------------------------------------------------------------+
+| SYMBOL(name)                                                                |
++-----------------------------------------------------------------------------+
+
+Returns the status of the symbol specified by name.  If name is not a valid
+REXX symbol, 'BAD' is returned.  If name is a variable (i.e., has been assigned
+a value), 'VAR' is returned.  Otherwise, 'LIT' is returned, indicating that
+name is a literal (a constant).  As in variable usage elsewhere in REXX, the
+value of name is translated to upper case, and any symbols in a compound name
+are substituted.
+
+Examples:
+
+	/* Following: Drop A.3; J=3 */
+	SYMBOL('J')   == 'VAR'
+	SYMBOL(J)     == 'LIT'  /* has tested '3' */
+	SYMBOL('a.j') == 'LIT'  /* has tested 'A.3' */
+	SYMBOL(2)     == 'LIT'  /* a constant symbol */
+	SYMBOL('*')   == 'BAD'  /* an invalid symbol */

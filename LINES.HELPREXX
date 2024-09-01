@@ -1,0 +1,16 @@
+LINES function
+
++-----------------------------------------------------------------------------+
+| LINES([stream])                                                             |
++-----------------------------------------------------------------------------+
+
+Returns the number of complete lines remaining in the specified character
+input stream, which defaults to the console.  The count includes any line
+separator characters, if they are defined for the stream.  If the value cannot
+be determined, 1 is returned.
+
+Examples:
+
+	LINES(myfile)  == 7  /• perhaps */
+	LINES(nonfile) == 0   /* perhaps */
+	LINES()        == 2  /* perhaps •/

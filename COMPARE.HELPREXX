@@ -1,0 +1,19 @@
+COMPARE function
+
++-----------------------------------------------------------------------------+
+| COMPARE(string1, string2, [pad])                                            |
++-----------------------------------------------------------------------------+
+
+Returns 0 if string1 and string2 are the same, or the position of the first
+character that differs.  If the strings are of different length, the shorter
+is extended on the right with the pad character, which defaults to blank if
+not specified.
+
+Examples:
+
+	COMPARE('abc', 'abc')       == 0
+	COMPARE('abc' , 'ak')       == 2
+	COMPARE('ab ' , 'ab')       == 0
+	COMPARE('ab ' , 'ab' , ' ') == 0
+	COMPARE('ab ' , 'ab' , 'x') == 3
+	COMPARE('ab-- ','ab','-')   == 5

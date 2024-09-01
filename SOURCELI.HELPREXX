@@ -1,0 +1,14 @@
+SOURCELINE function
+
++-----------------------------------------------------------------------------+
+| SOURCELINE([line-number])                                                   |
++-----------------------------------------------------------------------------+
+
+Returns the text of the specified source program line, or the number of lines
+if the line-number is omitted.  If source code is not available, a null string
+is returned.
+
+Examples:
+
+	SOURCELINE()  == 10
+	SOURCELINE(1) == '/* A 10-line program */'

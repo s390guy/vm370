@@ -1,0 +1,22 @@
+RANDOM function
+
++-----------------------------------------------------------------------------+
+| RANDOM()                                                                    |
+| RANDOM(max)                                                                 |
+| RANDOM([min],[max],[seed])                                                  |
++-----------------------------------------------------------------------------+
+
+Returns a pseudo-random non-negative whole number in the range from min to max,
+inclusive.  The breadth of the range (i.e., max-min) must not exceed 10,000.
+If called with no arguments, min defaults to 0, and max to 999.  If called with
+one argument, the argument is used as max and min defaults to 0.  The seed
+number, if specified, is an input to the pseudo-random number algorithm,
+allowing for predictable sequences of results from later calls to RANDOM().
+
+Example:
+
+/* Possible results might be: */
+	RANDOM()       == 305
+	RANDOM(5,8)    == 7
+	RANDOM(,,1989) == 420  /* reproducible*/
+	RANDOM(2)      == 0

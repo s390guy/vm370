@@ -1,0 +1,19 @@
+BITXOR function
+
++-----------------------------------------------------------------------------+
+| BITXOR(string1, [string2], [pad])                                           |
++-----------------------------------------------------------------------------+
+
+Returns a string that is a bitwise logical exclusive-or of the two input
+strings, extended to the right with the pad character.  If the pad character
+is not specified, 'FF'x (i.e., all 1 bits) is used.  If string2 is not
+specified, a null string (i.e., '') is used.
+
+Examples:
+
+	BITXOR('12'x, '22'x)              == '30'x
+	BITXOR('1211'x, '22'x)            == '3011'x
+	BITXOR('C7ll'x, '222222'x, ' ')   == 'E53362'x
+	BITXOR('llll'x, '444444'x)        == '555544'x
+	BITXOR('llll'x, '444444'x, '40'x) == '555504'x
+	BITXOR('llll'x,, '4D'x)           == '5C5C 'x

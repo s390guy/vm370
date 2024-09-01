@@ -1,0 +1,13 @@
+COPIES function
+
++-----------------------------------------------------------------------------+
+| COPIES(string, count)                                                       |
++-----------------------------------------------------------------------------+
+
+Returns a string composed of the specified number of copies of the input
+string, concatenated.
+
+Examples:
+
+	COPIES ('abc' , 3) == 'abcabcabc'
+	COPIES ('abc', 0)  == ''

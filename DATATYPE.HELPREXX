@@ -1,0 +1,38 @@
+DATATYPE function
+
++-----------------------------------------------------------------------------+
+| DATATYPE(string, [type])                                                    |
++-----------------------------------------------------------------------------+
+
+If the type is omitted, this function returns 'NUM' if string is a number
+(i.e., can be added to '0' without an error), or 'CHAR' if not.
+
+If the type is specfied, this function returns 1 if the string is a valid
+value for the specfied type (only the first character of the type, upppercased,
+is checked).  The types are:
+
+A - Alphanumeric (i.e., composed only of 'a'-'z', 'A'-'Z', and '0'-'9')
+B - Binary (i.e., composed only of '0', and '1', with blanks allowed between
+    quartets of characters)
+L - Lower case (i.e., composed only of 'a'-'z')
+M - Mixed case  (i.e., composed only of 'a'-'z', 'A'-'Z')
+N - Number (i.e., if DATATYPE(string) would return 'NUM')
+S - Symbol (i.e., string is a valid REXX symbol)
+U - Upper case  (i.e., composed only of 'A'-'Z')
+W - Whole number (i.e., a number within the current NUMERIC DIGITS setting)
+X - Hexadecimal (i.e., composed only of 'a'-'f', 'A'-'F', and '0'-'9', with
+    blanks allowed between pairs of characters)
+
+Examples:
+
+	DATATYPE(' 12 ')      == 'NUM'
+	DATATYPE('')          == 'CHAR'
+	DATATYPE('l23*')      == 'CHAR'
+	DATATYPE('l2.3','N')  == 1
+	DATATYPE('12.3','W')  == 0
+	DATATYPE('Fred','M')  == 1
+	DATATYPE('','M')      == 0
+	DATATYPE('Minx','L')  == 0
+	DATATYPE('3d?','s')   == 1
+	DATATYPE('BCd3','X')  == 1
+	DATATYPE('BC d3','X') == 1

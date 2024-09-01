@@ -1,0 +1,20 @@
+INSERT function
+
++-----------------------------------------------------------------------------+
+| INSERT(new, target, [pos], [length], [pad])                                 |
++-----------------------------------------------------------------------------+
+
+Returns a copy of string target with string new padded to length length with
+character pad and inserted at position pos.  If pos is greater than the length
+of target, target is extended to that position with pad characters.  If pos
+is not specified, it defaults to 0 (i.e., the start of the target string).  If
+length is not specified, it defaults to the length of the new string.  If pad
+is not specified, it defaults to blank.
+
+Examples:
+
+	INSERT(' ','abcdef',3)               == 'abc def'
+	INSERT('123', 'abc' ,5,6)            == 'abc  123   '	
+	INSERT('123', 'abc' ,5,6, '+')       == 'abc++123+++'
+	INSERT('l23', 'abc')                 == '123abc'
+	INSERT (' 123' , 'abc' , , 5, ' - ') == '123--abc'

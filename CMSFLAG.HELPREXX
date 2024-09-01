@@ -1,0 +1,16 @@
+CMSFLAG function
+
++-----------------------------------------------------------------------------+
+| CMSFLAG(flag)                                                               |
++-----------------------------------------------------------------------------+
+
+Returns the value of the specified CMS/370 flag.  Only full name of the flag
+is examined, and is treated in uppper case.  Flag must be one of 'ABBREV',
+'AUTOREAD', 'CMSTYPE', 'DOS', 'EXECTRAC', 'IMPCP', 'IMPEX', 'PROTECT',
+'RELPAGE', or 'SUBSET'.  The function returns 1 if the flag currently set,
+or 0 if not.  See HELP CMSSET for the meaning of these flags.
+
+Examples:
+
+	CMSFLAG('ABBREV') == 1  /* probably */
+	CMSFLAG('DOS')    == 0  /* probably */

@@ -1,0 +1,14 @@
+MIN function
+
++-----------------------------------------------------------------------------+
+| MIN(number, [number], ...)                                                  |
++-----------------------------------------------------------------------------+
+
+Returns the smallest number in its list of arguments, formatted according to
+the current NUMERIC settings.
+
+Examples:
+
+	MIN(12,6,7,9)      == 6
+	MIN(17.3,19,17.03) == 17.03
+	MIN(-7,-3,-4.3)    == -7

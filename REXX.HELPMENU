@@ -1,0 +1,94 @@
+ADDRESS
+ABBREV
+ABS
+ARG
+BITAND
+BITOR
+BITXOR
+B2X
+CENTER
+CENTRE
+CHANGESTR
+CHARIN
+CHAROUT
+CHARS
+CMSFLAG
+CONDITION
+COPIES
+COUNTSTR
+C2D
+C2X
+DATATYPE
+DATE
+DELSTR
+DELWORD
+DIGITS
+D2C
+D2X
+ERRORTEXT
+FORM
+FORMAT
+FUZZ
+INSERT
+LASTPOS
+LEFT
+LENGTH
+LINEIN
+LINEOUT
+LINES
+LINESIZE
+MAX
+MIN
+NUMERIC
+OVERLAY
+POS
+QUEUED
+RANDOM
+REVERSE
+RIGHT
+SIGN
+SOURCELINE
+SPACE
+SQRT
+STORAGE
+STRIP
+SUBSTR
+SUBWORD
+SYMBOL
+TIME
+TRACE
+TRANSLATE
+TRUNC
+VALUE
+VERIFY
+USERID
+WORD
+WORDINDEX
+WORDLENGTH
+WORDPOS
+WORDS
+XRANGE
+X2B
+X2C
+X2D
+   CALL name [expression] [,expression] ...
+   DO [repetitor] [conditional]; [statement-list] END [symbol]
+   DROP name [name] ...
+   EXIT [expression]
+   IF expression THEN statement1; [ELSE statement2]
+   INTERPRET expression
+   ITERATE [symbol]
+   LEAVE [symbol]
+   NOP
+   PARSE [UPPER] source [template]
+   PROCEDURE [EXPOSE name [name] ...]
+   PULL [template]
+   PUSH [expression]
+   QUEUE [expression]
+   RETURN [expression]
+   SAY [expression]
+   SELECT; when-list [OTHERWISE [statement-list]] END
+   SIGNAL name
+** SIGNAL VALUE expression
+** SIGNAL ON condition [NAME handler]
+** SIGNAL OFF condition

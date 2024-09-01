@@ -1,0 +1,16 @@
+LASTPOS function
+
++-----------------------------------------------------------------------------+
+| LASTPOS(needle, haystack, [start])                                          |
++-----------------------------------------------------------------------------+
+
+Returns the position of the last occurrance of the string needle in the string
+haystack, scanning backwards from the position start, which defaults to 0,
+meaning the end of the string.  If the needle string is not found, or is the
+null string, the position is returned as 0.
+
+Examples:
+
+	LASTPOS(' ' , 'abc def ghi')     == 8
+	LASTPOS(' ' , 'abcdefghi')       == 0
+	LASTPOS(' ' , 'abc def ghi' , 7) == 4
