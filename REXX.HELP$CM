@@ -2,7 +2,10 @@ REXX Overview
  
 The VM/370 Community Edition features an integrated version of BREXX.  REXX
 procedures have a filetype of EXEC, and must begin with "/* on the first line.
- 
+
+For details on any of the instructions or functions below, type:
+
+	HELP name REXX
  
 The following instructions are supported (except for those marked with **):
    ADDRESS CMS

@@ -1,0 +1,19 @@
+QUEUE instruction
+
++-----------------------------------------------------------------------------+
+| QUEUE [expression]                                                           |
++-----------------------------------------------------------------------------+
+
+This instruction evaluates the specified expression, which defaults to a null
+string, and appends it to the console stack FIFO.
+
+The number of lines in the console stack can be determined with the QUEUED()
+built-in function.
+
+Examples:
+
+	/* put 'Send me 2' at the end of the console stack */
+	a='Send me; queue a 2
+
+	/* put an empty line at the end of the console stack */
+	queue

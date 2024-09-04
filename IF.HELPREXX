@@ -1,0 +1,23 @@
+IF instruction
+
++-----------------------------------------------------------------------------+
+| IF [expression][;] THEN[;] instruction [ELSE[;] instruction]                |
++-----------------------------------------------------------------------------+
+
+The IF instruction evaluates the specified expression, which must result in
+either 0 or 1.  It the expression result is 1, the instruction specified by
+the THEN keyword is executed.  Otherwise, if the ELSE keyword is specified,
+its instruction is executed instead.
+
+IF instructions can be nested, and if they are, the ELSE keyword closes the
+most recent open IF.  Under certain circumstances, using ELSE NOP may be
+necessary to align further ELSEs to the intended IFs.
+
+Examples:
+
+	/* Using indentation to show how IFs and ELSEs are bound */
+	if answer='YES' 
+	  then if name='FRED' 
+			 then say 'OK, Fred.'
+			 else say 'OK.'
+	  else say 'Why not?

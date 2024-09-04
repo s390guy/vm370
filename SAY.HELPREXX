@@ -1,0 +1,13 @@
+SAY instruction
+
++-----------------------------------------------------------------------------+
+| SAY [expression]                                                            |
++-----------------------------------------------------------------------------+
+
+This instruction evaluates the specified expression, which defaults to a null
+string, and displays it on the console.
+
+Examples:
+
+	/* displays '100 divided by 4 => 25' */
+	data=lOO; say data 'divided by 4 =>' data/4

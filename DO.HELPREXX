@@ -1,0 +1,111 @@
+DO instruction
+
++-----------------------------------------------------------------------------+
+| DO [repetitor] [conditional];                                               |
+| [instruction-list]                                                          |
+| END [symbol];                                                               |
+|                                                                             |
+| repetitor is { exprr | FOREVER |                                            |
+|                name = expri [TO exprt] [BY exprb] [FOR exprf]               |
+|                                                                             |
+| conditional is { WHILE exprw | UNTIL expru }                                |
++-----------------------------------------------------------------------------+
+
+The DO instruction groups instructions together. Depending upon the optional
+parts specified, the group may be repeated. A DO instruction may include both a
+repetitor and a conditional.
+
+Repetitors
+	If the FOREVER keyword is specified, the instructions are repeated until a
+	LEAVE or SIGNAL instruction terminates the repetitions.
+
+	If the exprr expression is specified, which must evaluate to a non-negative
+	whole number, the group is repeated that many times.
+
+	If "name = expri" is specified, the specified variable is initialized to
+	the value of the expri expression before the first repetition. When the
+	variable exceeds the expression value, the repetitions stop.
+
+	If the BY keyword is specified, the variable specified by name is
+	incremented by the value of the exprb expression at the start of each
+	repetition, before the variable is compated to exprt. If the BY keyword is
+	omitted, it defaults to incrementing the variable specified by name by 1
+	at the start of each repetition.
+
+	If the FOR keyword is specified, the group is repeated exprf times. exprf
+	must evaluate to a non-negative whole number.
+
+	If the TO keyword is specified, the variable specified by name is compared
+	to the value of the exprt expression at the start of each repetition. If
+	exprt is negative, and the variable is less than exprt, the repetitions
+	are terminated. If exprt is non-negative, and the variable exceeds exprt,
+	the repetitions are terminated.
+
+	All the repetitor expressions are evaluated just once, before the first
+	instruction in the instruction-list, must evaluate to a number, and their
+	values are rounded according to the current NUMERIC DIGITS settings.
+
+Conditionals
+	If the UNTIL keyword is specified, the expru expression,
+	which must evaluate to either 0 or 1, is evaluated at the end of each
+	repetition, and the repetitions are terminated if it is 1. If the WHILE
+	keyword is specified, the exprw expression, which must evaluate to either
+	0 or 1, is evaluated at the start of each repetition, and the repetitions
+	are terminated if it is 1.
+
+Instruction list
+	Any instruction is permitted in the instruction-list.
+
+	If a symbol is specified on the END instruction that closes the group, it
+	must name the name specified in the repetitor. This can be helpful when
+	closing nested DO loops, to ensure each is properly closed.
+
+NOTES:
+	The keywords UNTIL and WHILE are reserved in a DO instruction, and may not
+	be used as symbols in any of the expressions.
+	
+	The keywords BY, FOR, and TO are reserved in a DO repetitor, and may not
+	be used as symbols in any of the repetitor's expressions.
+	
+	The BY, FOR, and TO phrases may be specified in any order within the
+	repetitor, and are evaluated in the order they are written.
+
+Examples:
+
+	/* performs two instructions where only one would otherwise be allowed */
+	if a=3 then do
+	  a=a+2
+	  say 'Smile!'
+	  end
+	
+	/* displays 'Go caving!' at least once, and possibly more */
+	do forever
+	  say 'Go caving!'
+	  if random(5)=1 then leave
+	  end
+
+	/* displays 'Hello' five times */
+	do 5
+	  say 'Hello'
+	  end
+
+	/* displayss 3 , 2, 1, 0, -1, -2 */
+	do i = 3 to -2 by -1
+	  say i
+	  end
+
+	/* displays 0.3, 1.0, 1.7, 2.4, 3.1, 3.8 */
+	x=0.3
+	do y=x to x+4 by 0.7
+	  say y
+	  end
+
+	/* displays 0.3, 1.0, 1.7 */
+	do y=0.3 to 4.3 by 0.7 for 3
+	  say y
+	  end
+
+	/* displays 1, 3, 5, 7 */
+	do i=l to 10 by 2 until i>6
+	  say i
+	  end

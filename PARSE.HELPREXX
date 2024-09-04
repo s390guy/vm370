@@ -1,0 +1,160 @@
+PARSE instruction
+
++-----------------------------------------------------------------------------+
+| PARSE [UPPER] {ARG | AUTHOR | LINEIN | NUMERIC | PULL | SOURCE |            |
+|                VALUE [expression] w1TH | VAR name | VERSION } [template];   |
+|                                                                             |
+| template_list: is a comma-separated list of templates                       |
+|                                                                             |
+| template is: a blank-separated list of triggers and targets                 |
+|                                                                             |
+| trigger is: string | (var) | number | =number | +number | -number | =(var)  |
+|             | -(var) | +(var)                                               |
+|                                                                             |
+| target is: var | .                                                          |
+|                                                                             |
++-----------------------------------------------------------------------------+
+
+This instruction obtains a string from the specified source, separates it into
+a set of substrings, and stores the results in the specified variables.  If the
+ARG keyword is specified, the source is the argument list from the current
+invocation of an internal routine, or from the invocation of the program if no
+routine is active.  If the AUTHOR keyword is specifed, the source is the email
+address of the REXX implementation's original author.  If the LINEIN keyword is
+specifed, the source is the next value returned by the LINEIN() built-in
+function.  If the NUMERIC keyword is specifed, the source is the current
+settings of NUMERIC DIGITS, NUMERIC FUZZ, and NUMERIC FORM, in that order.  If
+the PULL keyword is specified, the source is the next value obtained from the
+console stack.  If the SOURCE keyword is specifed, the source is the REXX
+system name, the current invocation type, and the current filename, separated
+by blanks.  If the VALUE keyword is specifed, the source is the value of the
+expression, which defaults to a null string, and the w1TH keyword is required.
+If the VAR keyword is specifed, the source is the value of the named variable.
+If the VERSION keyword is specifed, the source is the REXX language name, the
+language level, and the release date of the REXX implementation, in DATE('N')
+format (i.e., 'dd Mon yyyy').
+
+The template_list parameter specifes how to separate the source into
+substrings, and how to store the results.  If the source is ARG, the
+template_list can be a set of comma-separated templates, each of which w1ll be
+applied to one of the arguments that the ARG() built-in function would return.
+For any other sources, the first template in the list is executed w1th the
+entire source, and any subsequence templates are executed w1th a null source.
+
+The template parameter is processed in left-to-right order.  Each
+blank-separated token is either a trigger, that specifies a part of the source
+to match, or a target, that specifies what to do w1th the matching substring.
+The parser moves a cursor, starting at 1 (i.e., the leftmost character) of the
+source, as the template is processed.  The template generally alternates
+between triggers and targets, however if there is no trigger specifed between
+two targets, there is an implied trigger that matches 1 or more consecutive
+blanks.  Similarly, if there is no target specifed between two triggers, there
+is an implied "." target.  If the template starts w1th a target, there is an
+implied trigger of "1" preceeding it.
+
+If a trigger is a string, the source beginning at the cursor position is
+searched for an exactly match to the string, and if found, the cursor is moved
+to the character follow1ng the match.  If a trigger is a parenthesized
+variable, the source beginning at the cursor position is searched for an exact
+match to its value, and if found, the cursor is moved to the character
+follow1ng the match.  If the trigger is a whole number, possibly preceeded by
+an equal sign, the cursor is moved to that position.  If the trigger is a whole
+number preceeded by a plus or minus sign, the cursor is moved by that many
+characters right or left, respectively.  If the trigger is a parenthesized
+variable preceeded by an equal sign, its value must be a whole number, and the
+cursor is moved to that position.  If the trigger is a parenthesized variable
+preceeded by a plus or minus sign, its value must be a whole number, and the
+cursor is moved by that many characters right or left, respectively.
+
+If a target is specifed as '.', the substring is discarded, otherw1se it is the
+name of a variable that is set to the substring from the cursor to the cursor's
+next position to its right, or to the end of the source if the next cursor
+position is to the cursor's left.
+
+The ARG and PULL instructions are exact synonyms for PARSE UPPER ARG and PARSE
+UPPER PULL, respectively.  The PARSE LINEIN instruction is an exact synonym for
+PARSE VALUE LINEIN().
+
+NOTE: Most is this HELP file is based on the ANSI standard documentation.
+      Because PARSE is notoriously difficult to understand, this information
+	  needs to be carefully compared to the actual implementation.   This has
+	  not yet been done.
+
+Examples:
+
+	/* v1='This', v2='is', v3='a sentence.' */
+	parse value 'This is a sentence.' w1th vl v2 v3
+
+	/* w1='To be', w2=' or not to be?' */
+	parse value 'To be, or not to be?' w1th w1 ',' w2
+
+	/* w1='To be', w2='or', w3='not', w4='to be?' */
+	parse value 'To be, or not to be?' w1th w1 ',' w2 w3 w4
+
+	/* w1='To be', w2='or', w3='not', w4='to be?' */
+	c=','; parse value 'To be, or not to be?' w1th w1 (c) w2 w3 w4
+
+	/* x1='Flyin', x2='g pigs have w1ngs' */
+	parse value 'Flying pigs have w1ngs' w1th xl 5 x2
+
+	/* x1='Flyin', x2='g pig',x3='s have w1ngs' */
+	parse value 'Flying pigs have w1ngs' w1th xl 5 x2 10 x3
+
+	/* x1='Flyin', x2='g pig',x3='s have w1ngs' */
+	parse value 'Flying pigs have w1ngs' w1th xl 5 x2 +s x3
+
+	/* x1='Flyin', x2='g pig',x3='s have w1ngs' */
+	start=5; length=5; data='Flying pigs have w1ngs'
+	parse var data xl =(start) x2 +(length) x3
+
+	/* first='This is the first string', second=2 */
+	fred('This is the first string' ,2)
+	fred: parse arg first, second
+
+	/* w1='This is  the text which', w2=' I think', rest='  is scanned.' */
+	data='This is  the text which, I think,  is scanned.'
+	parse var data w1 ' , ' w2 ' , ' rest
+
+	/* w1='This is  the text which', w2=' I think', w3='  is scanned.',rest=''
+	*/
+	data='This is  the text which, I think,  is scanned.'
+	parse var data w1 ' , ' w2 ' , ' w3 ' , ' rest	
+
+	/* w1='This', w2='is', w3='the', rest=' text which' */
+	data='This is  the text which, I think,  is scanned.'
+	parse var data w1 w2 w3 rest ' '
+
+	/* w1='This', w2='is', w3='', rest='the text which' */
+	data='This is  the text which, I think,  is scanned.'
+	parse var data w1 ' ' w2 ' ' w3 ' ' rest ' ' .
+
+	/* word4='text */
+	data='This is  the text which, I think,  is scanned.'
+	parse var data ... word4 .
+
+	/* s1='This is  ', s2='the text w', s3='hich I think  is scanned.' */
+	data='This is  the text which, I think,  is scanned.'
+	parse var data sl 10 s2 20 s3
+
+	/* s1='This is  ', s2='the text w', s3='hich I think  is scanned.' */
+	data='This is  the text which, I think,  is scanned.'
+	parse var data s1 =10 s2 =20 s3
+
+	/* w1='345', w2='6789', w3='3456789' */
+	a='123456789'
+	parse var a 3 wl +3 w2 3 w3
+
+	/* w1='Hi mom1', w2='c', w3='Hi mom1' */
+	x='Hi mom1'
+	parse var x 1 w1 1 w2 1 w3
+
+	/* x='c' */
+	data='Abc, def'
+	parse var data ',' . -1 x +1
+
+	/* Ensure options have leading blank & are upper case */
+	parse upper value ' 'opts with ' PR' +1 prword '  '
+
+	/* verb='L', delim='/', string='look for', rest='1 10' */
+	input="L/look for/1 10"
+	parse var input verb 2 delim +1 string (delim) rest

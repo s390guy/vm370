@@ -24,7 +24,14 @@ Variants:
 	ADDRESS [VALUE] expr
 		evaluates the expression and switches to the environment identified
 		by its value.  The VALUE keyword may be ommited if the expression
-		starts with a specifial character.
+		starts with a special character.
+
+Examples:
+
+	address command           /* future commands go to "COMMAND" environment */
+	address cms 'BANANA'      /* tell CMS to search for and run BANANA */
+	editor = 'XEDIT'; address value editor  /* == ADDRESS XEDIT */
+	?editor = 'XEDIT'; address ?editor      /* == ADDRESS XEDIT */
 
 +-----------------------------------------------------------------------------+
 | ADDRESS()                                                                   |

@@ -1,0 +1,50 @@
+CALL instruction
+
++-----------------------------------------------------------------------------+
+| CALL name [expression], [expression] ...                                    |
+| CALL ON condition [NAME trapname]                                           |
+| CALL OFF condition                                                          |
++-----------------------------------------------------------------------------+
+
+NOTE: This implementation of REXX does not currently support the CALL ON and
+CALL OFF instructions.
+
+Call an internal routine, an external routine, or a built-in function.  The
+RESULT special variable is set to the value it returns, or is unset if there is
+no returned value.  The name is either a symbol, or a string literal.  If name
+is a symbol, REXX searches for it as a label in the current program, in a
+case-insensitive manner.  If name is a literal, or if it is a symbol and a
+matching label was not found, REXX performs a case-sensitive search for either
+a built-in function or an external routine.  The names of both built-in and
+routines are in upper case.
+
+The expressions are evaluated in left-to-right order, and their values are
+passed to the called routine as its arguments (see the ARG function and the ARG
+and PARSE ARG instructions).  To omit an argument, code multiple commas (e.g.,
+CALL RTN ARG1,,ARG3).
+
+Internal routines must end their processing with a RETURN instruction, which
+may optionally specify a value to return as the routine's value.  External
+routines
+
+The CALL instruction sets the SIGL special variable to the source line number
+of the CALL instruction.
+
+Most REXX state information is saved by the CALL instruction and restored upon
+return from the routine.  Specifically:
+
+	DO loops and all other code structures are preserved, even if the routine
+	performs a SIGNAL instruction.
+
+	ADDRESS, NUMERIC, and TRACE settings
+
+	Condition information
+
+	The elapsed time clock accessed by the TIME() function.  The clock
+	continues to run during the called routine, but any reset operation affects
+	only the routine, and is undone upon return.
+
+Examples:
+
+	call factorial x  /* internal routine, perhaps */
+	call 'RANDOM'()   /* built-in, even if there is a RANDOM label */

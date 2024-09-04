@@ -10,7 +10,7 @@ an exact shorthand for:
 
 	PARSE UPPER ARG [parse_template]
 
-
+See the PARSE instruction for further information.
 
 +-----------------------------------------------------------------------------+
 | ARG([n[, option]])                                                          |

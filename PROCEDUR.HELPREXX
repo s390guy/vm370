@@ -1,0 +1,29 @@
+PROCEDURE instruction
+
++-----------------------------------------------------------------------------+
+| PROCEDURE [EXPOSE variablelist]                                             |
++-----------------------------------------------------------------------------+
+
+This instruction may be used as the first instruction in an internal routine,
+to isolate some or all of the callers variables from use or alteration by the
+called routine.  If this instruction is not used, an internal routine has full
+access to all variables in its caller.  If the EXPOSE keyword is specified, the
+specified variables are "exposed" (i.e., not isolated), and may be read or
+written by the routine.  The variablelist parameter is a blank-separated list
+of variables and parenthesized variables.  Each variable is exposed in
+left-to-right order.  If a variable is part of a parenthesized variablelist, in
+addition to being exposed, its value is used as a list of additional variables
+to expose, again in left-to-right order.  The additional variable names cannot
+be themselves parenthesized (e.g, PROCEDURE EXPOSE (X) with X='(Y)' is not
+allowed).
+
+NOTE: Exposed variables may be exposed in deeper nested internal routines.
+
+Examples:
+
+	/* displays 1 K a, 1 7 M */
+	j=1; x.1='a'; call somevars; say j k m; exit
+	Somevars: procedure expose j k x.j; say j k x.j; k=7; m=3; return
+
+	/* sets A.1 = 7 in caller, even if A. or A.7 didn't exist */
+	procedure expose j k a. b.; a.1='7'

@@ -1,0 +1,19 @@
+PUSH instruction
+
++-----------------------------------------------------------------------------+
+| PUSH [expression]                                                           |
++-----------------------------------------------------------------------------+
+
+This instruction evaluates the specified expression, which defaults to a null
+string, and prepends it to the console stack LIFO.
+
+The number of lines in the console stack can be determined with the QUEUED()
+built-in function.
+
+Examples:
+
+	/* put 'Soup 4 2' at the start of the console stack */
+	a='Soup; push a 4 2
+
+	/* put an empty line at the start of the console stack */
+	push

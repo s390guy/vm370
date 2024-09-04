@@ -1,0 +1,23 @@
+DROP instruction
+
++-----------------------------------------------------------------------------+
+| DROP item [item] ...                                                        |
++-----------------------------------------------------------------------------+
+
+The DROP instruction resets the specified variables to their unassigned states.
+Each item must either be a name, or a parenthesized list of names.  Each name
+must be a valid REXX symbol, and specifies to reset the variable of the
+specified name.  Each name in a parenthesized list is evaluated, and its value
+specifies to reset the matching-named variable.  Names are processed in
+left-to-right order.  If the name is the stem of a compound variable (e.g.,
+X.), all variables starting with the stem are dropped.  If the name is a
+compound variable (e.g., X.Y), the compound name is used as normal in REXX
+expressions.  If the name specifies a variable passed in through a PROCEDURE
+EXPOSE instruction, the variable is dropped in the caller's context as well as
+in the callee's.
+
+Examples:
+
+	J=4; drop a x. 3 x. j           /* resets "A", "X.3", and "X.4" */
+	MyList='a b c'; drop (mylist) d /* resets "A", "B", "C", and "D" */
+	drop x.                         /* resets all "X." */
