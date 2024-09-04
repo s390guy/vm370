@@ -12,5 +12,5 @@ or 0 if not.  See HELP CMSSET for the meaning of these flags.
 
 Examples:
 
-	CMSFLAG('ABBREV') == 1  /* probably */
-	CMSFLAG('DOS')    == 0  /* probably */
+    CMSFLAG('ABBREV') == 1  /* probably */
+    CMSFLAG('DOS')    == 0  /* probably */

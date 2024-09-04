@@ -22,14 +22,14 @@ OTHERWISE clause, an error occurs.
 
 Examples:
 
-	Testfile myfile
-	select
-	  when rc=O then do
-	    Erase myfile
-	    say 'File' myfile 'existed, now erased'
-	    end
-	  when rc=28 | rc=36 then say myfile 'does not exist'
-	  otherwise
-	    say 'Unexpected return code "'re'" from TESTFILE'
-	    exit re
-	  end /* Select */
+    Testfile myfile
+    select
+      when rc=O then do
+        Erase myfile
+        say 'File' myfile 'existed, now erased'
+        end
+      when rc=28 | rc=36 then say myfile 'does not exist'
+      otherwise
+        say 'Unexpected return code "'re'" from TESTFILE'
+        exit re
+      end /* Select */

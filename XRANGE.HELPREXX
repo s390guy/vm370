@@ -11,7 +11,7 @@ characters returned will wrap from 'FF'x back to '00'x.
 
 Examples:
 
-	XRANGE('a','f')     == 'abcdef'
-	XRANGE('03'x,'07'x) == '0304050607'x
-	XRANGE(,'04'x)      == '0001020304'x
-	XRANGE('FE'x,'02'x) == 'FEFF000102'x
+    XRANGE('a','f')     == 'abcdef'
+    XRANGE('03'x,'07'x) == '0304050607'x
+    XRANGE(,'04'x)      == '0001020304'x
+    XRANGE('FE'x,'02'x) == 'FEFF000102'x

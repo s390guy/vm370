@@ -8,4 +8,4 @@ Returns the terminal line limit.
 
 Examples:
 
-	LINESIZE() == 80  /* typically */
+    LINESIZE() == 80  /* typically */

@@ -17,9 +17,9 @@ as 1.
 
 Examples:
 
-	CHAROUT(mine,'Hi')   == 0    /* normally */
-	CHAROUT(mine,'Hi',5) == 0    /* normally */
-	CHAROUT(mine,,6)     == 0    /* now at char 6 */
-	CHAROUT(mine)        == 0    /* end of stream */
-	CHAROUT(,'Hi')       == 0    /* normally */
-	CHAROUT(,'Hello')    == 2    /* maybe */
+    CHAROUT(mine,'Hi')   == 0    /* normally */
+    CHAROUT(mine,'Hi',5) == 0    /* normally */
+    CHAROUT(mine,,6)     == 0    /* now at char 6 */
+    CHAROUT(mine)        == 0    /* end of stream */
+    CHAROUT(,'Hi')       == 0    /* normally */
+    CHAROUT(,'Hello')    == 2    /* maybe */

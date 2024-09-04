@@ -12,5 +12,5 @@ WORD(string, pos) is exactly equivalent to SUBWORD(string, pos, 1).
 
 Examples:
 
-	WORD('Now is the time',3) == 'the'
-	WORD('Now is the time',5) == ''
+    WORD('Now is the time',3) == 'the'
+    WORD('Now is the time',5) == ''

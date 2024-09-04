@@ -15,8 +15,8 @@ available will be returned.
 
 Examples:
 
-	LINEIN(mine)     == 'MFC'    /* perhaps */
-	LINEIN(mine,5)   == 'Line5'  /* perhaps */
-	LINEIN(mine,5,0) == ''
-	LINEIN(mine)     == 'Line5'  /* after last */
-	LINEIN()         == 'Hello'  /* perhaps */
+    LINEIN(mine)     == 'MFC'    /* perhaps */
+    LINEIN(mine,5)   == 'Line5'  /* perhaps */
+    LINEIN(mine,5,0) == ''
+    LINEIN(mine)     == 'Line5'  /* after last */
+    LINEIN()         == 'Hello'  /* perhaps */

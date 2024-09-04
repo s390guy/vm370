@@ -10,31 +10,31 @@ the optional length argument.
 
 If the length is specified as 0, the value is always 0.
 
-	Examples:
+    Examples:
 
-		C2D('003l'x,0) == 0
+        C2D('003l'x,0) == 0
 
 If the length is ommitted, the string is interpreted as an unsigned number.
 
-	Examples:
+    Examples:
 
-		C2D('09'x)   == 9
-		C2D('8l'x)   == 129
-		C2D('a')     == 129
-		C2D('FF8l'x) == 65409
-		C2D (' ')    == 0
+        C2D('09'x)   == 9
+        C2D('8l'x)   == 129
+        C2D('a')     == 129
+        C2D('FF8l'x) == 65409
+        C2D (' ')    == 0
 
 If the length is specified, the left-most bit of the string is taken as the sign,
-with 0 indicating a positive number and 1 negative.  The rest of the string is 
-either left-extended to the specified number of characters with '00'x, or 
+with 0 indicating a positive number and 1 negative.  The rest of the string is
+either left-extended to the specified number of characters with '00'x, or
 truncated if it is smaller than the string.
 
-	Examples:
+    Examples:
 
-		C2D('8l'x,l)   == -127
-		C2D('8l'x,2)   == 129
-		C2D('FF8l'x,2) == -127
-		C2D('FF8l'x,l) == -127
-		C2D('FF7F'x,l) == 127
-		C2D('F081'x,2) == -3967
-		C2D('F08l'x,l) == -127
+        C2D('8l'x,l)   == -127
+        C2D('8l'x,2)   == 129
+        C2D('FF8l'x,2) == -127
+        C2D('FF8l'x,l) == -127
+        C2D('FF7F'x,l) == 127
+        C2D('F081'x,2) == -3967
+        C2D('F08l'x,l) == -127

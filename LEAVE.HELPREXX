@@ -13,18 +13,18 @@ terminated.
 
 Examples:
 
-	/* displays 1, 2, 3 */
-	do i=l to 5
-	  say i
-	  if i=3 then leave
-	  end
+    /* displays 1, 2, 3 */
+    do i=l to 5
+      say i
+      if i=3 then leave
+      end
 
-	/* displays 1, 2, 3, 2, 4, 6, 3, 6, 9 */
-	do i=1 to 3
-	  do j=1 to 2
-	    do k=1 to 5
-	      say i*j*k
-	      if k=3 then leave j
-	      end
-	    end
-	  end
+    /* displays 1, 2, 3, 2, 4, 6, 3, 6, 9 */
+    do i=1 to 3
+      do j=1 to 2
+        do k=1 to 5
+          say i*j*k
+          if k=3 then leave j
+          end
+        end
+      end

@@ -53,6 +53,6 @@ TRACE instruction.
 
 Example:
 
-	TRACE()    == 'N'  /* normally */
-	TRACE('I') == 'N'
-	TRACE('A') == 'I'  /* afterwards */
+    TRACE()    == 'N'  /* normally */
+    TRACE('I') == 'N'
+    TRACE('A') == 'I'  /* afterwards */

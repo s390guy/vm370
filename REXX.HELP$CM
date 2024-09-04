@@ -1,12 +1,12 @@
 REXX Overview
- 
+
 The VM/370 Community Edition features an integrated version of BREXX.  REXX
 procedures have a filetype of EXEC, and must begin with "/* on the first line.
 
 For details on any of the instructions or functions below, type:
 
 	HELP name REXX
- 
+
 The following instructions are supported (except for those marked with **):
    ADDRESS CMS
    ADDRESS COMMAND
@@ -36,7 +36,7 @@ The following instructions are supported (except for those marked with **):
 ** SIGNAL ON condition [NAME handler]
 ** SIGNAL OFF condition
    TRACE [VALUE] expression
- 
+
 The following built-in functions are provided:
    ABBREV(string1, string2, [length])
    ABS(number)
@@ -110,14 +110,14 @@ The following built-in functions are provided:
    X2B(hex-string) (not working)
    X2C(hex-string)
    X2D(hex-string, [length])
- 
+
 Usage Notes:
- 
+
 1.  Please report any problems you encounter to the H390-VM group or
     open an issue on :
     https://github.com/s390guy/vm370/issues
     Try out REXXTRY EXEC!
- 
+
 2.  Note that loading REXX and the GCCLIB runtime (required for REXX) into
     memory consumes more than a quarter megabyte of memory. You may want to
     run in a larger virtual machne than you previously used. You can remove

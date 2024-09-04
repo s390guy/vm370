@@ -1,12 +1,12 @@
 PULL instruction
 
 +-----------------------------------------------------------------------------+
-| PULL [parse_template]                   	                                  |
+| PULL [parse_template]                                                         |
 +-----------------------------------------------------------------------------+
 
 Read a string from the console stack, translate it to upper case, and parse it.
 This is an exact shorthand for:
 
-	PARSE UPPER PULL [parse_template]
+    PARSE UPPER PULL [parse_template]
 
 See the PARSE instruction for further information.

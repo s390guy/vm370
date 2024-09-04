@@ -16,7 +16,7 @@ allowing for predictable sequences of results from later calls to RANDOM().
 Example:
 
 /* Possible results might be: */
-	RANDOM()       == 305
-	RANDOM(5,8)    == 7
-	RANDOM(,,1989) == 420  /* reproducible*/
-	RANDOM(2)      == 0
+    RANDOM()       == 305
+    RANDOM(5,8)    == 7
+    RANDOM(,,1989) == 420  /* reproducible*/
+    RANDOM(2)      == 0

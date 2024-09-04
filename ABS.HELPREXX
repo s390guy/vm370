@@ -9,5 +9,5 @@ current NUMERIC settings.
 
 Examples:
 
-	ABS('12.3')             == 12.3
-	ABS ( ' - 0 . 3 0 7 ' ) == 0.307
+    ABS('12.3')             == 12.3
+    ABS ( ' - 0 . 3 0 7 ' ) == 0.307

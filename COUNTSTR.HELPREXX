@@ -8,4 +8,4 @@ Returns the number of occurances of the first argument in the second argument.
 
 Example:
 
-	COUNTSTR('y','xyzzy') == 2
+    COUNTSTR('y','xyzzy') == 2

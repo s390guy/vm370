@@ -20,7 +20,7 @@ The function does the same thing regardless of which spelling is used.
 
 Examples:
 
-	CENTRE(abc, 7)            == '  ABC  '
-	CENTRE(abc,8, '-')        == '--ABC---'
-	CENTER('The blue sky' ,8) == 'e blue s'
-	CENTER('The blue sky' ,7) == 'e blue '
+    CENTRE(abc, 7)            == '  ABC  '
+    CENTRE(abc,8, '-')        == '--ABC---'
+    CENTER('The blue sky' ,8) == 'e blue s'
+    CENTER('The blue sky' ,7) == 'e blue '

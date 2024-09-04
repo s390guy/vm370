@@ -53,13 +53,13 @@ NOTE: DATE('B') // 7 calculates the day number within the current week,
 
 Examples:
 
-	DATE()    == '27 Aug 1989'
-	DATE('B') == 726340
-	DATE('D') == 239
-	DATE('E') == '27/08/89'
-	DATE('M') == 'August'
-	DATE('N') == '27 Aug 1989'
-	DATE('O') == '89/08/27'
-	DATE('s') == '19890827'
-	DATE('u') == '08/27/89'
-	DATE('w') == 'Saturday'
+    DATE()    == '27 Aug 1989'
+    DATE('B') == 726340
+    DATE('D') == 239
+    DATE('E') == '27/08/89'
+    DATE('M') == 'August'
+    DATE('N') == '27 Aug 1989'
+    DATE('O') == '89/08/27'
+    DATE('s') == '19890827'
+    DATE('u') == '08/27/89'
+    DATE('w') == 'Saturday'

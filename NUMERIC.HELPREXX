@@ -4,29 +4,29 @@ NUMERIC instruction
 | NUMERIC { DIGITS [expr1]                                                    |
 |         | FORM { SCIENTIFIC | ENGINEERING | [VALUE] expr2                   |
 |         | FUZZ [expr3]                                                      |
-|         }                                                                   |0
+|         }                                                                   |
 +-----------------------------------------------------------------------------+
 
-Specifies how arithmetic operations are carried out.  
+Specifies how arithmetic operations are carried out.
 
 Variants:
 
-	NUMERIC DIGITS [expr1]
-		specifies that arithmetic values should be rounded to the specified
-		number of significant digits.  The expression defaults to 9 if omitted.
+    NUMERIC DIGITS [expr1]
+        specifies that arithmetic values should be rounded to the specified
+        number of significant digits.  The expression defaults to 9 if omitted.
 
-	NUMERIC FORM SCIENTIFIC
-		specifies that numbers exceeding NUMERIC DIGITS should be displayed in
-		"scientific" exponential form, with one non-zero digit before the
-		decimal point (e.g., "1.234e10" for 12,340,000,000).
+    NUMERIC FORM SCIENTIFIC
+        specifies that numbers exceeding NUMERIC DIGITS should be displayed in
+        "scientific" exponential form, with one non-zero digit before the
+        decimal point (e.g., "1.234e10" for 12,340,000,000).
 
-	NUMERIC FORM ENGINEERING
-		specifies that numbers exceeding NUMERIC DIGITS should be displayed in
-		"engineering" exponential form, with the power of 10 always being a
-		multiple of three digits (e.g., "12.34e9" for 12,340,000,000).
+    NUMERIC FORM ENGINEERING
+        specifies that numbers exceeding NUMERIC DIGITS should be displayed in
+        "engineering" exponential form, with the power of 10 always being a
+        multiple of three digits (e.g., "12.34e9" for 12,340,000,000).
 
-	NUMERIC [VALUE] expr
-		specifies the numeric form to be the value of the expression, which 
-		must evaluate to either 'SCIENTIFIC' or 'ENGINEERING'.  The VALUE
-		keyword may be ommited if the expression starts with a specifial
-		character.
+    NUMERIC [VALUE] expr
+        specifies the numeric form to be the value of the expression, which
+        must evaluate to either 'SCIENTIFIC' or 'ENGINEERING'.  The VALUE
+        keyword may be ommited if the expression starts with a specifial
+        character.

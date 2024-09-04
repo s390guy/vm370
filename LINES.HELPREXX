@@ -11,6 +11,6 @@ be determined, 1 is returned.
 
 Examples:
 
-	LINES(myfile)  == 7  /• perhaps */
-	LINES(nonfile) == 0   /* perhaps */
-	LINES()        == 2  /* perhaps •/
+    LINES(myfile)  == 7  /• perhaps */
+    LINES(nonfile) == 0   /* perhaps */
+    LINES()        == 2  /* perhaps •/

@@ -12,8 +12,8 @@ The name, if specified must match the variable named on the DO instruction.
 
 Examples:
 
-	/* displays 1, 2, 4, 5 */
-	do i=l to 5
-	  say i
-	  if i=3 then iterate
-	  end
+    /* displays 1, 2, 4, 5 */
+    do i=l to 5
+      say i
+      if i=3 then iterate
+      end

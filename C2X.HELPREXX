@@ -10,5 +10,5 @@ representation in hexadecimal.
 
 Examples:
 
-	C2X('72s')   == 'F7F2A2'
-	C2X('0123'x) == '0123'
+    C2X('72s')   == 'F7F2A2'
+    C2X('0123'x) == '0123'

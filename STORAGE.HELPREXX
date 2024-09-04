@@ -13,6 +13,6 @@ arguments are decimal numbers.  The data argument is a string.
 
 Examples:
 
-	STORAGE(X2D('220'),64,'MY') == 'VM/370 Community Edition'  /* perhaps */
-	STORAGE(X2D('220'),64)      == 'MY/370 Community Edition'  /* afterwards */
-	STORAGE(628,12)             == '5749DMS00   '
+    STORAGE(X2D('220'),64,'MY') == 'VM/370 Community Edition'  /* perhaps */
+    STORAGE(X2D('220'),64)      == 'MY/370 Community Edition'  /* afterwards */
+    STORAGE(628,12)             == '5749DMS00   '

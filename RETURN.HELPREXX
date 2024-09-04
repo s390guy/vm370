@@ -13,5 +13,5 @@ equivalent to EXIT.
 
 Examples:
 
-	return
-	return 'Banana'
+    return
+    return 'Banana'

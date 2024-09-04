@@ -14,9 +14,9 @@ available, the NOTREADY condition is raised.
 
 Examples:
 
-	CHARIN(mine,1,3) == 'MFC'    /* perhaps */
-	CHARIN(mine,1,0) == ''       /* now at start */
-	CHARIN(mine)     == 'M'      /* after last */
-	CHARIN(mine,,2)  == 'FC'     /* after last */
-	CHARIN()         == 'a'      /* perhaps */
-	CHARIN(,,5)      == 'abc d'  /* perhaps */
+    CHARIN(mine,1,3) == 'MFC'    /* perhaps */
+    CHARIN(mine,1,0) == ''       /* now at start */
+    CHARIN(mine)     == 'M'      /* after last */
+    CHARIN(mine,,2)  == 'FC'     /* after last */
+    CHARIN()         == 'a'      /* perhaps */
+    CHARIN(,,5)      == 'abc d'  /* perhaps */

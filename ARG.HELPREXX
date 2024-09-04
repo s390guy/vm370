@@ -1,14 +1,14 @@
 ARG instruction and function
 
 +-----------------------------------------------------------------------------+
-| ARG [parse_template]                   	                                  |
+| ARG [parse_template]                                                        |
 +-----------------------------------------------------------------------------+
 
-Parse the argument string to an EXEC or a routine within an EXEC.  The 
-argument string's value is translated to upper case before parsing.  This is 
+Parse the argument string to an EXEC or a routine within an EXEC.  The
+argument string's value is translated to upper case before parsing.  This is
 an exact shorthand for:
 
-	PARSE UPPER ARG [parse_template]
+    PARSE UPPER ARG [parse_template]
 
 See the PARSE instruction for further information.
 
@@ -16,41 +16,41 @@ See the PARSE instruction for further information.
 | ARG([n[, option]])                                                          |
 +-----------------------------------------------------------------------------+
 
-Returns information about, or the content of, the argument string passed to 
+Returns information about, or the content of, the argument string passed to
 an EXEC or to a routine within an EXEC.
 
 Variants:
 
-	ARG()
-		returns the number of arguments.
-	
-	ARG(n)
-		returns the value of the nth argument, counting from 1.
-	
-	ARG(n, option)
-		returns an indication of whether the nth argument exists, depending
-		upon the option value.  When the upper-cased first character of the
-		option is 'E', the function returns 1 if the argument was specified
-		(even as an empty string), and 0 otherwise.  When 'O', the function
-		returns 1 if the argument was omitted, and 0 otherwise.
+    ARG()
+        returns the number of arguments.
+
+    ARG(n)
+        returns the value of the nth argument, counting from 1.
+
+    ARG(n, option)
+        returns an indication of whether the nth argument exists, depending
+        upon the option value.  When the upper-cased first character of the
+        option is 'E', the function returns 1 if the argument was specified
+        (even as an empty string), and 0 otherwise.  When 'O', the function
+        returns 1 if the argument was omitted, and 0 otherwise.
 
 Examples:
 
-	/* Following "Call name;" (no arguments) */
-	ARG()       == 0
-	ARG(l)      == ''
-	ARG(2)      == ''
-	ARG(1, 'e') == 0
-	ARG(l, 'o') == 1
+    /* Following "Call name;" (no arguments) */
+    ARG()       == 0
+    ARG(l)      == ''
+    ARG(2)      == ''
+    ARG(1, 'e') == 0
+    ARG(l, 'o') == 1
 
-	/* Following "Call name 1,, 2;" */
-	ARG()        == 3
-	ARG(1)       == 1
-	ARG(2)       == ''
-	ARG(3)       == 2
-	ARG(n)       == '' /* for n>=4 */
-	ARG (1, 'e') == 1
-	ARG (2, 'E') == 0
-	ARG (2, 'O') == 1
-	ARG(3, 'o')  == 0
-	ARG(4, 'o')  == 1
+    /* Following "Call name 1,, 2;" */
+    ARG()        == 3
+    ARG(1)       == 1
+    ARG(2)       == ''
+    ARG(3)       == 2
+    ARG(n)       == '' /* for n>=4 */
+    ARG (1, 'e') == 1
+    ARG (2, 'E') == 0
+    ARG (2, 'O') == 1
+    ARG(3, 'o')  == 0
+    ARG(4, 'o')  == 1

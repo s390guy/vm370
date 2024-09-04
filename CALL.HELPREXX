@@ -33,18 +33,18 @@ of the CALL instruction.
 Most REXX state information is saved by the CALL instruction and restored upon
 return from the routine.  Specifically:
 
-	DO loops and all other code structures are preserved, even if the routine
-	performs a SIGNAL instruction.
+    DO loops and all other code structures are preserved, even if the routine
+    performs a SIGNAL instruction.
 
-	ADDRESS, NUMERIC, and TRACE settings
+    ADDRESS, NUMERIC, and TRACE settings
 
-	Condition information
+    Condition information
 
-	The elapsed time clock accessed by the TIME() function.  The clock
-	continues to run during the called routine, but any reset operation affects
-	only the routine, and is undone upon return.
+    The elapsed time clock accessed by the TIME() function.  The clock
+    continues to run during the called routine, but any reset operation affects
+    only the routine, and is undone upon return.
 
 Examples:
 
-	call factorial x  /* internal routine, perhaps */
-	call 'RANDOM'()   /* built-in, even if there is a RANDOM label */
+    call factorial x  /* internal routine, perhaps */
+    call 'RANDOM'()   /* built-in, even if there is a RANDOM label */

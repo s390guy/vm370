@@ -77,84 +77,84 @@ PARSE VALUE LINEIN().
 
 NOTE: Most is this HELP file is based on the ANSI standard documentation.
       Because PARSE is notoriously difficult to understand, this information
-	  needs to be carefully compared to the actual implementation.   This has
-	  not yet been done.
+      needs to be carefully compared to the actual implementation.   This has
+      not yet been done.
 
 Examples:
 
-	/* v1='This', v2='is', v3='a sentence.' */
-	parse value 'This is a sentence.' w1th vl v2 v3
+    /* v1='This', v2='is', v3='a sentence.' */
+    parse value 'This is a sentence.' w1th vl v2 v3
 
-	/* w1='To be', w2=' or not to be?' */
-	parse value 'To be, or not to be?' w1th w1 ',' w2
+    /* w1='To be', w2=' or not to be?' */
+    parse value 'To be, or not to be?' w1th w1 ',' w2
 
-	/* w1='To be', w2='or', w3='not', w4='to be?' */
-	parse value 'To be, or not to be?' w1th w1 ',' w2 w3 w4
+    /* w1='To be', w2='or', w3='not', w4='to be?' */
+    parse value 'To be, or not to be?' w1th w1 ',' w2 w3 w4
 
-	/* w1='To be', w2='or', w3='not', w4='to be?' */
-	c=','; parse value 'To be, or not to be?' w1th w1 (c) w2 w3 w4
+    /* w1='To be', w2='or', w3='not', w4='to be?' */
+    c=','; parse value 'To be, or not to be?' w1th w1 (c) w2 w3 w4
 
-	/* x1='Flyin', x2='g pigs have w1ngs' */
-	parse value 'Flying pigs have w1ngs' w1th xl 5 x2
+    /* x1='Flyin', x2='g pigs have w1ngs' */
+    parse value 'Flying pigs have w1ngs' w1th xl 5 x2
 
-	/* x1='Flyin', x2='g pig',x3='s have w1ngs' */
-	parse value 'Flying pigs have w1ngs' w1th xl 5 x2 10 x3
+    /* x1='Flyin', x2='g pig',x3='s have w1ngs' */
+    parse value 'Flying pigs have w1ngs' w1th xl 5 x2 10 x3
 
-	/* x1='Flyin', x2='g pig',x3='s have w1ngs' */
-	parse value 'Flying pigs have w1ngs' w1th xl 5 x2 +s x3
+    /* x1='Flyin', x2='g pig',x3='s have w1ngs' */
+    parse value 'Flying pigs have w1ngs' w1th xl 5 x2 +s x3
 
-	/* x1='Flyin', x2='g pig',x3='s have w1ngs' */
-	start=5; length=5; data='Flying pigs have w1ngs'
-	parse var data xl =(start) x2 +(length) x3
+    /* x1='Flyin', x2='g pig',x3='s have w1ngs' */
+    start=5; length=5; data='Flying pigs have w1ngs'
+    parse var data xl =(start) x2 +(length) x3
 
-	/* first='This is the first string', second=2 */
-	fred('This is the first string' ,2)
-	fred: parse arg first, second
+    /* first='This is the first string', second=2 */
+    fred('This is the first string' ,2)
+    fred: parse arg first, second
 
-	/* w1='This is  the text which', w2=' I think', rest='  is scanned.' */
-	data='This is  the text which, I think,  is scanned.'
-	parse var data w1 ' , ' w2 ' , ' rest
+    /* w1='This is  the text which', w2=' I think', rest='  is scanned.' */
+    data='This is  the text which, I think,  is scanned.'
+    parse var data w1 ' , ' w2 ' , ' rest
 
-	/* w1='This is  the text which', w2=' I think', w3='  is scanned.',rest=''
-	*/
-	data='This is  the text which, I think,  is scanned.'
-	parse var data w1 ' , ' w2 ' , ' w3 ' , ' rest	
+    /* w1='This is  the text which', w2=' I think', w3='  is scanned.',rest=''
+    */
+    data='This is  the text which, I think,  is scanned.'
+    parse var data w1 ' , ' w2 ' , ' w3 ' , ' rest    
 
-	/* w1='This', w2='is', w3='the', rest=' text which' */
-	data='This is  the text which, I think,  is scanned.'
-	parse var data w1 w2 w3 rest ' '
+    /* w1='This', w2='is', w3='the', rest=' text which' */
+    data='This is  the text which, I think,  is scanned.'
+    parse var data w1 w2 w3 rest ' '
 
-	/* w1='This', w2='is', w3='', rest='the text which' */
-	data='This is  the text which, I think,  is scanned.'
-	parse var data w1 ' ' w2 ' ' w3 ' ' rest ' ' .
+    /* w1='This', w2='is', w3='', rest='the text which' */
+    data='This is  the text which, I think,  is scanned.'
+    parse var data w1 ' ' w2 ' ' w3 ' ' rest ' ' .
 
-	/* word4='text */
-	data='This is  the text which, I think,  is scanned.'
-	parse var data ... word4 .
+    /* word4='text */
+    data='This is  the text which, I think,  is scanned.'
+    parse var data ... word4 .
 
-	/* s1='This is  ', s2='the text w', s3='hich I think  is scanned.' */
-	data='This is  the text which, I think,  is scanned.'
-	parse var data sl 10 s2 20 s3
+    /* s1='This is  ', s2='the text w', s3='hich I think  is scanned.' */
+    data='This is  the text which, I think,  is scanned.'
+    parse var data sl 10 s2 20 s3
 
-	/* s1='This is  ', s2='the text w', s3='hich I think  is scanned.' */
-	data='This is  the text which, I think,  is scanned.'
-	parse var data s1 =10 s2 =20 s3
+    /* s1='This is  ', s2='the text w', s3='hich I think  is scanned.' */
+    data='This is  the text which, I think,  is scanned.'
+    parse var data s1 =10 s2 =20 s3
 
-	/* w1='345', w2='6789', w3='3456789' */
-	a='123456789'
-	parse var a 3 wl +3 w2 3 w3
+    /* w1='345', w2='6789', w3='3456789' */
+    a='123456789'
+    parse var a 3 wl +3 w2 3 w3
 
-	/* w1='Hi mom1', w2='c', w3='Hi mom1' */
-	x='Hi mom1'
-	parse var x 1 w1 1 w2 1 w3
+    /* w1='Hi mom1', w2='c', w3='Hi mom1' */
+    x='Hi mom1'
+    parse var x 1 w1 1 w2 1 w3
 
-	/* x='c' */
-	data='Abc, def'
-	parse var data ',' . -1 x +1
+    /* x='c' */
+    data='Abc, def'
+    parse var data ',' . -1 x +1
 
-	/* Ensure options have leading blank & are upper case */
-	parse upper value ' 'opts with ' PR' +1 prword '  '
+    /* Ensure options have leading blank & are upper case */
+    parse upper value ' 'opts with ' PR' +1 prword '  '
 
-	/* verb='L', delim='/', string='look for', rest='1 10' */
-	input="L/look for/1 10"
-	parse var input verb 2 delim +1 string (delim) rest
+    /* verb='L', delim='/', string='look for', rest='1 10' */
+    input="L/look for/1 10"
+    parse var input verb 2 delim +1 string (delim) rest

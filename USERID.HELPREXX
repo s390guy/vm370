@@ -8,4 +8,4 @@ Returns the current logged-in userid.
 
 Example:
 
-	USERID() == 'MAINT'  /* perhaps */
+    USERID() == 'MAINT'  /* perhaps */

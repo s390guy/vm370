@@ -13,19 +13,19 @@ If the selector specifes an external variable pool, the value of name does not
 need to be a valid REXX symbol.
 
 CMS/370 REXX supports the following external variable pools:
-	???
+    ???
 
 Examples:
 
-	/* After: Drop A3; A33=7; K=3; fred='K'; list.5='?' */
-	VALUE('a'k)     == 'A3'
-	VALUE('a'k||k)  == '7'
-	VALUE('fred')   == 'K'  /* looks up FRED */
-	VALUE(fred)     == '3'  /* looks up K */
-	VALUE(fred,5)   == '3'  /* and sets K=5 */
-	VALUE(fred)     == '5'
-	VALUE('LIST.'k) == '?'  /* looks up LIST.5 */
-	VALUE('toy','Buxton','SHARED') == 'Calistoga'  /* Looks up and sets
-	                                                  "toy" in SHARED pool */
-	VALUE('toy',,'SHARED') == 'Buxton'    /* Looks up "toy" in SHARED pool */
-	VALUE('toy',,'SYSTEM') == 'Bath Spa'  /* Looks up "toy" in SYSTEM pool */
+    /* After: Drop A3; A33=7; K=3; fred='K'; list.5='?' */
+    VALUE('a'k)     == 'A3'
+    VALUE('a'k||k)  == '7'
+    VALUE('fred')   == 'K'  /* looks up FRED */
+    VALUE(fred)     == '3'  /* looks up K */
+    VALUE(fred,5)   == '3'  /* and sets K=5 */
+    VALUE(fred)     == '5'
+    VALUE('LIST.'k) == '?'  /* looks up LIST.5 */
+    VALUE('toy','Buxton','SHARED') == 'Calistoga'  /* Looks up and sets
+                                                      "toy" in SHARED pool */
+    VALUE('toy',,'SHARED') == 'Buxton'    /* Looks up "toy" in SHARED pool */
+    VALUE('toy',,'SYSTEM') == 'Bath Spa'  /* Looks up "toy" in SYSTEM pool */

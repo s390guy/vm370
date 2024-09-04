@@ -8,5 +8,5 @@ Returns the length of the string.
 
 Examples:
 
-	LENGTH('abcdefgh') == 8
-	LENGTH('')         == 0
+    LENGTH('abcdefgh') == 8
+    LENGTH('')         == 0

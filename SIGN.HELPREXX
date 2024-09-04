@@ -9,6 +9,6 @@ Returns -1 if the number is less than 0, 0 if it is 0, or 1 if it is more than
 
 Examples:
 
-	SIGN('l2.3')    == 1
-	SIGN(0.0)       == 0
-	SIGN(' -0.307') == -1
+    SIGN('l2.3')    == 1
+    SIGN(0.0)       == 0
+    SIGN(' -0.307') == -1

@@ -21,9 +21,9 @@ NOTE: Exposed variables may be exposed in deeper nested internal routines.
 
 Examples:
 
-	/* displays 1 K a, 1 7 M */
-	j=1; x.1='a'; call somevars; say j k m; exit
-	Somevars: procedure expose j k x.j; say j k x.j; k=7; m=3; return
+    /* displays 1 K a, 1 7 M */
+    j=1; x.1='a'; call somevars; say j k m; exit
+    Somevars: procedure expose j k x.j; say j k x.j; k=7; m=3; return
 
-	/* sets A.1 = 7 in caller, even if A. or A.7 didn't exist */
-	procedure expose j k a. b.; a.1='7'
+    /* sets A.1 = 7 in caller, even if A. or A.7 didn't exist */
+    procedure expose j k a. b.; a.1='7'

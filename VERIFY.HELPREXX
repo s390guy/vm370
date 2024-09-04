@@ -21,9 +21,9 @@ Only the first character of option is examined, and it is uppercased first.
 
 Examples:
 
-	VERIFY('123','1234567890')          == 0
-	VERIFY('1Z3','1234567890')          == 2
-	VERIFY('AB4T','1234567890','M')     == 3
-	VERIFY('1P3Q4','1234567890',3)      == 4
-	VERIFY('ABCDE','',,3)               == 3
-	VERIFY('AB3CD5','1234567890','M',4) == 6
+    VERIFY('123','1234567890')          == 0
+    VERIFY('1Z3','1234567890')          == 2
+    VERIFY('AB4T','1234567890','M')     == 3
+    VERIFY('1P3Q4','1234567890',3)      == 4
+    VERIFY('ABCDE','',,3)               == 3
+    VERIFY('AB3CD5','1234567890','M',4) == 6

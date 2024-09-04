@@ -13,4 +13,4 @@ REXX behaves as if an "EXIT;" was encountered.
 
 Examples:
 
-	j=3; exit j*4  /* exits with the string '12' */
+    j=3; exit j*4  /* exits with the string '12' */

@@ -25,14 +25,14 @@ X - Hexadecimal (i.e., composed only of 'a'-'f', 'A'-'F', and '0'-'9', with
 
 Examples:
 
-	DATATYPE(' 12 ')      == 'NUM'
-	DATATYPE('')          == 'CHAR'
-	DATATYPE('l23*')      == 'CHAR'
-	DATATYPE('l2.3','N')  == 1
-	DATATYPE('12.3','W')  == 0
-	DATATYPE('Fred','M')  == 1
-	DATATYPE('','M')      == 0
-	DATATYPE('Minx','L')  == 0
-	DATATYPE('3d?','s')   == 1
-	DATATYPE('BCd3','X')  == 1
-	DATATYPE('BC d3','X') == 1
+    DATATYPE(' 12 ')      == 'NUM'
+    DATATYPE('')          == 'CHAR'
+    DATATYPE('l23*')      == 'CHAR'
+    DATATYPE('l2.3','N')  == 1
+    DATATYPE('12.3','W')  == 0
+    DATATYPE('Fred','M')  == 1
+    DATATYPE('','M')      == 0
+    DATATYPE('Minx','L')  == 0
+    DATATYPE('3d?','s')   == 1
+    DATATYPE('BCd3','X')  == 1
+    DATATYPE('BC d3','X') == 1

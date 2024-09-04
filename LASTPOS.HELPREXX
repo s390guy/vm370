@@ -11,6 +11,6 @@ null string, the position is returned as 0.
 
 Examples:
 
-	LASTPOS(' ' , 'abc def ghi')     == 8
-	LASTPOS(' ' , 'abcdefghi')       == 0
-	LASTPOS(' ' , 'abc def ghi' , 7) == 4
+    LASTPOS(' ' , 'abc def ghi')     == 8
+    LASTPOS(' ' , 'abcdefghi')       == 0
+    LASTPOS(' ' , 'abc def ghi' , 7) == 4

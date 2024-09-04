@@ -8,6 +8,6 @@ Returns the string with the characters in reversed order.
 
 Examples:
 
-	REVERSE('ABc .')       == '. cBA'
-	REVERSE(' XYZ')        == ' ZYX'
-	REVERSE('Tranquility') == 'ytiliuqnarT'
+    REVERSE('ABc .')       == '. cBA'
+    REVERSE(' XYZ')        == ' ZYX'
+    REVERSE('Tranquility') == 'ytiliuqnarT'

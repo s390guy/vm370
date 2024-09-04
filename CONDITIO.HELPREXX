@@ -18,12 +18,12 @@ or completely ignored).
 
 NOTE: The condition information is saved and restored during CALL proccessing
       thus once a subroutine invoked via CALL ON returns, the previous
-	  condition (if any) will again be current.
+      condition (if any) will again be current.
 
 Example:
 
-	CONDITION()    == 'CALL'         /* perhaps */
-	CONDITION('c') == 'FAILURE'
-	CONDITION('I') == 'CALL'
-	CONDITION('D') == 'FailureTest'
-	CONDITION('s') == 'OFF'
+    CONDITION()    == 'CALL'         /* perhaps */
+    CONDITION('c') == 'FAILURE'
+    CONDITION('I') == 'CALL'
+    CONDITION('D') == 'FailureTest'
+    CONDITION('s') == 'OFF'

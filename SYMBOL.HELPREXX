@@ -13,9 +13,9 @@ are substituted.
 
 Examples:
 
-	/* Following: Drop A.3; J=3 */
-	SYMBOL('J')   == 'VAR'
-	SYMBOL(J)     == 'LIT'  /* has tested '3' */
-	SYMBOL('a.j') == 'LIT'  /* has tested 'A.3' */
-	SYMBOL(2)     == 'LIT'  /* a constant symbol */
-	SYMBOL('*')   == 'BAD'  /* an invalid symbol */
+    /* Following: Drop A.3; J=3 */
+    SYMBOL('J')   == 'VAR'
+    SYMBOL(J)     == 'LIT'  /* has tested '3' */
+    SYMBOL('a.j') == 'LIT'  /* has tested 'A.3' */
+    SYMBOL(2)     == 'LIT'  /* a constant symbol */
+    SYMBOL('*')   == 'BAD'  /* an invalid symbol */

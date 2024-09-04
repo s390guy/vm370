@@ -17,9 +17,9 @@ as 1.
 
 Examples:
 
-	LINEOUT(mine,'Hi')   == 0    /* normally */
-	LINEOUT(mine,'Hi',5) == 0    /* normally */
-	LINEOUT(mine,,6)     == 0    /* now at line 6 */
-	LINEOUT(mine)        == 0    /* at end stream */
-	LINEOUT(,'Hi')       == 0    /* normally */
-	LINEOUT(,'Hello')    == 1    /* maybe */
+    LINEOUT(mine,'Hi')   == 0    /* normally */
+    LINEOUT(mine,'Hi',5) == 0    /* normally */
+    LINEOUT(mine,,6)     == 0    /* now at line 6 */
+    LINEOUT(mine)        == 0    /* at end stream */
+    LINEOUT(,'Hi')       == 0    /* normally */
+    LINEOUT(,'Hello')    == 1    /* maybe */

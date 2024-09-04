@@ -8,4 +8,4 @@ Returns the current setting of NUMERIC FORM.
 
 Example:
 
-	FORM() == 'SCIENTIFIC'  /* if default */
+    FORM() == 'SCIENTIFIC'  /* if default */

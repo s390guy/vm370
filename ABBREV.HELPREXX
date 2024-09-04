@@ -5,14 +5,14 @@ ABBREV function
 +-----------------------------------------------------------------------------+
 
 Returns 1 if the second argument is a leading substring of the first.  If
-the third argument is specified, the substring must be at least that many 
+the third argument is specified, the substring must be at least that many
 characters long.
 
 Examples:
 
-	ABBREV('Print', 'Pri')    == 1
-	ABBREV ('PRINT' , 'Pri')  == 0
-	ABBREV('PRINT', 'PRI' ,4) == 0
-	ABBREV('PRINT', 'PRY')    == 0
-	ABBREV ( 'PRINT' , ' ' )  == 1
-	ABBREV('PRINT','' ,1)     == 0
+    ABBREV('Print', 'Pri')    == 1
+    ABBREV ('PRINT' , 'Pri')  == 0
+    ABBREV('PRINT', 'PRI' ,4) == 0
+    ABBREV('PRINT', 'PRY')    == 0
+    ABBREV ( 'PRINT' , ' ' )  == 1
+    ABBREV('PRINT','' ,1)     == 0

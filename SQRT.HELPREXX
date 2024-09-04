@@ -9,5 +9,5 @@ to the current NUMERIC DIGITS settings.
 
 Examples:
 
-	SQRT('4')    == 2
-	SQRT(2)      == '1.4142135624' /* perhaps */
+    SQRT('4')    == 2
+    SQRT(2)      == '1.4142135624' /* perhaps */

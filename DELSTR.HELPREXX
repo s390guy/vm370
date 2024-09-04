@@ -11,6 +11,6 @@ returned unchanged.
 
 Examples:
 
-	DELSTR('abcd' ,3)   == 'ab'
-	DELSTR('abcde',3,2) == 'abe'
-	DELSTR('abcde',6)   == 'abcde'
+    DELSTR('abcd' ,3)   == 'ab'
+    DELSTR('abcde',3,2) == 'abe'
+    DELSTR('abcde',6)   == 'abcde'

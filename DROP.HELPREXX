@@ -18,6 +18,6 @@ in the callee's.
 
 Examples:
 
-	J=4; drop a x. 3 x. j           /* resets "A", "X.3", and "X.4" */
-	MyList='a b c'; drop (mylist) d /* resets "A", "B", "C", and "D" */
-	drop x.                         /* resets all "X." */
+    J=4; drop a x. 3 x. j           /* resets "A", "X.3", and "X.4" */
+    MyList='a b c'; drop (mylist) d /* resets "A", "B", "C", and "D" */
+    drop x.                         /* resets all "X." */

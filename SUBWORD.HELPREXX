@@ -12,6 +12,6 @@ words in the string, a null string is returned.
 
 Examples:
 
-	SUBWORD('Now is the  time',2,2) == 'is the'
-	SUBWORD('Now is the  time',3)   == 'the  time'
-	SUBWORD('Now is the  time',5)   == ''
+    SUBWORD('Now is the  time',2,2) == 'is the'
+    SUBWORD('Now is the  time',3)   == 'the  time'
+    SUBWORD('Now is the  time',5)   == ''

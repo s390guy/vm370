@@ -9,6 +9,6 @@ extended with the pad character as necessary.
 
 Examples:
 
-	LEFT('abc d',8)     == 'abc d   '
-	LEFT('abc d',8,'.') == 'abc d...'
-	LEFT('abc  def',7)  == 'abc  de'
+    LEFT('abc d',8)     == 'abc d   '
+    LEFT('abc d',8,'.') == 'abc d...'
+    LEFT('abc  def',7)  == 'abc  de'

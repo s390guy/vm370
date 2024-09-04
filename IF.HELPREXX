@@ -15,9 +15,9 @@ necessary to align further ELSEs to the intended IFs.
 
 Examples:
 
-	/* Using indentation to show how IFs and ELSEs are bound */
-	if answer='YES' 
-	  then if name='FRED' 
-			 then say 'OK, Fred.'
-			 else say 'OK.'
-	  else say 'Why not?
+    /* Using indentation to show how IFs and ELSEs are bound */
+    if answer='YES'
+      then if name='FRED'
+             then say 'OK, Fred.'
+             else say 'OK.'
+      else say 'Why not?

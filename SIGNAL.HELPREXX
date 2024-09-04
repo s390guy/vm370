@@ -30,8 +30,8 @@ occurred.
 
 Examples:
 
-	signal bill                      /* Jump to label BILL */
-	fred='pete'; signal value pete   /* Jump to label PETE */
-	signal on error          /* Handle ERROR' conditions by jumping to ERROR */
-	signal on notready name Bubba    /* Handle NOTREADYs by jumping to BUBBA */
-	signal off error             /* Handle ERRORs by the normal REXX process */
+    signal bill                      /* Jump to label BILL */
+    fred='pete'; signal value pete   /* Jump to label PETE */
+    signal on error          /* Handle ERROR' conditions by jumping to ERROR */
+    signal on notready name Bubba    /* Handle NOTREADYs by jumping to BUBBA */
+    signal off error             /* Handle ERRORs by the normal REXX process */
