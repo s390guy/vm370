@@ -1,0 +1,18 @@
+Assignment instruction
+
++-----------------------------------------------------------------------------+
+| symbol = expression                                                         |
++-----------------------------------------------------------------------------+
+
+This statement evaluates the specified expression and sets the specified
+variable to its value.  The variable name cannot begin with a digit (i.e.,
+'0'-'9') or a period (i.e., '.').
+
+Examples:
+
+    /* Next line gives FRED the value 'Frederic' */
+    fred='Frederic'
+
+    /* If "freya" has not yet been assigned a value, */
+    /* then next line gives FRED the value 'FREYA' */
+    fred=freya
