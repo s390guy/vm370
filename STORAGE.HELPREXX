@@ -6,6 +6,10 @@ STORAGE function
 
 Returns the virtual machine storage size if all arguments are omitted.
 
+NOTE: This implementation of REXX requires the "address" parameter to be a
+decimal number, not hexadecimal as the Rexx standard requires and as this
+HELP information suggests.
+
 Returns a string composed of length bytes, which defaults to 1, of the virtual
 machine's storage starting at address.  If the thirds argument is specified,
 the data is subsequently stored at the address.  Both the address and length

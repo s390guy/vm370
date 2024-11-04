@@ -12,6 +12,7 @@ The following instructions are supported (except for those marked with **):
    ADDRESS COMMAND
    ARG [template]
    CALL name [expression] [,expression] ...
+      *** but not CALL ON|OFF condition [NAME handler]
    DO [repetitor] [conditional]; [statement-list] END [symbol]
    DROP name [name] ...
    EXIT [expression]
@@ -32,13 +33,13 @@ The following instructions are supported (except for those marked with **):
    SAY [expression]
    SELECT; when-list [OTHERWISE [statement-list]] END
    SIGNAL name
-** SIGNAL VALUE expression
-** SIGNAL ON condition [NAME handler]
-** SIGNAL OFF condition
+   SIGNAL VALUE expression
+   SIGNAL ON condition [NAME handler]
+   SIGNAL OFF condition
    TRACE [VALUE] expression
 
 The following built-in functions are provided:
-   ABBREV(string1, string2, [length])
+   ABBREV(information, info [,length])
    ABS(number)
    ADDRESS()
    ARG([argument-number], [option])
@@ -47,15 +48,15 @@ The following built-in functions are provided:
    BITXOR(string1, [string2], [pad])
    B2X(binary-string)
    CENTER(string, length, [pad])
-   CHANGESTR(substring, string, substring)
-   CHARIN([name], [start], [length])
-   CHAROUT([name], [string], [start]) *** 'start' is ignored, treated as 1
-   CHARS([name])
+   CHANGESTR(replace, target, replacement)
+   CHARIN([stream], [start], [length])
+   CHAROUT([stream], [string], [start]) *** 'start' is ignored, treated as 1
+   CHARS([stream])
    CMSFLAG(flag)
    COMPARE(string1, string2, [pad])
-   CONDITION([option])
+** CONDITION([option])
    COPIES(string, count)
-   COUNTSTR(substring, string)
+   COUNTSTR(needle, haystack)
    C2D(data, [length])
    C2X(data)
    DATATYPE(string, [type])
@@ -69,27 +70,27 @@ The following built-in functions are provided:
    FORM()
    FORMAT(number, [m], [n], [exp1], [exp2])
    FUZZ()
-   INSERT(string1, string2, [pos], [length], [pad])
-   LASTPOS(target, string, [start])
+   INSERT(new, target, [pos], [length], [pad])
+   LASTPOS(needle, haystack, [start])
    LEFT(string, length, [pad])
    LENGTH(string)
-   LINEIN([name], [line], [count])
-   LINEOUT([name], [string], [line]) *** 'line' is ignored, treated as 1
-   LINES([name])
+   LINEIN([stream], [line], [count])
+   LINEOUT([stream], [string], [line]) *** 'line' is ignored, treated as 1
+   LINES([stream])
    LINESIZE()
    MAX(number, [number], ...)
    MIN(number, [number], ...)
-   OVERLAY(string1, string2, [pos], length], [pad])
-   POS(target, string, [start])
+   OVERLAY(new, target, [pos], [length], [pad])
+   POS(needle, haystack, [start])
    QUEUED()
    RANDOM([min], [max], [seed])
    REVERSE(string)
    RIGHT(string, length, [pad])
    SIGN(number)
-   SOURCELINE([number])
+   SOURCELINE([line-number])
    SPACE(string, [count], [pad])
    SQRT(number)
-   STORAGE()
+   STORAGE([address],[length],[data])
    STRIP(string, [option], [character])
    SUBSTR(string, start, [length], [pad])
    SUBWORD(string, start, [length])
@@ -98,16 +99,16 @@ The following built-in functions are provided:
    TRACE([type])
    TRANSLATE(string, [output], [input], [pad])
    TRUNC(number, [digits])
-   VALUE(]name, [value], [type])
-   VERIFY(string, search, [option], [start])
+   VALUE(name, [newvalue], [selector])
+   VERIFY(string, reference, [option], [start])
    USERID()
    WORD(string, number)
-   WORDINDEX(string, number)
-   WORDLENGTH(string, number)
-   WORDPOS(phrase, string, [start])
+   WORDINDEX(string, pos)
+   WORDLENGTH(string, pos)
+   WORDPOS(needle, haystack, [start])
    WORDS(string)
    XRANGE([first], [last])
-   X2B(hex-string) (not working)
+   X2B(hex-string)
    X2C(hex-string)
    X2D(hex-string, [length])
 
