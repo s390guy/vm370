@@ -1,0 +1,20 @@
+OPTIONS instruction
+
++-----------------------------------------------------------------------------+
+| OPTIONS expr                                                                |
++-----------------------------------------------------------------------------+
+
+Specify handling options.  The expression is evaluated, and individual words
+in the result that are meaningful to the Rexx implementation will be obeyed
+(these might control optimizations, enforce standards, enable
+implementation-dependent features, etc.).  Words in the result that are not
+recognized will be ignored (they are assumed to be instructions to a different
+Rexx implementation).
+
+This Rexx implementation supports the following options, which are processed
+case-independently:
+
+   [NO]STORAGE_DECIMAL - Specifies how to treat the address argument of the
+   STORAGE() built-in function.  With STORAGE_DECIMAL, it is treated as a
+   decimal value, as bREXX did before release 1.1.0.  The default, which can be
+   specified by NOSTORAGE_DECIMAL, is to treat the address as a hexadecimal value.
