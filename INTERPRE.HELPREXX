@@ -1,0 +1,17 @@
+INTERPRET instruction
+
++-----------------------------------------------------------------------------+
+| INTERPRET [expression];                                                     |
++-----------------------------------------------------------------------------+
+
+The INTERPRET instruction evaluates the expression and executes the resulting
+string as a REXX instruction-list (i.e., as if the value were contained in a
+DO-END group).  REXX behaves as if the last instruction in the value ends with
+a semi-colon, even if it does not.
+
+Examples:
+
+    /* Build and execute "FRED = 4" */
+    data='FRED'
+    interpret data '= 4'
+    say fred /* 4 */

@@ -1,0 +1,12 @@
+WORDS function
+
++-----------------------------------------------------------------------------+
+| WORDS(string)                                                               |
++-----------------------------------------------------------------------------+
+
+Returns the number of blank-separated wors in the string.
+
+Examples:
+
+    WORDS('Now is the time') == 4
+    WORDS (' ')              == 0

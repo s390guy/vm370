@@ -1,0 +1,20 @@
+OVERLAY function
+
++-----------------------------------------------------------------------------+
+| OVERLAY(new, target, [pos], [length], [pad])                                |
++-----------------------------------------------------------------------------+
+
+Returns a copy of string target with string new padded to length length with
+character pad and overlaid at position pos.  If pos is greater than the length
+of target, target is extended to that position with pad characters.  If pos
+is not specified, it defaults to 0 (i.e., the start of the target string).  If
+length is not specified, it defaults to the length of the new string.  If pad
+is not specified, it defaults to blank.
+
+Examples:
+
+    OVERLAY(' ','abedef',3)      == 'ab def'
+    OVERLAY('.','abedef',3,2)    == 'ab. ef'
+    OVERLAY('qq','abed')         == 'qqed'
+    OVERLAY('qq','abed',4)       == 'abeqq'
+    OVERLAY('123','abe',5,6,'+') == 'abe+123+++'

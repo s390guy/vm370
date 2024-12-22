@@ -1,0 +1,23 @@
+D2C function
+
++-----------------------------------------------------------------------------+
+| D2C(whole-number, [length])                                                 |
++-----------------------------------------------------------------------------+
+
+Returns a string that is the binary representation of the specified
+whole-number.  If the length is not specified, the whole-number must be
+non-negative, and the result will be stripped of any leading '00'x characters.
+If the length is specified, the result will be sign-extended to the left to
+that length, or truncated on the left if the length is shorter than the result.
+
+Examples:
+
+    D2C(9)      == '09'x
+    D2C(l29)    == '81'x
+    D2C(l29,l)  == '81'x
+    D2C(l29,2)  == '0081'x
+    D2C(257,1)  == '01'x
+    D2C(-127,l) == '81'x
+    D2C(-127,2) == 'FF81'x
+    D2C(-l,4)   == 'FFFFFFFF'x
+    D2C(l2,0)   == ''

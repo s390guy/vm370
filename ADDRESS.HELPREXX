@@ -1,0 +1,45 @@
+ADDRESS instruction and function
+
++-----------------------------------------------------------------------------+
+| ADDRESS [(env [expr1]| [VALUE] expr2)]                                      |
++-----------------------------------------------------------------------------+
+
+Temporarily or permanently change the destination environment for commands,
+and possibly send a command to the new destination.
+
+Variants:
+
+    ADDRESS
+        switches the destination environment to the previous environment.
+
+    ADDRESS env
+        switches the destination environment to the named environment.  The
+        environment name is not evaluated, but rather taken as-is.
+
+    ADDRESS env expr
+        evaluates the expression and sends it to the named environment.  The
+        environment name is not evaluated, but rather taken as-is.  The
+        previous environment remains current after this instruction.
+
+    ADDRESS [VALUE] expr
+        evaluates the expression and switches to the environment identified
+        by its value.  The VALUE keyword may be ommited if the expression
+        starts with a special character.
+
+Examples:
+
+    address command           /* future commands go to "COMMAND" environment */
+    address cms 'BANANA'      /* tell CMS to search for and run BANANA */
+    editor = 'XEDIT'; address value editor  /* == ADDRESS XEDIT */
+    ?editor = 'XEDIT'; address ?editor      /* == ADDRESS XEDIT */
+
++-----------------------------------------------------------------------------+
+| ADDRESS()                                                                   |
++-----------------------------------------------------------------------------+
+
+returns the name of the current command environment.
+
+Examples:
+
+    ADDRESS() == 'CMS'   /• perhaps •/
+    ADDRESS() == 'XEDIT' /• perhaps •/

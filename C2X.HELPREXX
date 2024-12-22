@@ -1,0 +1,14 @@
+C2X function
+
++-----------------------------------------------------------------------------+
+| C2X(string)                                                                 |
++-----------------------------------------------------------------------------+
+
+Returns a hexadecimal string (i.e., composed of the characters 0-9 and A-F)
+where each character in the input string is expanded to its EBCDIC
+representation in hexadecimal.
+
+Examples:
+
+    C2X('72s')   == 'F7F2A2'
+    C2X('0123'x) == '0123'

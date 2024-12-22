@@ -1,0 +1,35 @@
+SELECT instruction
+
++-----------------------------------------------------------------------------+
+| SELECT; whenlist [OTHERWISE[;] instruction-list]] END;                      |
+|                                                                             |
+| whenlist is: one or more whenclauses                                        |
+|                                                                             |
+| whenclause is WHEN expression [;] THEN [;] instruction                      |
++-----------------------------------------------------------------------------+
+
+This instruction may be used to choose which of several paths of execution to 
+perform, depending on the values of sevreal different expressions. There must 
+be at least one WHEN clause, and there is no limit on how many there can be. 
+Each WHEN clause is processed in sequence, by evalutating the expression, which 
+must result in 0 or 1.  If the result is 1, then instruction in the THEN phrase 
+is executed, and execution continues after the END instruction.  If none of the 
+WHEN expressions results in 1, and there is an OTHERWISE clause, then 
+instructions in it are executed, and execution continues after the END 
+instruction. If none of the WHEN expressions results in 1, and there is no 
+OTHERWISE clause, an error occurs. 
+
+
+Examples:
+
+    Testfile myfile
+    select
+      when rc=O then do
+        Erase myfile
+        say 'File' myfile 'existed, now erased'
+        end
+      when rc=28 | rc=36 then say myfile 'does not exist'
+      otherwise
+        say 'Unexpected return code "'re'" from TESTFILE'
+        exit re
+      end /* Select */

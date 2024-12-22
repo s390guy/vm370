@@ -1,0 +1,17 @@
+NOP instruction
+
++-----------------------------------------------------------------------------+
+| NOP                                                                         |
++-----------------------------------------------------------------------------+
+
+The NOP instruction does nothing ("No OPeration").  It can be used anywhere,
+and can be useful if an instruction is needed but no action is desired.
+
+Examples:
+
+    select
+      when a=b then nop /* Do nothing */
+      when a>b then say 'A > B'
+      otherwise
+                    say 'A < B'
+    end

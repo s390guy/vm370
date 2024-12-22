@@ -1,0 +1,13 @@
+ABS function
+
++-----------------------------------------------------------------------------+
+| ABS(number)                                                                 |
++-----------------------------------------------------------------------------+
+
+Returns the absolute value of the specified number, formatted according to the
+current NUMERIC settings.
+
+Examples:
+
+    ABS('12.3')             == 12.3
+    ABS ( ' - 0 . 3 0 7 ' ) == 0.307

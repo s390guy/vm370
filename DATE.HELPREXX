@@ -1,0 +1,65 @@
+DATE function
+
++-----------------------------------------------------------------------------+
+| DATE([option])                                                              |
++-----------------------------------------------------------------------------+
+
+Returns the current date in the format specifed by the option.  Only the first
+character of the option is examined, and is treated in uppper case.
+
+If the option is specifed as 'BASE' the function returns the number of
+complete days since 1 June 0001, in the format 'dddddd', without leading
+zeroes or blanks.  The number of days is computed assuming the Gregorian
+calendar has been continuously in use.
+
+If the option is specifed as 'DAYS' the function returns the number of complete
+and partial days so far in the current year, in the form 'ddd', without leading
+zeroes or blanks.
+
+If the option is specifed as 'EUROPEAN' the function returns the date in the
+form 'dd/mm/yy'.
+
+If the option is specifed as 'MONTH' the function returns the full English name
+of the month in mixed case with a leading capital without leading blanks.
+
+If the option is specifed as 'NORMAL', or omitted, the function returns the
+date in the form 'dd Mmm yyyy' (e.g., '27 Aug 1989') with no leading 0 in the
+'dd' portion and the first three letters of the month in English in mixed case
+with a leading capital.
+
+If the option is specifed as 'ORDERED' the function returns the date in the
+form 'yy/mm/dd'.
+
+If the option is specifed as 'STANDARD' the function returns the date in the
+form 'yyyymmdd'.
+
+If the option is specifed as 'USA' the function returns the date in the form
+'mm/dd/yy'.
+
+If the option is specifed as 'WEEKDAY' the function returns the name of day of
+the week in English  in mixed case with a leading capital, without leading
+blanks.
+
+If the option is specifed as 'CENTURY' the function returns the number of
+complete and partial days so far in the current century, in the form 'ddddd',
+without leading zeroes or blanks.
+
+
+If the option is specifed as 'JULIAN' the function returns the date in the
+form 'yyddd' without leading blanks.
+
+NOTE: DATE('B') // 7 calculates the day number within the current week,
+      assuming 0 for Monday.
+
+Examples:
+
+    DATE()    == '27 Aug 1989'
+    DATE('B') == 726340
+    DATE('D') == 239
+    DATE('E') == '27/08/89'
+    DATE('M') == 'August'
+    DATE('N') == '27 Aug 1989'
+    DATE('O') == '89/08/27'
+    DATE('s') == '19890827'
+    DATE('u') == '08/27/89'
+    DATE('w') == 'Saturday'

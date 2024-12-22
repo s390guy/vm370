@@ -1,0 +1,12 @@
+CMS       HELP$CM  Show CMS commands that you can use
+CMSSET    HELPSET  Show CMS SET commands
+COMMAND   HELP$*   Show VM/370 commands you can use
+CP        HELP$CP  Show CP commands that you can use
+CPSET     HELPCPS  Show CP SET commands
+DEBUG     HELPDBG  Show DEBUG subcommands
+EDIT      HELPEDT  Show EDIT subcommands
+EE        HELPEE   Show EE editor subcommands
+EXEC      HELPEXC  Show EXEC processor statements
+PASCAL    HELPPAS  Show PASCAL compiler information
+REXX      HELPREXX Show REXX instructions and functions
+REXXFUNC  HELPEXT  Show REXX Function package routines

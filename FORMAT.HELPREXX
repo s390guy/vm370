@@ -1,0 +1,33 @@
+FORMAT function
+
++-----------------------------------------------------------------------------+
+| FORMAT(number, [before], [after], [expp], [expt])                           |
++-----------------------------------------------------------------------------+
+
+Returns the number rounded according to REXX rules (i.e., number+0) and
+formatted according to the remaining arguments.  The before argument specifies
+the number of characters used for the integer portion of the rounded number,
+and defaults to as many characters as necesary.  If the integer portion is too
+large to fit in the specified number of characters, an error results, unless
+the expt argument is specified.  The after argument specifies the number of
+characters used for the decimal portion of the rounded number and defaults to
+as many characters as necesary.  If the decimal portion is not the same size as
+the specified number of characters, it is rounded or extended with zeroes to
+fit.  If it is specified as 0, the decimal portion and the decimal point will
+be omitted.  If the expp or expt arguments are specified, the number will be
+formatted according to the current NUMERIC DIGITS and NUMERIC FORM settings.
+The expp argument specifies the number of digits in the exponent, defaulting to
+unlimited.  The expt argument specifies the number of digits to trigger using
+exponential form, defaulting to the current NUMERIC DIGITS value.  If the
+number of digits required for the integer portion exceeds expt, or the decimal
+exceeds expt*2, exponential formatting will be used.
+
+Examples:
+
+    FORMAT('12345.73',,,2,2) == '1.234573E+04'
+    FORMAT('12345.73',,3,,0) == '1.235E+4'
+    FORMAT('l.234573',,3,,0) == '1.235'
+    FORMAT(-'123.45',,3,2,0) == '1.235E+02'
+    FORMAT('l.2345',,3,2,0)  == '1.235    '
+    FORMAT('12345.73',,,3,6) == '12345.73'
+    FORMAT('1234567e5',,3;0) == '123456700000.000'

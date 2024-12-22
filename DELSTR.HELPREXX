@@ -1,0 +1,16 @@
+DELSTR function
+
++-----------------------------------------------------------------------------+
+| DELSTR(string, start, [length])                                             |
++-----------------------------------------------------------------------------+
+
+Returns a copy of string with the substring starting at the start position and
+running for length characters removed.  If length is omitted, the rest of the
+string is removed.  If start is more than the string's length, the string is
+returned unchanged.
+
+Examples:
+
+    DELSTR('abcd' ,3)   == 'ab'
+    DELSTR('abcde',3,2) == 'abe'
+    DELSTR('abcde',6)   == 'abcde'

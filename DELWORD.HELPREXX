@@ -1,0 +1,17 @@
+DELWORD function
+
++-----------------------------------------------------------------------------+
+| DELWORD(string, start, [length])                                            |
++-----------------------------------------------------------------------------+
+
+Returns a copy of string with the substring starting at the start word number
+and running for length words removed.  If length is omitted, the rest of the
+string is removed.  If start is more than the string's length in words, the
+string is returned unchanged.  Any blanks following the last deleted word are
+also deleted.
+
+Examples:
+
+    DELWORD('Now is the  time',2,2) == 'Now time'
+    DELWORD('Now is the time ',3)   == 'Now is '
+    DELWORD('Now  time' ,5)         == 'Now  time'

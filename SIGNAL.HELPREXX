@@ -1,0 +1,37 @@
+SIGNAL instruction
+
++-----------------------------------------------------------------------------+
+| SIGNAL labelname                                                            |
+|                                                                             |
+| SIGNAL [VALUE] expression                                                   |
+|                                                                             |
+| SIGNAL ON condition [NAME traplabel]                                        |
+|                                                                             |
+| SIGNAL OFF condition                                                        |
++-----------------------------------------------------------------------------+
+
+NOTE: This REXX implementation does not currently support the NAME keyword.
+
+This instruction either diverts the path of execution to another instruction,
+or establishes a handler for a condition that will divert at a later time.  If
+the labelname parameter is specified, the program diverts execution to the
+instruction with the corresponding label.  If the VALUE keyword is specified or
+implied, the expression is evaluated and its value specifies the label to
+divert to.  The keyword may be omitted if the expression starts with a special
+character.  If the ON keyword is specified, this instruction causes execution
+to be diverted to the the specified traplabel, which defaults to the condition
+name, when the specified condition occurs.  If the OFF keyword is specified,
+any existing handling for the specified condition is terminated.
+
+When the path of execution is diverted by a signal, all active control
+structures (i.e., DO, IF, INTERPRET, and SELECT instructions) are terminated,
+and the SIGL special variable is set to the line number where the diversion
+occurred.
+
+Examples:
+
+    signal bill                      /* Jump to label BILL */
+    fred='pete'; signal value pete   /* Jump to label PETE */
+    signal on error          /* Handle ERROR' conditions by jumping to ERROR */
+    signal on notready name Bubba    /* Handle NOTREADYs by jumping to BUBBA */
+    signal off error             /* Handle ERRORs by the normal REXX process */

@@ -1,0 +1,17 @@
+RETURN instruction
+
++-----------------------------------------------------------------------------+
+| RETURN [expression];                                                        |
++-----------------------------------------------------------------------------+
+
+The RETURN instruction returns control from a called internal routine, or from 
+a REXX program, to its caller. If the expression is specified, it is evaluated 
+and its value is returned to the caller (e.g., as the value of a function 
+invocation). Any active control constructs (e.g., IF, SELECT) are terminated 
+without further processing. If no internal routine is active, RETURN is exactly 
+equivalent to EXIT. 
+
+Examples:
+
+    return
+    return 'Banana'

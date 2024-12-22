@@ -1,0 +1,53 @@
+Expression
+
++-----------------------------------------------------------------------------+
+| expression is: term [operator term [operator term [...]]]                   |
+|                                                                             |
+| term is: prefix_operator term | literal_string | symbol | function_call |   |
+|          '(' expression ')                                                  |
+|                                                                             |
+| operator is: '+' | '-' | '*' | '/' | '//' | '**' | '||' | '=' | '^=' | '%' ||
+|              '\=' | '>' | '<' | '<>' | '><' | '>=' | '^=' | '\<' | '<=' |   |
+|              '^>' | '\>' | '==' | '^==' | '\==' | '>>' | '<<' | '>>=' |     |
+|              '^<<' | '\<<' | '<<=' | '^>>' | '\>>' | '&' | '|' | '&&' |     |
+|                                                                             |
+| prefix_operator is '-' | '+' | '^' | '\'                                    |
+|                                                                             |
+| literal_string is: "'" characters "'" | '"' characters '"' *                |
+|                                                                             |
+| symbol is: variable_name | number                                           |
+|                                                                             |
+| function_call is: function_name '(' [expression], [expression], ...)        |
+|                                                                             |
+| function_name is: string | symbol                                           |
+|                                                                             |
+| number is: whole_number | decimal_number | exponential_number               |
+|                                                                             |
+| * If the characters include the same quote as they are enclosed in, it must |
+|   be doubled.  For example, '''' is a 1-character string consisting of one  |
+|   single quote.  The same value can be written as "'" without doubling.     |
++-----------------------------------------------------------------------------+
+
+An expression is a series of terms and operators, processed in order by
+operator precedence, as modified by parantheses:
+
+    1) Parentheses: '(', ')'
+    2) Prefix operators: '+', '-', '^', '\'
+    3) Exponentiation: '**'
+    4) Multiplication and division: '*', '/', '%', '//'
+    5) Addition and subtraction: '+', '-'
+    6) Concatenation: '||', blank, abuttal
+    7) Comparison: '=', '^=', '\=', '>', '<', '<>', '><', '>=', '^=', '\<',
+                   '<=', '^>', '\>', '==', '^==', '\==', '>>', '<<', '>>=',
+                   '^<<', '\<<', '<<=', '^>>', '\>>'
+    8) Logical And: '&'
+    9) Logical Or, Xor: '|', '&&'
+
+A whole_number is composed of decimal digits (i.e., '0'-'9').  A decimal_number
+is composed of a whole_number (the "integer part"), a period ('.'), and
+another whole_number (the "decimal part").  An exponential_number is composed
+of a decimal_number and an exponent ('E' or 'e' followed by a whole_number),
+with an implied base of 10.
+
+Examples:
+

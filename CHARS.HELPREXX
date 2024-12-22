@@ -1,0 +1,16 @@
+CHARS function
+
++-----------------------------------------------------------------------------+
+| CHARS([stream])                                                             |
++-----------------------------------------------------------------------------+
+
+Returns the total number of characters remaining in the specified character
+input stream, which defaults to the console.  The count includes any line
+separator characters, if they are defined for the stream.  If the value cannot
+be determined, 1 is returned.
+
+Examples:
+
+    CHARS(myfile)  == 42  /• perhaps */
+    CHARS(nonfile) == 0   /* perhaps */
+    CHARS()        == 27  /* perhaps •/

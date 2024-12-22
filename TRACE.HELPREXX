@@ -1,0 +1,67 @@
+TRACE instruction and function
+
++-----------------------------------------------------------------------------+
+| TRACE [ specification | [VALUE] expression | number ]                       |
++-----------------------------------------------------------------------------+
+
+This instruction changes the current tracing specification.  If the number
+parameter is specified, as a positive whole number, that many interactive trace
+prompts are suppressed.  If it is specified as a negative whole number, tracing
+is suspended for that many clauses.  Otherwise, the specification is taken from
+either the specification parameter or from the value of the expression.  If the
+expression starts with a special character, the VALUE keyword may be omitted.
+The tracing specification consists of an optional '?', toggling interactive
+tracing on or off, followed by a trace setting.  The setting is treated as
+upper case, and only the first character is examined.
+
+If the setting is 'ALL', then all clauses are traced.
+
+If the setting is 'COMMANDS', then all commands are traced before execution,
+and any non-zero return code is displayed.
+
+In this Rexx implementation, if the setting is 'DEBUG' and the DEBUG option
+was specified when it was compiled, the internal debugger status is toggled
+between enabled and disabled.
+
+If the setting is 'ERROR', then any comamnd with a non-zero return code is
+traced with its return code.
+
+If the setting is 'FAILURE', then any comamnd with a negative return code is
+traced with its return code.  This is the same as 'NORMAL'
+
+If the setting is 'INTERMEDIATES', then all clauses are traced before
+execution, along with all terms and results of evaluation and name
+substitution.
+
+If the setting is 'LABELS', then all labels are traced during execution.
+
+If the setting is 'NORMAL', which is the default, then any comamnd with a
+negative return code is traced with its return code.
+
+If the setting is 'OFF', then nothing is traced.
+
+If the setting is 'RESULTS', then all clauses are traced before execution,
+along with all results of evaluation and any values assigned in ARG, PARSE,
+and PULL clauses.
+
+In this Rexx implementation, if the setting is 'SCAN', nothing happens.
+
++-----------------------------------------------------------------------------+
+| TRACE([option])                                                             |
++-----------------------------------------------------------------------------+
+
+Returns the current TRACE setting, and changes it if the option is specified.
+The option consists of either or both of a prefix and TRACE setting.  If the
+prefix is specified as '?', then interactive tracing is enabled.  If the
+setting is specified, it must be a single letter, and will be treated as
+upper case.  The values are the first letter of the valid settings for the
+TRACE instruction.
+
+NOTE: In this Rexx implementation, TRACE() returns 'N' for both TRACE NORMAL
+      and TRACE FAILURE.
+
+Example:
+
+    TRACE()    == 'N'  /* normally */
+    TRACE('I') == 'N'
+    TRACE('A') == 'I'  /* afterwards */

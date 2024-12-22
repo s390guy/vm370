@@ -1,0 +1,17 @@
+X2B function
+
++-----------------------------------------------------------------------------+
+| X2B(hex-string)                                                             |
++-----------------------------------------------------------------------------+
+
+Returns a string composed by converting pairs of hexadecimal characters (i.e.,
+0-9, a-f, and A-F) to their bitstring equivalents.  If the length of the
+hex-string is odd, it is padded with a leading 0.  If the hex-string is null,
+a null stirng is returned.  The hex-string may contain blanks between pairs of
+digits, which are ignored.
+
+Examples:
+
+    X2B(C2X('C3'x)) == '11000011'
+    X2B(D2X('129')) == '10000001'
+    X2B(D2X('12'))  == '1100'

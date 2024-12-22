@@ -1,0 +1,17 @@
+SUBWORD function
+
++-----------------------------------------------------------------------------+
+| SUBWORD(string, start, [length])                                            |
++-----------------------------------------------------------------------------+
+
+Returns the portion of string starting at the start word number and running for
+length blank-separated words.  If length is omitted, the rest of the string is
+returned.  All blanks between the selected words are returned unchanged, and
+no leading or trailing blanks are returned.  If start exceeds the number of
+words in the string, a null string is returned.
+
+Examples:
+
+    SUBWORD('Now is the  time',2,2) == 'is the'
+    SUBWORD('Now is the  time',3)   == 'the  time'
+    SUBWORD('Now is the  time',5)   == ''

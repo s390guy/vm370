@@ -1,0 +1,24 @@
+D2X function
+
++-----------------------------------------------------------------------------+
+| D2X(whole-number, [length])                                                 |
++-----------------------------------------------------------------------------+
+
+Returns a string of upper case hexadecimal characters (i.e., 'A'-'F', '0'-'9')
+that is the hexadecimal representation of the specified whole-number.  If the
+length is not specified, the whole-number must be non-negative, and the result
+will be stripped of any leading '0' characters.  If the length is specified,
+the result will be sign-extended to the left to that length, or truncated on
+the left if the length is shorter than the result.
+
+Examples:
+
+    D2X(9)      == '9'
+    D2X(129)    == '81'
+    D2X(129,l)  == 'l'
+    D2X(l29,2)  == '81'
+    D2X(129,4)  == '0081'
+    D2X(257,2)  == '01'.
+    D2X(-127,2) == '81'
+    D2X(-127,4) == 'FF81'
+    D2X(12,0)   == ''

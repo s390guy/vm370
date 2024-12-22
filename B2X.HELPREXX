@@ -1,0 +1,20 @@
+B2X function
+
++-----------------------------------------------------------------------------+
+| B2X(binary-string)                                                          |
++-----------------------------------------------------------------------------+
+
+Returns a hexadecimal string (i.e., composed of the characters 0-9 and A-F),
+that is a conversion from the specified binary-string (i.e., composed of the
+characters 0 and 1).  If the binary-string is null (i.e., ''), a null string
+is returned (i.e., '').  The binary-string is padded on the left with '0'
+characters such that the length is a multiple of 4 (e.g., '1' -> '0001',
+'101010' -> '00101010').  The binary-string may contain blanks at 4-character
+boundaries, which will be ignored (e.g., '10 1010', but not '1010 10').
+
+Examples:
+
+    B2X('11000011')    == 'C3'
+    B2X('l0111')       == '17'
+    B2X ('101')        == '5'
+    B2X('l 1111 0000') == 'lF0'

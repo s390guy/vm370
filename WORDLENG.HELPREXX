@@ -1,0 +1,14 @@
+WORDLENGTH function
+
++-----------------------------------------------------------------------------+
+| WORDLENGTH(string, pos)                                                     |
++-----------------------------------------------------------------------------+
+
+Returns the length of the n'th blank-separated word in string.  If pos exceeds
+the number of words in the string, 0 is returned.
+
+Examples:
+
+    WORDLENGTH('Now is the time',2)    == 2
+    WORDLENGTH('Now comes the time',2) == 5
+    WORDLENGTH('Now is the time',6)    == 0

@@ -1,0 +1,26 @@
+CENTER or CENTRE function
+
++-----------------------------------------------------------------------------+
+| CENTER(string, length, [pad])                                               |
++-----------------------------------------------------------------------------+
+
++-----------------------------------------------------------------------------+
+| CENTRE(string, length, [pad])                                               |
++-----------------------------------------------------------------------------+
+
+Returns the specified string, centered in a string of the specified length,
+using the specified pad character to fill out as necessary.  If the pad
+character is not specified, a blank is used.  If the specified length is less
+than the specified string's length, the string is truncated at both ends as
+necessary to fit.  If the result requires an odd number of characters to be
+added or removed, the extra character is added to or removed from the right
+end of the string.
+
+The function does the same thing regardless of which spelling is used.
+
+Examples:
+
+    CENTRE(abc, 7)            == '  ABC  '
+    CENTRE(abc,8, '-')        == '--ABC---'
+    CENTER('The blue sky' ,8) == 'e blue s'
+    CENTER('The blue sky' ,7) == 'e blue '
