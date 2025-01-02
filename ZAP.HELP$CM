@@ -1,0 +1,113 @@
+ZAP                                                                 CMS command
+ 
+The ZAP command is used to change or dump MODULE files, or members of LOADLIB
+or TXTLIB libraries.
+ 
+Input records control ZAP processing, and can be entered either from the
+terminal (with the TERM option) or from a CMS file (with the INPUT option).
+ 
++----------+------------------------------------------------------------------+
+|          |                                                                  |
+| ZAP      | MODULE|TXTLIB|LOADLIB [libname1 [libname2 [libname3]]] [(        |
+|          | [TERM | INPUT filename] [[NO]PRINT] ]                            |
+|          |                                                                  |
+|          | Defaults: TERM PRINT                                             |
+|          |                                                                  |
++----------+------------------------------------------------------------------+
+ 
+where:
+ 
+libname1, libname2, libname3
+     is the filename of a library containing the member you want to change or
+     dump.  You can specify up to 3 library names.  This operand is valid only
+     for LOADLIB and TXTLIB files.
+ 
+MODULE
+     specifies that the input will specify a file with filetype "MODULE" to be
+     changed or dumped.
+ 
+LOADLIB
+     specifies that the input will specify a member of a libary with the
+     filetype "LOADLIB" to be changed or dumped.  At least one library name
+     must be specified.
+ 
+TXTLIB
+     specifies that the input will specify a member of a libary with the
+     filetype "TXTLIB" to be changed or dumped.  At least one library name
+     must be specified.
+ 
+TERM
+     specifies that control records should be read from the terminal.
+ 
+INPUT filename
+     specifies that control records should be read from the CMS file named
+     <filename> ZAP *.  The file must be fixed records of 80 bytes.  The
+     control records will be echoed to the output.
+ 
+PRINT
+     specifies that output should go to the printer.
+ 
+NOPRINT
+     specifies that output should go to the terminal.
+ 
+Control records
+---------------
+ 
+Control records start with the first non-blank character of the input record,
+and begin with a function name.
+ 
+*
+     specifies a comment, and is ignored.  At least one space is required after
+     the asterisk.
+ 
+DUMP modulename|membername [ALL|csectname [startaddr [endaddr]]]]
+     specifies to dump the specifed module or library member to the output
+     The output can be limited to a specific CSECT or a portion of one,
+     and defaults to the entire CSECT ("ALL").
+ 
+     For TXTLIB libraries, the csectname is required and the membername is
+     ignored.
+ 
+NAME modulename|membername [csectname]
+     specifies to change the specified module or library member.  If the
+     csectname is omitted, the first CSECT in the module or member is changed.
+ 
+     For TXTLIB libraries, the csectname is required and the membername is
+     ignored.
+ 
+BASE address
+     specifies a base address to be applied to all subsequent VER and REP
+     control records.  This record requires that a csectname was specified
+     on the prior NAME record.
+ 
+VER displacement data
+VERIFY displacement data
+     specifies to compare data to the content of the member at the specified
+     displacement, relative to any prior BASE record.  If verification fails,
+     the NOGO switch is set, and all REP records will be rejected.
+ 
+     The displacement must be 2, 4, 6, or 8 hexadecimal digits in upper or
+     lower case, and may be punctuated by commas.
+ 
+     The data must be an even number of hexadecimal digits in upper or lower
+     case, and may be punctuated by commas.
+ 
+REP displacement data
+     specifies to replace data in the content of the member at the specified
+     displacement, relative to any prior BASE record.
+ 
+     The displacement must be 2, 4, 6, or 8 hexadecimal digits in upper or
+     lower case, and may be punctuated by commas.
+ 
+     The data must be an even number of hexadecimal digits in upper or lower
+     case, and may be punctuated by commas.
+ 
+LOG fixnum [ZAPLOG|filetype [logdata]]
+     specifies to create or update a log file.  The filename is the same as the
+     modulename or membername from the prior NAME record, and the filetype is
+     either specified or defaults to ZAPLOG.  If the filetype is specified,
+     additional log data can be specified that will be written to the file.
+ 
+END
+     specifies to end the ZAP process.  This record is required, and must be
+     the last record.
