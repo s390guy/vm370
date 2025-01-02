@@ -19,9 +19,9 @@ If the setting is 'ALL', then all clauses are traced.
 If the setting is 'COMMANDS', then all commands are traced before execution,
 and any non-zero return code is displayed.
 
-In this Rexx implementation, if the setting is 'DEBUG' and the DEBUG option
-was specified when it was compiled, the internal debugger status is toggled
-between enabled and disabled.
+In bREXX, if the setting is 'DEBUG' and the DEBUG option was specified when it
+was compiled, the internal debugger status is toggled between enabled and
+disabled.
 
 If the setting is 'ERROR', then any comamnd with a non-zero return code is
 traced with its return code.
@@ -44,7 +44,7 @@ If the setting is 'RESULTS', then all clauses are traced before execution,
 along with all results of evaluation and any values assigned in ARG, PARSE,
 and PULL clauses.
 
-In this Rexx implementation, if the setting is 'SCAN', nothing happens.
+In bREXX, if the setting is 'SCAN', nothing happens.
 
 +-----------------------------------------------------------------------------+
 | TRACE([option])                                                             |
@@ -56,9 +56,6 @@ prefix is specified as '?', then interactive tracing is enabled.  If the
 setting is specified, it must be a single letter, and will be treated as
 upper case.  The values are the first letter of the valid settings for the
 TRACE instruction.
-
-NOTE: In this Rexx implementation, TRACE() returns 'N' for both TRACE NORMAL
-      and TRACE FAILURE.
 
 Example:
 

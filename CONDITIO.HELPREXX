@@ -4,9 +4,6 @@ CONDITION function
 | CONDITION([option])                                                         |
 +-----------------------------------------------------------------------------+
 
-NOTE: This implementation of REXX does not currently support the CONDITION
-function.
-
 Returns the condition information associated with the current trapped
 condition, as specifed by the option.  Only the first character of the option
 is examined, and is treated in uppper case.  If the option is 'CONDITION',

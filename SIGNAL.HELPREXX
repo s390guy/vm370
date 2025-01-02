@@ -10,8 +10,6 @@ SIGNAL instruction
 | SIGNAL OFF condition                                                        |
 +-----------------------------------------------------------------------------+
 
-NOTE: This REXX implementation does not currently support the NAME keyword.
-
 This instruction either diverts the path of execution to another instruction,
 or establishes a handler for a condition that will divert at a later time.  If
 the labelname parameter is specified, the program diverts execution to the
