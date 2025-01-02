@@ -20,19 +20,18 @@ a set of substrings, and stores the results in the specified variables.  If the
 ARG keyword is specified, the source is the argument list from the current
 invocation of an internal routine, or from the invocation of the program if no
 routine is active.  If the AUTHOR keyword is specifed, the source is the email
-address of the REXX implementation's original author.  If the LINEIN keyword is
-specifed, the source is the next value returned by the LINEIN() built-in
-function.  If the NUMERIC keyword is specifed, the source is the current
-settings of NUMERIC DIGITS, NUMERIC FUZZ, and NUMERIC FORM, in that order.  If
-the PULL keyword is specified, the source is the next value obtained from the
-console stack.  If the SOURCE keyword is specifed, the source is the REXX
-system name, the current invocation type, and the current filename, separated
-by blanks.  If the VALUE keyword is specifed, the source is the value of the
-expression, which defaults to a null string, and the w1TH keyword is required.
-If the VAR keyword is specifed, the source is the value of the named variable.
-If the VERSION keyword is specifed, the source is the REXX language name, the
-language level, and the release date of the REXX implementation, in DATE('N')
-format (i.e., 'dd Mon yyyy').
+address of bREXX's original author.  If the LINEIN keyword is specifed, the
+source is the next value returned by the LINEIN() built-in function.  If the
+NUMERIC keyword is specifed, the source is the current settings of NUMERIC
+DIGITS, NUMERIC FUZZ, and NUMERIC FORM, in that order.  If the PULL keyword is
+specified, the source is the next value obtained from the console stack.  If
+the SOURCE keyword is specifed, the source is the REXX system name, the current
+invocation type, and the current filename, separated by blanks.  If the VALUE
+keyword is specifed, the source is the value of the expression, which defaults
+to a null string, and the w1TH keyword is required.  If the VAR keyword is
+specifed, the source is the value of the named variable.  If the VERSION
+keyword is specifed, the source is the REXX language name, the language level,
+and the bREXX release date, in DATE('N') format (i.e., 'dd Mon yyyy').
 
 The template_list parameter specifes how to separate the source into
 substrings, and how to store the results.  If the source is ARG, the
@@ -74,11 +73,6 @@ position is to the cursor's left.
 The ARG and PULL instructions are exact synonyms for PARSE UPPER ARG and PARSE
 UPPER PULL, respectively.  The PARSE LINEIN instruction is an exact synonym for
 PARSE VALUE LINEIN().
-
-NOTE: Most is this HELP file is based on the ANSI standard documentation.
-      Because PARSE is notoriously difficult to understand, this information
-      needs to be carefully compared to the actual implementation.   This has
-      not yet been done.
 
 Examples:
 
