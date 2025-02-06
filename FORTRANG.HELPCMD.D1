@@ -1,6 +1,6 @@
 FORTRANG                                                                MODULES
  
-Use the FORTRANG command to invoke the OS FORTRAN G Complier. Then
+Use the FORTRANG command to invoke the OS FORTRAN G Compiler. Then
 use the LOAD and START commands to run the programs.
  
 See HELP FORTRAN for details of using the G and H compilers.

@@ -4,7 +4,7 @@ POS function
 | POS(needle, haystack, [start])                                              |
 +-----------------------------------------------------------------------------+
 
-Returns the position of the first occurrance of the string needle in the string
+Returns the position of the first occurrence of the string needle in the string
 haystack, scanning from the position start, which defaults to 0, meaning the
 beginning of the string.  If the needle string is not found, or is the null 
 string, the position is returned as 0.

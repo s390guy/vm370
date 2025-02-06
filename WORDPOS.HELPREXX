@@ -4,7 +4,7 @@ WORDPOS function
 | WORDPOS(needle, haystack, [start])                                          |
 +-----------------------------------------------------------------------------+
 
-Returns the word number of the first occurrance of the phrase needle in the
+Returns the word number of the first occurrence of the phrase needle in the
 string haystack, scanning from the position start, which defaults to 0, meaning
 the beginning of the string.  If the needle phrase is not found, or contains
 no words, the position is returned as 0.  When comparing words in needle and

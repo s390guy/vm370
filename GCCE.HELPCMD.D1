@@ -13,5 +13,5 @@ NOASM
         overrides the default behaviour and does not call the assembler.
  
 PARM fb
-        specifies an PARM file containg arguments to be passed to GCC.
+        specifies an PARM file containing arguments to be passed to GCC.
         By default the file, GCC PARM, is used.

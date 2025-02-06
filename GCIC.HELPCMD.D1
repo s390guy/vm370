@@ -1,7 +1,7 @@
 GCIC                                                                CMS MODULE
  
 GCIC is a full screen editor for VM370/r6, that uses the DIAL facility of CP,
-to peform full screen editng and browsing of CMS files.
+to perform full screen editng and browsing of CMS files.
 +----------------------------------------------------------------------------+
 | GCIC     |                                                                 |
 +----------------------------------------------------------------------------+

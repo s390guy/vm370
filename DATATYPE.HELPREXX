@@ -7,8 +7,8 @@ DATATYPE function
 If the type is omitted, this function returns 'NUM' if string is a number
 (i.e., can be added to '0' without an error), or 'CHAR' if not.
 
-If the type is specfied, this function returns 1 if the string is a valid
-value for the specfied type (only the first character of the type, upppercased,
+If the type is specified, this function returns 1 if the string is a valid
+value for the specified type (only the first character of the type, upppercased,
 is checked).  The types are:
 
 A - Alphanumeric (i.e., composed only of 'a'-'z', 'A'-'Z', and '0'-'9')

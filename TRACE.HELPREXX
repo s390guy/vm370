@@ -23,10 +23,10 @@ In bREXX, if the setting is 'DEBUG' and the DEBUG option was specified when it
 was compiled, the internal debugger status is toggled between enabled and
 disabled.
 
-If the setting is 'ERROR', then any comamnd with a non-zero return code is
+If the setting is 'ERROR', then any command with a non-zero return code is
 traced with its return code.
 
-If the setting is 'FAILURE', then any comamnd with a negative return code is
+If the setting is 'FAILURE', then any command with a negative return code is
 traced with its return code.  This is the same as 'NORMAL'
 
 If the setting is 'INTERMEDIATES', then all clauses are traced before
@@ -35,7 +35,7 @@ substitution.
 
 If the setting is 'LABELS', then all labels are traced during execution.
 
-If the setting is 'NORMAL', which is the default, then any comamnd with a
+If the setting is 'NORMAL', which is the default, then any command with a
 negative return code is traced with its return code.
 
 If the setting is 'OFF', then nothing is traced.

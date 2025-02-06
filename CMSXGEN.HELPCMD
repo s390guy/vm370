@@ -1,6 +1,6 @@
 CMSXGEN                                            CMS EXEC
  
-    CMSXGEN Will generate a CMS segnment containg the OS Simulation
+    CMSXGEN Will generate a CMS segnment containing the OS Simulation
     routines, the EXEC processor and the CMS Editor.
  
 +-----------------------------------------------------------------+

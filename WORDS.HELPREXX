@@ -4,7 +4,7 @@ WORDS function
 | WORDS(string)                                                               |
 +-----------------------------------------------------------------------------+
 
-Returns the number of blank-separated wors in the string.
+Returns the number of blank-separated words in the string.
 
 Examples:
 

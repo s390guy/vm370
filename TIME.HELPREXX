@@ -4,38 +4,38 @@ TIME function
 | TIME([option])                                                              |
 +-----------------------------------------------------------------------------+
 
-Returns the current local time in the format specifed by the option.  Only the
-first character of the option is examined, and is treated in uppper case.
+Returns the current local time in the format specified by the option.  Only the
+first character of the option is examined, and is treated in upper case.
 
-If the option is specifed as 'CIVIL' the function returns the tine in the 
+If the option is specified as 'CIVIL' the function returns the tine in the 
 form 'hh:mmxx' where hh is 1 to 12 without a leading zero, and xx is either
 'am' or 'pm'.
 
-If the option is specifed as 'ELAPSED' the function returns 'sssssssss.uuuuuu',
+If the option is specified as 'ELAPSED' the function returns 'sssssssss.uuuuuu',
 the number of seconds and microseconds since the elapsed time clock was 
 started or reset.  The number will have no leading zeroes or blanks, and is
 not affected by the NUMERIC DIGITs setting.  The elapsed time clock starts the
 first time a REXX program calls TIME('ELAPSED') or TIME('RESET'), which
 return 0.
 
-If the option is specifed as 'HOURS' the function returns the number of
+If the option is specified as 'HOURS' the function returns the number of
 complete hours since midnight in the form 'hh' with no leading zeroes or blanks.
 
-If the option is specifed as 'LONG' the function returns the time in the form
+If the option is specified as 'LONG' the function returns the time in the form
 'hh:mm:ss.uuuuuu', where 'hh:mm:ss' is in the same form as TIME('NORMAL'),
 and uuuuuu is the number of microseconds, which is always 6 digits.
 
-If the option is specifed as 'MINUTES' the function returns the number of
+If the option is specified as 'MINUTES' the function returns the number of
 complete minutes since midnight in the form 'mmmm' with no leading zeroes or
 blanks.
 
-If the option is specifed as 'NORMAL', or omitted, the function returns the
+If the option is specified as 'NORMAL', or omitted, the function returns the
 time in the form 'hh:mm:ss' (e.g., '04:41:37').
 
-If the option is specifed as 'RESET' the function returns just as in
+If the option is specified as 'RESET' the function returns just as in
 TIME('ELAPSED'), and the elapsed time clock is reset to 0.
 
-If the option is specifed as 'SECONDS' the function returns the number
+If the option is specified as 'SECONDS' the function returns the number
 complete seconds since midnight in the form 'sssss' with no leading zeroes or
 blanks.
 

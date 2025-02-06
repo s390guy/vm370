@@ -70,7 +70,7 @@ GENERATE                                                         SERVICE EXEC
                    PROMPTED FOR THE NAME OF THE SERVICE PROGRAMS HE             
                    WISHES TO CREATE. A RESPONSE OF 'ALL' RESULTS IN             
                    IN 'DDR', 'DIR', AND 'FMT' BEING BUILT. IF THE               
-                   OPTION 'ALL' IS SELECTED IN CONJUNTION WITH THE              
+                   OPTION 'ALL' IS SELECTED IN CONJUNCTION WITH THE              
                    THE NAME OF AN OTHER IPL DECK, THE 'ALL' OPTION              
                    WILL OVERRIDE THE INDIVIDUAL NAME(S) PROVIDED.               
                                                                                 

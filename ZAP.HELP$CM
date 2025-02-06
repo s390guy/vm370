@@ -27,12 +27,12 @@ MODULE
      changed or dumped.
  
 LOADLIB
-     specifies that the input will specify a member of a libary with the
+     specifies that the input will specify a member of a library with the
      filetype "LOADLIB" to be changed or dumped.  At least one library name
      must be specified.
  
 TXTLIB
-     specifies that the input will specify a member of a libary with the
+     specifies that the input will specify a member of a library with the
      filetype "TXTLIB" to be changed or dumped.  At least one library name
      must be specified.
  
@@ -61,7 +61,7 @@ and begin with a function name.
      the asterisk.
  
 DUMP modulename|membername [ALL|csectname [startaddr [endaddr]]]]
-     specifies to dump the specifed module or library member to the output
+     specifies to dump the specified module or library member to the output
      The output can be limited to a specific CSECT or a portion of one,
      and defaults to the entire CSECT ("ALL").
  

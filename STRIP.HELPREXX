@@ -5,7 +5,7 @@ INSERT function
 +-----------------------------------------------------------------------------+
 
 Returns the specified string with leading and/or trailing instances of the
-specified character, which defaults to blank, removed, depeding on the option.
+specified character, which defaults to blank, removed, depending on the option.
 The option is upper-cased and only the first character is examined.  If the 
 option is 'L' or 'B', or omitted, leading characters are removed.  If the option
 is 'T' or 'B', or omitted, trailing characters are removed.

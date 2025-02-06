@@ -144,7 +144,7 @@ DSS
         use by the user's virtual machine.
  
 *dumpid
-        is a line of user input up to 100 characters long including imbedded
+        is a line of user input up to 100 characters long including embedded
         blanks and asterisks which the user can enter for his own benefit
         (that is, for descriptive purposes, such as the time and date of the
         dump, or what was being processed at the time of the dump). If the

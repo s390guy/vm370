@@ -1,7 +1,7 @@
  
-PDPCLIB - An implemention of the C90 Library for GCC
+PDPCLIB - An implementation of the C90 Library for GCC
  
-    PDPCLIB is an implemntation of the C90 runtime library. It has been
+    PDPCLIB is an implementation of the C90 runtime library. It has been
     implemented on several platforms and the CMS port is based on the
     MVS code with minor adaptations to allow it to work in CMS.
  

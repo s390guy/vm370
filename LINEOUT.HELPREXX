@@ -4,7 +4,7 @@ LINEOUT function
 | LINEOUT([stream], [string], [start])                                        |
 +-----------------------------------------------------------------------------+
 
-Returns the count of lines remaining after atempting to write the
+Returns the count of lines remaining after attempting to write the
 specified string to the specified stream, which defaults to the console,
 starting at line position start, which defaults to the end of the stream.
 If string is null, the stream is positioned, no data is written, and 0 is
