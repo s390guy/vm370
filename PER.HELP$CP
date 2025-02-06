@@ -58,7 +58,7 @@ PAGETRACE [page-size]
          causes the transfer of control between segments of main storage to be
          traced and time stamped.  If pagesize is specified memory is divided
          into segments of that size.  Memory may also be segmented by using the
-         RANGE keyword in conjuction with PAGETRACE.
+         RANGE keyword in conjunction with PAGETRACE.
  
 STORE [addr-range] | [addr hex-data]
          causes storage alterations to be traced.  If addr-range is specified
@@ -132,7 +132,7 @@ PER operands:
 addr     is used to specify a logical storage location.  It must consist of one
          to six contiguous hex digits.
  
-hex-data is used to specify hexidecimal data.  It must consist of an even
+hex-data is used to specify hexadecimal data.  It must consist of an even
          number of contiguous hex digits.
  
 hex-number
@@ -192,13 +192,13 @@ Usage notes:
 7.  Self modifying instructions will cause erroneous processing of PER output.
  
 8.  When tracing in a virtual machine with only one printer, the PER data is
-    intermixed with other data sent to the virtual printer.  To seperate PER
+    intermixed with other data sent to the virtual printer.  To separate PER
     information define another printer with a lower virtual address than the
     previously defined printer.
  
-9.  Whenvever 10000 interupts of a given type (Ifetch, Branch, Greg or Store)
+9.  Whenvever 10000 interrupts of a given type (Ifetch, Branch, Greg or Store)
     occur with no PER output a PER "blip" is produced.  This consists of an *
-    followed by the first character of the interupt type (i.e.  *I for Ifetch).
+    followed by the first character of the interrupt type (i.e.  *I for Ifetch).
  
 10. If the type, options and data (if any) are the same in any two elements and
     their ranges (if any) either overlap or are adjacent, those two elements
@@ -206,7 +206,7 @@ Usage notes:
  
 Responses:
  
-The following symbols are used in the responses recieved from PER:
+The following symbols are used in the responses received from PER:
    vvvvvv     virtual storage address
    tttttt     virtual transefer address
    xxxxxxxx   virtual instruction
@@ -532,7 +532,7 @@ Dump
 Dump causes the current contents of the branch traceback table to be displayed.
 A traceback table is maintained whenever any sort of branch trace is in effect.
 In the following example a branch trace that will not be satisfied is turned on
-and dump is used to display the branches occuring before the SVC.
+and dump is used to display the branches occurring before the SVC.
    per b 0
    tr svc
    TRACE STARTED

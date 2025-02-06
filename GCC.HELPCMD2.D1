@@ -18,7 +18,7 @@ Usage Notes:
  
     fptr=fopen("TEST DATA A", "W")
  
-    To simplifiy porting the "." character may also be used to separate the
+    To simplify porting the "." character may also be used to separate the
     components of the file, e.g, "TEST.DATA.A" refers to the same file.
  
     PDPCLIB uses OS emulation and needs a FILEDEF. In this case it will
@@ -38,7 +38,7 @@ Usage Notes:
  
        fopen("DD:TEST", "w");
  
-    and issuing the followings FILEDEF command before running the program:
+    and issuing the following FILEDEF command before running the program:
                                                                          :
        FILEDEF TEST DISK TEST DATA A (LRECL 80 RECFM V
  

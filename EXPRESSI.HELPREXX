@@ -29,7 +29,7 @@ Expression
 +-----------------------------------------------------------------------------+
 
 An expression is a series of terms and operators, processed in order by
-operator precedence, as modified by parantheses:
+operator precedence, as modified by parentheses:
 
     1) Parentheses: '(', ')'
     2) Prefix operators: '+', '-', '^', '\'

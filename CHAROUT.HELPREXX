@@ -4,7 +4,7 @@ CHAROUT function
 | CHAROUT([stream], [string], [start])                                        |
 +-----------------------------------------------------------------------------+
 
-Returns the count of characters remaining after atempting to write the
+Returns the count of characters remaining after attempting to write the
 specified string to the specified stream, which defaults to the console,
 starting at character position start, which defaults to the end of the stream.
 If string is null, the stream is positioned, no data is written, and 0 is

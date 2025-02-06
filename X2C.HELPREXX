@@ -6,7 +6,7 @@ X2C function
 
 Returns a string composed by converting pairs of hexadecimal characters (i.e.,
 0-9, a-f, and A-F) to their EBCDIC value.  If the length of the hex-string is
-odd, it is padded with a leading 0.  If the hex-string is null, a null stirng
+odd, it is padded with a leading 0.  If the hex-string is null, a null string
 is returned.  The hex-string may contain blanks between pairs of digits,
 which are ignored.
 

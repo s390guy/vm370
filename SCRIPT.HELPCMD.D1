@@ -6,7 +6,7 @@ SCRIPT <source-file> ( options
  
 Where :-
  
-source-file       is the name of a file containg Waterloo Script. It must
+source-file       is the name of a file containing Waterloo Script. It must
                   have a file type of script.
  
 options           options for the script file.

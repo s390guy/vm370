@@ -1,6 +1,6 @@
 FORTRANH                                                                MODULES
  
-Use the FORTRANH command to invoke the OS FORTRAN H Complier. Then
+Use the FORTRANH command to invoke the OS FORTRAN H Compiler. Then
 use the LOAD and START commands to run the programs.
  
 See HELP FORTRAN for details of using the G and H compilers.

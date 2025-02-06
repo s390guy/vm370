@@ -44,18 +44,18 @@ LIB fn   specifies the runtime library with which the program is to be
                  loaded into resident memory as extensions of the CMS nucleus.
  
                  Ensure GCCLIB is in your list of GLOBAL TXTLIBs to run your
-                 compiled progam.  Type HELP GCCLIB for more information.
+                 compiled program.  Type HELP GCCLIB for more information.
  
          PDPCLIB uses simulated OS functions for system services.
  
                  Ensure PDPCLIB is in your list of GLOBAL TXTLIBs to run your
-                 compiled progam. Type "HELP PDPCLIB" for more information.
+                 compiled program. Type "HELP PDPCLIB" for more information.
  
          LIB PDPCLIB is the default.
  
 OS|CMS   OS is shorthand for LIB PDPCLIB.  CMS is shorthand for LIB GCCLIB.
  
-PARM fn  specifies a file of type PARM containg arguments to pass to GCC.  By
+PARM fn  specifies a file of type PARM containing arguments to pass to GCC.  By
          the default file 'GCC PARM *' is used.
  
 Notes:

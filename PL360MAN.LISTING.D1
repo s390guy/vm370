@@ -371,14 +371,14 @@ B                                 2-1
  
  A sequence of tokens constitutes an instance of a syntactic  entity  (or
  construct),  if  that  entity can be derived from the sequence by one or
- more  applications  of  syntatic  substitution  rules.   In  each   such
+ more  applications  of  syntactic  substitution  rules.   In  each   such
  application,  the  sequence  equal  to  the  right  side  of the rule is
  replaced by the symbol which is its left side.
 B                                 2-2
 1
  Syntactic entities (cf.   Appendix  D, E)  are denoted by english  words
  enclosed  in  brackets  < and >.  These words describe approximately the
- nature of the syntatic entity, and where these words are used  elsewhere
+ nature of the syntactic entity, and where these words are used  elsewhere
  in  the  text,  they  refer  to  that  syntactic entity.  For reasons of
  notational convenience and brevity, the uppercase letters A,  K,  and  T
  are  also  used  in the denotation of syntactic entities.  They stand as
@@ -1913,7 +1913,7 @@ B                                 9-2
  Numbers are interpreted according to the conventional decimal  notation.
  A  scale  factor  denotes an integral power of 10 which is multiplied by
  the unscaled real or integer number preceding it.  A number can have  no
- imbedded blanks and must be terminated by a blank.  These procedures are
+ embedded blanks and must be terminated by a blank.  These procedures are
  predeclared in a manner similar to those described in Section 9.1.
  
  
@@ -2710,7 +2710,7 @@ B                                 12-2
     READ  The address of a 132 byte input area should be provided  in  R0
           prior   to  calling  READ.   Upon  return,  all  registers  are
           preserved except R15 which contains  the  number  of  non-blank
-          characters  typed  by the user (counting imbedded blanks).  All
+          characters  typed  by the user (counting embedded blanks).  All
           details such as error messages  for  illegal  use  of  tabs  or
           waiting  too  long  to  respond  are  taken care of by the READ
           subroutine.  If the attention key is typed  with  no  preceding

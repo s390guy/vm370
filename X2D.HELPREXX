@@ -14,7 +14,7 @@ If the length is specified as 0, the value is always 0.
 
         X2D('003l',0) == 0
 
-If the length is ommitted, the string is interpreted as an unsigned number.
+If the length is omitted, the string is interpreted as an unsigned number.
 
     Examples:
 

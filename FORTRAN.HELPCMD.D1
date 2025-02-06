@@ -1,6 +1,6 @@
 FORTRAN ¦ FORTRANG ¦ FORTRANH                                           MODULES
  
-Use the FORTRANG & FORTRANH commands to invoke the OS FORTRAN Compliers. Then
+Use the FORTRANG & FORTRANH commands to invoke the OS FORTRAN Compilers. Then
 use the LOAD and START commands to run the programs.
 +----------------+------------------------------------------------------------+
 |  FORTRAN[G¦H]  |  filename  ( options                                       |
@@ -26,7 +26,7 @@ filename the name of the file to be compiled. The filetype must be
 Options:
  
 DIsk
-          writes the complier listing as <Filename> LISTING on the "A" disk.
+          writes the compiler listing as <Filename> LISTING on the "A" disk.
 PRint
           writes to the users virtual printer.
 NOPRint
@@ -48,10 +48,10 @@ LOAD¦NOLOAD
           controls OBJECT file generation. Default is LOAD.
  
 MAP¦NOMAP
-          controls inclusing of Storage map in listing. Default is NOMAP
+          controls including of Storage map in listing. Default is NOMAP
  
 NAME(XXXXXXXX)
-          alocates a name to the MAIN program. Default MAIN.
+          allocates a name to the MAIN program. Default MAIN.
  
 NODECK¦DECK
           controls the punching of the object code. If DECK is specified an
@@ -64,7 +64,7 @@ NOLIST¦LIST
           include the Source Code in the Listing file. Default is LIST.
  
 NOXL¦XL*
-          enables some Extended Language facilites as described in GY28-6642.
+          enables some Extended Language facilities as described in GY28-6642.
           Fortran H only.
  
 NOXREF¦XREF*
@@ -75,7 +75,7 @@ OPT(0)¦OPT(1)¦OPT(2)*
           set the Optimization level. Fortran H only.
  
 SIZE(0K)¦SIZE(N)¦SIZE(K)*
-          set the Storage used by the compiler. Generally not usefull. H Only.
+          set the Storage used by the compiler. Generally not useful. H Only.
           Fortran H only.
  
 SOURCE¦NOSOURC*

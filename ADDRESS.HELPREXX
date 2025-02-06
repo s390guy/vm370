@@ -23,7 +23,7 @@ Variants:
 
     ADDRESS [VALUE] expr
         evaluates the expression and switches to the environment identified
-        by its value.  The VALUE keyword may be ommited if the expression
+        by its value.  The VALUE keyword may be omitted if the expression
         starts with a special character.
 
 Examples:

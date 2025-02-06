@@ -10,7 +10,7 @@ fn1.ft1.fm1 and fn2.ft2.fm2
         are the files to be compared.
  
 The  optional SKIP1 and SKIP2 specify the number of bytes to skip at the
-begining of each file (zero by default).
+beginning of each file (zero by default).
  
 Options:
  
