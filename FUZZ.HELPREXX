@@ -8,4 +8,4 @@ Returns the current setting of NUMERIC FUZZ.
 
 Example:
 
-    FUZZ() == 0 /• if default •/
+    FUZZ() == 0 /* if default */
