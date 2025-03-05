@@ -11,6 +11,6 @@ be determined, 1 is returned.
 
 Examples:
 
-    CHARS(myfile)  == 42  /• perhaps */
+    CHARS(myfile)  == 42  /* perhaps */
     CHARS(nonfile) == 0   /* perhaps */
-    CHARS()        == 27  /* perhaps •/
+    CHARS()        == 27  /* perhaps */

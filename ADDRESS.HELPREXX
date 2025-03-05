@@ -41,5 +41,5 @@ returns the name of the current command environment.
 
 Examples:
 
-    ADDRESS() == 'CMS'   /• perhaps •/
-    ADDRESS() == 'XEDIT' /• perhaps •/
+    ADDRESS() == 'CMS'   /* perhaps */
+    ADDRESS() == 'XEDIT' /* perhaps */
