@@ -6,7 +6,8 @@ CALL instruction
 | CALL OFF condition                                                          |
 +-----------------------------------------------------------------------------+
 
-NOTE: bREXX does not currently support the CALL ON and CALL OFF instructions.
+NOTE: bREXX does not currently support the CALL ON and CALL OFF instructions
+correctly.  It treats them identically to SIGNAL ON and SIGNAL OFF.
 
 Call an internal routine, an external routine, or a built-in function.  The
 RESULT special variable is set to the value it returns, or is unset if there is
