@@ -1,0 +1,39 @@
+NUCXTEXT                                                  CMS Transient command
+ 
+Use the NUCXTEXT command to install a CMS TEXT object code file as a Nucleus
+Extension. External references in the TEXT file can be resolved from libraries
+specified in the GLOBAL TXTLIB list.
+ 
++----------+------------------------------------------------------------------+
+| NUCXTEXT | name [textname]                                                  |
+|          |                                                                  |
+|          | options:                                                         |
+|          | SYstem   SErvice  PERManent ENdcmd Push                          |
+|          |                                                                  |
++----------+------------------------------------------------------------------+
+where:
+ 
+name     is the name of the established Nucleus Extension.
+
+textname is the file name of a TEXT file to be loaded. If omitted, the
+         name parameter is used as the textname.  
+
+SYstem   System free storage will be used to hold the program, and it will
+         receive control disabled for interrupts and in protect key 0.
+ 
+SErvice  Service calls are accepted (for instance a PURGE from an abend).
+ 
+PERManent The extension cannot be dropped by a NUCXDROP  * command. It must
+          be named explicitly on NUCXDROP.
+ 
+ENdcmd   The nucleus extension receives control at normal end-of-command
+         processing.
+ 
+Push     No check to be made to see if there is already a Nucleus Extension
+         of the same name.  Otherwise, an existing Nucleus Extension is not
+         overridden.
+ 
+Please note there is currently no NUCXLOAD command, because VM/370 CMS does not
+have relocation information in MODULE files. However, programs can copy
+non-relocatable code (without address constants) into dynamically allocated
+memory and establish that code as a Nucleus Extension using the NUCEXT macro.
