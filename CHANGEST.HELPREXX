@@ -6,3 +6,9 @@ CHANGESTR function
 
 Returns a copy of the second argument string with all occurrences of the first
 argument replaced them with the third argument.
+
+Examples:
+
+    CHANGESTR('bc', 'abcabcabc', 'xy')  == 'axyaxyaxy'
+    CHANGESTR('bc', 'abcabcabc', '')    == 'aaa'
+    CHANGESTR('', 'abcabcabc', 'xy')    == 'abcabcabc'
