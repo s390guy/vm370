@@ -1,0 +1,30 @@
+Implementation Limits and Restrictions
+
+The VM/370 CMS version of bREXX has inherited the following limits and
+restrictions from the original bREXX implementation.  CMS bREXX does not have
+any additional limits or restrictions.
+
+* The name of a variable name or label may not exceed 250 characters.  Longer
+  names will result in error 30, "Name or string too long".  (See
+  rexx.c:RxInitialize() in the bREXX source code.)
+
+* The length of a literal string may not exceed 250 characters.  Longer strings
+  will result in error 30, "Name or string too long".  (See
+  rexx.c:RxInitialize() in the bREXX source code.)
+
+* Numbers follows C restrictions, thus integers are held as "long"s (i.e.,
+  32 bits) and real numbers are held as "double"s (i.e., 64 bits).  This may
+  result in loss of numeric precision, even with high settings for NUMERIC
+  DIGITS.  For example:
+    numeric digits 100
+    say 1234567890 * 1234567890* 1234567890
+  produces:
+    1881676371789150000000000000
+
+* The right-hand term of an exponentiation may not exceed maximum long number.
+
+* The control stack (for DO, IF, CALL, etc.) is limited to a nesting level of
+  256. (See rexx.h:STCK_SIZE in the bREXX source code.)
+
+* Functions and subroutines cannot be called with more than 15 arguments.  (See
+  rexx.h:MAXARGS in the bREXX source code.)
