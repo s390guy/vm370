@@ -2,7 +2,7 @@ HEXDUMP                                                             CMS MODULE
  
 Dump a file in in text and in hexadecimal format.
 +----------------------------------------------------------------------------+
-| HEXDUMP  | fn1.ft1.fm1 [ start [ end ]]                                    |
+| HEXDUMP  | fn1.ft1[.fm1] [ start [ end ]]                                  |
 +----------------------------------------------------------------------------+
 where:
  
