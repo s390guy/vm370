@@ -1,0 +1,29 @@
+&SUBSTR FUNCTION                                         EXEC built-in function
+
+Use the &SUBSTR function to extract a substring of a token and assign the
+result to a variable symbol.  The format of the &SUBSTR function is:
++-----------+-----------------------------------------------------------------+
+| &SUBSTR   | token startpos [length]                                         |
++-----------+-----------------------------------------------------------------+
+where:
+
+token
+         specifies the token from which to extract a substring, with a maximum
+         length of eight characters.
+
+startpos
+         specifies the position of the first character to extract, starting at
+         one.
+
+length
+         specifies the number of characters to extract, up to eight.  If not
+         specfied, eight is assumed.
+
+         This function is valid only on the right-hand side of an assignment
+         statement.  For example:
+            &A = ABCDEFGH
+            &B = &SUBSTR &A 2 4
+            &TYPE &B
+
+         results in the printed line:
+            BCDE

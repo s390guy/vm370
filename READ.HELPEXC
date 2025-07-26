@@ -1,0 +1,23 @@
+&READ STATEMENT                                                  EXEC statement
+
+Use the &READ control statement to read information from the terminal and
+process it.  The format of the &READ control statement is:
++-----------+-----------------------------------------------------------------+
+| &READ     | [num]                                                           |
+|           | ARGS                                                            |
+|           | VARS &var1 [&var2 [...]]                                        |
++-----------+-----------------------------------------------------------------+
+where:
+
+num      is a positive integer that indicates the number of lines to read from
+         the terminal and execute.  If the number is not specified, one line is
+         read.
+
+ARGS
+         specifies one line be read from the terminal, tolenized, the tokens
+         assigned to the arguments &1, &2, ..., and the number of tokens be
+         assigned to the special variable &INDEX.
+
+ARGS
+         specifies one line be read from the terminal, tolenized, the tokens
+         assigned to the specified variables.
