@@ -37,5 +37,5 @@ SNOBOL4 EPA
 SNOBOL4 VALUE CPUNCH TERM H 300000
                Will execute a SNOBOL program in file
                'VALUE SNOBOL4', directing printer output to the
-               termianl aand punch output to the punch.
+               terminal and punch output to the punch.
                The compiler H value will be 300000 bytes.

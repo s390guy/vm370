@@ -33,7 +33,7 @@ library is probably not what you want to use.  But if you want to write
 programs just for CMS, then this library will give you the best access to CMS
 system services.
  
-In CMS it is possible to load programs into memory and have them reamin their
+In CMS it is possible to load programs into memory and have them remain their
 for the rest of your session.  These are called "resident" programs.  Starting
 with VM/SP, IBM made it possible for users to create resident programs via the
 NUCXLOAD command.  In VM/370 we have the RESLIB command which performs a

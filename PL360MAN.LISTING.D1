@@ -765,7 +765,7 @@ B                                 4-2
  used for branching from one segment to  another,  but  may  be  used  to
  branch  out  of  a  local  procedure within a segment.  The fact that no
  implicitly generated instructions can ever lead  control  outside  of  a
- segment mimimizes the number of cross references in a natural way.  Only
+ segment minimizes the number of cross references in a natural way.  Only
  relatively  large  procedures  should constitute program segments, and a
  facility  is  provided  to  designate  such  procedures  explicitly.   A
  procedure to be compiled as a program segment must  contain  the  symbol

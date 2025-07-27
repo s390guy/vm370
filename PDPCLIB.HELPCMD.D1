@@ -42,7 +42,7 @@ PDPCLIB - An implementation of the C90 Library for GCC
  
     As PDPCLIB uses OS QSAM emulation to read and write files, a
     "FILEDEF" command is needed for each file that is open. To ease
-    the burden on "C" programmers and to simpify porting code from
+    the burden on "C" programmers and to simplify porting code from
     other platforms, the PDPCLIB open routines will issue a FILEDEF
     command to create a Dataset Descriptor (DD) for it to use.
  
@@ -79,7 +79,7 @@ PDPCLIB - An implementation of the C90 Library for GCC
      When PDPCLIB was first ported to CMS there was an issue with passing
      the command line to the program. As released VM/CMS splits the command
      line into tokens, truncating each token to 8 chacaters. This makes
-     running tradional "C" programs challenging. In order to allow a full
+     running traditional "C" programs challenging. In order to allow a full
      un-edited command line to be passed the PARMFILE mechanism was concocted.
      When the C startup code runs it checks to see if a DD of PARMFILE is
      allocated. If it is, it will read the command line from the file and

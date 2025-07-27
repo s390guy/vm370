@@ -336,7 +336,7 @@ Branch specifies the tracing of successful branches.  Whenever a branch trace
 is in effect a table of the last 5 successful branches is maintained which can
 be displayed using the DUMP control.  It is also possible to specify that
 output is to be produced only if a branch into a given range occurs.  In the
-following example brances to the address 1BEE0 are traced.
+following example branches to the address 1BEE0 are traced.
    per b 1bee0
    R;
    >01B5B6 BALR  05EF     01BEE0 CC=2

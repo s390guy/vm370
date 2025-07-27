@@ -53,7 +53,7 @@ fname       specifies the  filename of  the object   file to be  processed.
        
        RENT        marks the load module reenterable.
        
-       REUS        marks the load module reuseable.
+       REUS        marks the load module reusable.
        
        REFR        marks the load module refreshable.
        

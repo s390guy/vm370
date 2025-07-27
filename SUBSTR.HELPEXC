@@ -17,7 +17,7 @@ startpos
 
 length
          specifies the number of characters to extract, up to eight.  If not
-         specfied, eight is assumed.
+         specified, eight is assumed.
 
          This function is valid only on the right-hand side of an assignment
          statement.  For example:
