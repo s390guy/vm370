@@ -1,0 +1,47 @@
+&READ STATEMENT                                                  EXEC statement
+
+Use the &READ control statement to read one or more lines from the terminal or
+console stack. The lines may contain data or executable statements. The format
+of the &READ control statement is:
+
++---------+-------------------------------------------------------------------+
+|  &READ  |  [ n | 1 | ARGS | VARS [ &var1 [ &var2 ... [ &varn ]] ]           |
++---------+-------------------------------------------------------------------+
+
+where:
+
+n         reads the next n lines from the terminal and treats them as if they
+          had been in the EXEC file. Reading from the terminal stops when n
+          lines have been read, or when an &LOOP statement or a statenebt that
+          transfers control is encountered. If an &READ statement is
+          encountered, tne number of lines to be read by it is added to the
+          number outstanding.
+
+          If n is not specified, the default 1 is assumed, and the EXEC
+          continues processing after reading a single line.
+
+1         reads a single line, assigns the entered tokens to the special
+          variables &1, &2, ... , &n, and resets the special variables &INDEX,
+          &*, and &$.
+
+          If any of the tokens is specified as a percent sign (%) or begins
+          with the character X'FF', the corresponding argument is set to
+          blanks.
+
+VARS [&var1 [&var2 ... [&varn]]]
+          reads a single line and assigns the tokens entered to the variable
+          symbols &varl, &var2, ... , &varn (up to 11). These variables are
+          scanned in the same way as though they appeared on the left-hand side
+          of an assignment statement. If no variable names are specified, any
+          data read from the terminal is lost.
+
+          If any of the tokens is specified as a percent sign (%) or begins
+          with the character X'FF', the corresponding variable is set to
+          blanks.
+
+Usage Note
+
+You can test the special variable &READFLAG to determine whether the next &READ
+statement will result in a physical read to your terminal (the value of
+&READFLAG is CONSOLE) or in reading a line from the console stack (the value
+of &READFLAG is STACK).
