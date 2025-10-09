@@ -1,0 +1,35 @@
+&SUBSTR FUNCTION                                         EXEC built-in function
+ 
+Use the &SUBSTR function to extract a character string from a specified token
+and to assign the substring to a variable symbol. The format of the &SUBSTR
+function is:
+ 
++-----------------------------------------------------------------------------+
+|  &variable = &SUBSTR token i [j]                                            |
++-----------------------------------------------------------------------------+
+ 
+where:
+ 
+&variable
+         is the variable symbol whose value is determined by the &SUBSTR
+         function.
+ 
+token    is the token from which the character string is to be
+         extracted.
+ 
+i        specifies the character position in the token of the first character
+         to be used in the substring.
+ 
+j        specifies the number of characters in tne string. If omitted, the
+         remainder of the token is used.
+ 
+Usage Note
+ 
+The values of i and j (if given) must be positive integers. For example:
+ 
+     &A = &SUBSTR ABCDE 2 3
+     &TYPE &A
+ 
+     results in the printed line:
+ 
+     RCD
