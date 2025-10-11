@@ -1,7 +1,7 @@
 READY                                                    CP Privilege Class: G
  
 Use the READY command to set a device-end interruption pending
- for a specified victual device.  The format of the READY command is:
+ for a specified virtual device.  The format of the READY command is:
 +----------------------------------------------------------------------------+
 | READY    | vaddr                                                           |
 +----------------------------------------------------------------------------+
