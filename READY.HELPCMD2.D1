@@ -1,5 +1,5 @@
 Usage Notes:
  
 1.  The status of the virtual machine is unchanged.
-2.  Othec than having a device-end interruption pending, the virtual
+2.  Other than having a device-end interruption pending, the virtual
     device is unchanged.
