@@ -1,7 +1,7 @@
 IPL                                                      CP Privilege Class: G
  
 Use the IPL =ommand to simulate an initial program load function for a
-virtual machine. The format of the 1PL command is:
+virtual machine. The format of the IPL command is:
 +---------+------------------------------------------------------------------+
 | IPL     | { vaddr [cylno ] [ CLear | NOCLear ] [ STOP ] }                  |
 |         |  [PARM {p1 p2 .t.t.t l]

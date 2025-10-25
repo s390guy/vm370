@@ -7,7 +7,7 @@ Usage Notes
     the virtual PSW except when initial program loading a named system.
     Also, parameters can be passed to the virtual machine's general
     registers.  When the simulated load function is complete, CP
-    initiates execution of the virtual machine by loading the 1PL PSi
+    initiates execution of the virtual machine by loading the IPL PSW
     which was stored during the simulation process.
 3.  Care must be used when passing parameters to a named system
     (systemname).  Named systems expect certain registers to be
@@ -26,7 +26,7 @@ Usage Notes
  
         For example:
           storage size=200K then the IPL Simulator is loaded at 100K.
-5.  Any logical lines following the 1PL command are ignored since the
+5.  Any logical lines following the IPL command are ignored since the
     execution of the IPL command transfers control from the CP
     environment to the virtual machine environment.
  
@@ -50,7 +50,7 @@ SEG=segmentname
         eight characters long.
         The CMS batch facility loads whatever segment is specified
         on the first IPL command issued for the batch virtual machine.
-        Thus, if the first 1PL command for a CKS batch facility
+        Thus, if the first IPL command for a CKS batch facility
         machine is:
  
         IPL CMS PARM SEG=CMSSEG02
@@ -74,6 +74,6 @@ SEG=segmentname
     can prove to be very useful.  The name of a CMS restart routine may
     be specified in the CMS nucleus. In the event of an ABEND, the specified
     restart routine receives control instead of the service virtual machine
-    entering a disabled wait state. If this routine issues an 1PL CMS PARM
+    entering a disabled wait state. If this routine issues an IPL CMS PARM
     AUTOCR command, the PROFILE EXEC executes initial setup procedures that
     allow the service virtual machine to reestablish itself.
