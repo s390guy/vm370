@@ -32,4 +32,4 @@ The values of i and j (if given) must be positive integers. For example:
  
      results in the printed line:
  
-     RCD
+     BCD
