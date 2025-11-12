@@ -22,7 +22,7 @@ If the length is omitted, the string is interpreted as an unsigned number.
         X2D('81')    == 129
         X2D('F81')   == 3969
         X2D('FF81')  == 65409
-        X2D('c6fO'X) == 240
+        X2D('c6f0'X) == 240
 
 If the length is specified, the left-most bit of the string is taken as the sign,
 with 0 indicating a positive number and 1 negative.  The rest of the string is 
