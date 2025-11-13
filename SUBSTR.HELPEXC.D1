@@ -20,7 +20,7 @@ token    is the token from which the character string is to be
 i        specifies the character position in the token of the first character
          to be used in the substring.
  
-j        specifies the number of characters in tne string. If omitted, the
+j        specifies the number of characters in the string. If omitted, the
          remainder of the token is used.
  
 Usage Note
