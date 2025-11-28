@@ -14,7 +14,7 @@ n         reads the next n lines from the terminal and treats them as if they
           had been in the EXEC file. Reading from the terminal stops when n
           lines have been read, or when an &LOOP statement or a statenebt that
           transfers control is encountered. If an &READ statement is
-          encountered, tne number of lines to be read by it is added to the
+          encountered, the number of lines to be read by it is added to the
           number outstanding.
 
           If n is not specified, the default 1 is assumed, and the EXEC
