@@ -1,10 +1,10 @@
 IPL                                                      CP Privilege Class: G
  
-Use the IPL =ommand to simulate an initial program load function for a
+Use the IPL command to simulate an initial program load function for a
 virtual machine. The format of the IPL command is:
 +---------+------------------------------------------------------------------+
 | IPL     | { vaddr [cylno ] [ CLear | NOCLear ] [ STOP ] }                  |
-|         |  [PARM {p1 p2 .t.t.t l]
+|         |  [PARM p1 [p2 ... ]]                                             |
 +---------+------------------------------------------------------------------+
 where:
  
@@ -47,7 +47,7 @@ systemname
         Note: You cannot load a shared system or one that uses
         discontiguous saved segments into a virtual machine running in
         the V=R area.  An attempt to do so results in an error message.
-PARM { p1 p2 ... ]
+PARM p1 [ p2 ... ]
         passes up to 64 bytes of data (excluding the first blank
         character after the keyword, PARM, but including all other
         embedded blanks) to your virtual machine's general registers
