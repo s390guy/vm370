@@ -1,0 +1,24 @@
+DMSREX                                                             CMS MODULE
+
+The DMSREX command is part of the bREXX Rexx implementation for VM/370.
+
++---------+-----------------------------------------------------------------+
+| DMSREX  | [DEBUG [ ON | OFF ]]                                            |
+|         | [VERSION]                                                       |
++---------+-----------------------------------------------------------------+
+
+With no operands, the DMSREX command installs bREXX and returns 0.
+
+With the VERSION operand, the DMSREX command writes a message to the console,
+displaying the bREXX version string.
+
+With the DEBUG operand, the DMSREX command writes the same message as DMSREX
+VERSION, followed by a second message indicating the bREXX entry point and
+the address in NUCON where it is stored.
+
+With the DEBUG ON operand, the DMSREX command additionally turns on internal
+debugging (as if the TRACE DEBUG instruction had been executed), for future
+EXEC invocations.
+
+With the DEBUG OFF operand, the DMSREXX command turns off internal tracing for
+future EXEC invocations.
