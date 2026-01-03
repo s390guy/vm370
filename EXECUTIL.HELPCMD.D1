@@ -20,10 +20,10 @@ Places information about the CP and CMS environment on the stack.
 |                                                                             |
 | Options:                                                                    |
 |                                                                             |
-|  See the description of each function below for details of the options       |
+|  See the description of each function below for details of the options      |
 |                                                                             |
 |  **NOTE**                                                                   |
-|  There is no "(" between the function and the options                        |
+|  There is no "(" between the function and the options                       |
 +-----------------------------------------------------------------------------+
  
 Functions:
@@ -31,7 +31,7 @@ Functions:
 FREADDR
  
 Syntax:
-EXECUTIL FREEADDR [ cuu 191 [ n 1 ] ]
+EXECUTIL FREEADDR [ cuu | 191 [ n | 1 ] ]
  
 The FREEADDR function stacks (LIFO) a single line containing the next 'n'
 unused virtual addresses equal to, or higher than, the given 'cuu' parameter.
@@ -45,7 +45,7 @@ Errors:
 1  Insufficient unused virtual addresses
  
  
-EXECUTIL FREEMODE [ mode * A ]
+EXECUTIL FREEMODE [ mode | * | A ]
  
 The FREEMODE function stacks (LIFO) a single line containing all of the
 currently unused mode letters, in alphabetical order and separated by blanks.
@@ -89,9 +89,9 @@ QDISK Function
  
 Syntax:
  
-EXECUTIL QDISK [ mode * A ]
-EXECUTIL QDISK ADDress [ cuu 191 ]
-EXECUTIL QDISK LABel [ label TDISK1 ]
+EXECUTIL QDISK [ mode | * | A ]
+EXECUTIL QDISK ADDress [ cuu | 191 ]
+EXECUTIL QDISK LABel [ label | TDISK1 ]
  
 The QDISK function stacks information about accessed CMS disks.  There are
 three ways of selecting the disk or disks for which you want this information,
@@ -113,8 +113,10 @@ For each disk selected, the following information is stacked:
    the size of the disk in cylinders
    the number of files on the disk
    the number of disk blocks in use
-   the number of unused disk blocks either 'R/O' or 'R/W'
-   the 6-character disk label mode letter at which the disk is accessed. This
+   the number of unused disk blocks
+   either 'R/O' or 'R/W'
+   the 6-character disk label
+   the mode letter at which the disk is accessed. This
       is usually the same as 'accmode', but saves you having to check if
       'accmode' is in the "mode/parent" format (e.g. 'C/A'), if all you want is
       the mode letter.
@@ -129,8 +131,8 @@ QFILE Function
  
 Syntax:
  
-EXECUTIL QFILE fn * ft * [ fm * A1 [ fm ... ]]
-[ ( [ FIRST ] [ EXT ] [ LIFO FIFO ] ]
+EXECUTIL QFILE fn | * ft | * [ fm | * | A1 [ fm ... ]]
+[ ( [ FIRST ] [ EXT ] [ LIFO | FIFO ] ]
  
 Description:
  
@@ -169,7 +171,7 @@ QLIB Function
  
 Syntax:
  
-EXECUTIL QLIB MACLIB TXTLIB DOSLIB
+EXECUTIL QLIB MACLIB | TXTLIB | DOSLIB
  
 The QLIB function stacks (LIFO) a single line containing the names of the
 specified libraries (MACLIB, TXTLIB, or DOSLIB), that are currently globaled.
@@ -184,7 +186,7 @@ QREADER Function
 Syntax:
  
 EXECUTIL QREADER [ Name fn ft ] [ FRom userid ]
-[ Type DSK PRT CON PUN RDR DMP MON UNK ]
+[ Type DSK | PRT | CON | PUN | RDR | DMP | MON | UNK ]
 [ CLass c ] [ Hold ] [ NOHold ]
 [ spoolid spoolid ... ]
 [ FIRST ] [ LAST ] [ EXCLude ]
@@ -271,7 +273,7 @@ QSTACK Function
  
 Syntax:
  
-EXECUTIL QSTACK [ n 0 ]
+EXECUTIL QSTACK [ n | 0 ]
  
 The QSTACK function stacks (LIFO) a single line containing the number of lines
 currently in the CMS console stack, and the difference between that number and
@@ -286,7 +288,7 @@ EXECUTIL QSTACK
 &READ VARS &NUMLINS
 * GET INFO ON THE FILES
 EXECUTIL QFILE * &FTYPE *
-&IF &RETCODE ^= 0 &GOTO -ERR1
+&IF &RETCODE ¬= 0 &GOTO -ERR1
 * GET NUMBER OF LINES JUST STACKED
 EXECUTIL QSTACK &NUMLINS
 &READ VARS &JUNK &NUMLINS
@@ -300,9 +302,9 @@ READ Function
  
 Syntax:
  
-EXECUTIL READ fn ft [ fm * ]
-[ recno * [ nrecs * [ truncol * ]]]
-[ ( FIFO LIFO ]
+EXECUTIL READ fn ft [ fm | * ]
+[ recno | * [ nrecs | * [ truncol | * ]]]
+[ ( FIFO | LIFO ]
  
 The READ function reads records from a CMS disk file and stacks the lines in
 the CMS console stack.  The first two parameters, the filename and filetype of
@@ -365,8 +367,8 @@ TYPE Function
  
 Syntax:
  
-EXECUTIL TYPE [ n * ] [ NOCR ] [ ( text ) ]
-[ TAB [ +9 READ [nn +nn -nn] ... ]]
+EXECUTIL TYPE [ n | * ] [ NOCR ] [ ( text ) ]
+[ TAB [ +9 | READ [nn +nn -nn] ... ]]
  
 The TYPE function reads lines from the CMS console stack and types them on the
 terminal, or types a single line from text given on the command line.
@@ -459,10 +461,10 @@ WRITE Function
  
 Syntax:
  
-EXECUTIL WRITE fn ft [ fm * A1 ]
-[ recno * [ nrecs * 1 [ recfm [ lrecl ]]]]
+EXECUTIL WRITE fn ft [ fm | * | A1 ]
+[ recno | * [ nrecs | * | 1 [ recfm [ lrecl ]]]]
 [ ( text ) ] [ LCASE ]
-[ TAB [ +9 READ [nn +nn -nn] ... ] ]
+[ TAB [ +9 | READ [nn +nn -nn] ... ] ]
  
 The WRITE function writes records to CMS disk files.  The data to be written is
 obtained from the stack, the terminal, or the command line.
@@ -488,7 +490,7 @@ If you give a record number that is past the current end of the file, then null
 records containing hexadecimal zeroes will be inserted.
  
 The 'nrecs' parameter gives the number of records to be written.  If 'nrecs' is
-given explicitly as a decimal number, then precisely 'nrec' reads will be issued
+given explictly as a decimal number, then precisely 'nrec' reads will be issued
 to the stack, or if the stack is empty or becomes empty, the reads will be
 presented at the terminal.  If 'nrecs' is given as '*' (the default), then
 there are two possible actions, depending upon the initial state of the console

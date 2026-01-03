@@ -12,8 +12,16 @@ environment.
 If the selector specifies an external variable pool, the value of name does not
 need to be a valid REXX symbol.
 
-CMS/370 REXX supports the following external variable pools:
-    ???
+CMS/370 supports the following selectors:
+
+* Negative integers specify the variable pool of the immediate caller (-1), its
+  caller (-2), etc., on back to the main program.
+
+* Positive integers specify specific active (i.e., not RETURNed) functions or
+  subroutines, counting from the main program as "0", and including active
+  INTERPRET instructions and active interactive tracing prompts.
+
+CMS/370 REXX does not support any external variable pools.
 
 Examples:
 
@@ -25,7 +33,5 @@ Examples:
     VALUE(fred,5)   == '3'  /* and sets K=5 */
     VALUE(fred)     == '5'
     VALUE('LIST.'k) == '?'  /* looks up LIST.5 */
-    VALUE('toy','Buxton','SHARED') == 'Calistoga'  /* Looks up and sets
-                                                      "toy" in SHARED pool */
-    VALUE('toy',,'SHARED') == 'Buxton'    /* Looks up "toy" in SHARED pool */
-    VALUE('toy',,'SYSTEM') == 'Bath Spa'  /* Looks up "toy" in SYSTEM pool */
+    VALUE('toy','Buxton',-1) == 'Calistoga'  /* Looks up and sets
+                                                "toy" in parent pool */

@@ -4,14 +4,17 @@ LINEIN function
 | LINEIN([stream], [line], [length])                                          |
 +-----------------------------------------------------------------------------+
 
-Returns a string containing 1 line of characters from from the specified stream,
-which defaults to the console or stack, starting at line position start,
-which defaults to 1.  If length is 0, the stream is positioned to the start
-position, but no data is read and a null string is returned.  If the stream
-cannot be positioned and start is specified, an error occurs.  If there are
-less than length characters available, and it is impossible for more to become
+Returns a string containing length lines of characters from from the specified
+stream, which defaults to the console or stack, starting at line position
+start, which defaults to 1.  If length is 0, the stream is positioned to the
+start position, but no data is read and a null string is returned.  If the
+stream cannot be positioned and start is specified, an error occurs.  If there
+are less than length lines available, and it is impossible for more to become
 available, the NOTREADY condition is raised and whatever characters are
 available will be returned.
+
+Rexx normally limits length to 0 or 1, however in bREXX, it can be any
+non-negative number, up to the stream size in lines.
 
 Examples:
 
