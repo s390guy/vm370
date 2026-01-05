@@ -63,5 +63,5 @@ PARM p1 [ p2 ... ]
         positions of register 0 contain a hexadecimal 40. Whenever
         PARM is specified, the remaining characters in the command
         line are treated as parameters to be passed to your virtual
-        machine; therefore, PARK must be the last operand entered on
+        machine; therefore, PARM must be the last operand entered on
         the command line.
