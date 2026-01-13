@@ -3,7 +3,7 @@ BASIC                                                              CMS Command
 Acronym for Beginners' All-purpose Symbolic Instruction Code, runs CALL-OS
 BASIC as supplied with VM/370 R1.
 +----------+-----------------------------------------------------------------+
-| BASIC    | fn [( <LONG> [)]                                                |
+| BASIC    | fn [( <LONG> [)]]                                               |
 +----------+-----------------------------------------------------------------+
 where:
  
