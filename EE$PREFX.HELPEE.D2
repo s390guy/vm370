@@ -1,0 +1,78 @@
+EE-PREFX                                                  EE prefix subcommands
+EE supports the following (case insensitive) commands in the prefix area:
+ /        set this line to the current line
+ .c       set the line mark 'c' on this line, replacing a possible existing
+          mark with the same name;
+          line mark names consist of a single letter A .. Z, so up to 26 line
+          marks can be defined per file in an EE session.
+ @        ignore and discard modifications made to this line in the file area
+          on the screen
+ I[n]     insert an empty line after this line; if the optional
+          repetition-count n is given, n lines will be inserted
+ D[n]     delete this line; if the optional repetition-count n is given, up
+          to n lines will be deleted, but deleting at most the lines up to
+          (before) the next prefix command on the screen
+ DD       mark one of the boundaries of a line block to be deleted
+ "[n]     duplicate this line; if the optional repetition-count n is given,
+          the block of n lines (including the line with the prefix command)
+          will be duplicated
+ ""       mark one of the boundaries of a line block to be duplicated
+ *[n]     duplicate this line; if the optional repetition-count n is given,
+          this line is duplicated n times (i.e. repeated n times)
+ <[n][o]  shift this line to the left (see below for the optional parameters)
+ <<[n][o] mark one of the boundaries of a line block to be shifted to the left
+          (see below for the optional parameters)
+ <[n][o]  shift this line to the right
+          (see below for optional parameters)
+ >>[n][o] mark one of the boundaries of a line block to be shifted to the right
+          (see below for optional parameters)
+ M        move this (single) line to the target specified by either a F or a P
+          prefix command
+ MM       mark one of the boundaries of a line block to be moved to the target
+          specified by either a F or a P prefix command
+ C        move this (single) line to the target specified by either a F or a P
+          prefix command
+ CC       copy one of the boundaries of a line block to be copied to the target
+          specified by either an F or a P prefix command
+ F        place the line(s) to copy or move after (following) this line
+ P        place the line(s) to copy or move before (preceding) this line
+The optional repetition-count n for the prefix commands I  D  "  and * can
+take the values 1..9999.
+The shifting prefix commands support the following optional parameters (which
+can be specified on any of the boundaries for block shifting prefix commands):
+  n : the number of character positions to shift by. This must be a single
+      digit from 1 to 9, with the default specified with the SHIFTCONFig
+      command if n is not specified.
+  o : the shiftmode for handling shifting beyond the left or right file border,
+      overriding the default given with the SHIFTCONFig command. This must be
+      one of the following characters identifying one of the shiftmodes (see
+      the command SHIFTCONFig in: EE-CONFG):
+        ?  ->  CHECKall
+        :  ->  MINimal
+        #  ->  LIMit
+        !  ->  TRUNCate
+If a line block needing a target position (MM .. MM or CC .. CC) is not
+specified at once on the same screen, the target position (F or P) must be
+specified after both boundaries of the block are selected (or together with
+the second boundary). If the block is defined but the target is not, the
+selected block (both the prefix and the file zones) will be made read-only
+until the command is finalized by giving the target.
+Prefix move and copy operations can be performed between files edited in EE by
+specifying the source (M, C, MM .. CC or CC .. CC) and target (F resp. P) of
+the operation in different files (see RINGNext / RINGPrev in: EE-FILES).
+As long as prefix commands do not conflict, more than one single line command
+and possibly one line range command can be issued on one screen input. Single
+line commands are processed before a possibly given block command and target
+position.
+If EE cannot ensure a meaningful execution, all prefix commands on the screen
+are ignored and removed.
+After executing prefix commands, EE will try to place the cursor at a
+meaningful place in the file area. The placement line depends on the prefix
+command (e.g. the line inserted with the I-prefix command, but the line after
+the deletion for D/DD-operation). If this line is displayed on the screen, the
+cursor will be placed at the current indentation (of the last previous
+non-blank line) for the I-command resp. on the first non-blank character of
+the line. If the line for the cursor placement is not visible (for example a
+prefix command was entered but the file content was also scrolled with a PF
+key), the cursor is placed at the command prompt. If more than one prefix
+command is given, the cursor is placed by the first (top most) command.
