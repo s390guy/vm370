@@ -5,7 +5,7 @@ VM/370 Repository.  Work in Progress
 Community Edition Release are available at [vm370.org](http://www.vm370.org)
 
 # 6-Pack and older at G4UGM's Vintage Computer Pages
-See [VM370](http://www.smrcc.org.uk/members/g4ugm/VM370.htm)
+See [VM370](https://web.archive.org/web/20221217015227/http://www.smrcc.org.uk/members/g4ugm/VM370.htm) archived from the [original](http://www.smrcc.org.uk/members/g4ugm/VM370.htm)
 
 # VM_370_HELP
 VM/370 Online HELP Documentation.
