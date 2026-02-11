@@ -60,7 +60,7 @@ and begin with a function name.
      specifies a comment, and is ignored.  At least one space is required after
      the asterisk.
  
-DUMP modulename|membername [ALL|csectname [startaddr [endaddr]]]]
+DUMP modulename|membername [ALL|csectname [startaddr [endaddr]]]
      specifies to dump the specified module or library member to the output
      The output can be limited to a specific CSECT or a portion of one,
      and defaults to the entire CSECT ("ALL").
