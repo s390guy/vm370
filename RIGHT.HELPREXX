@@ -9,6 +9,6 @@ extended on the left with the pad character as necessary.
 
 Examples:
 
-    RIGHT('abc  d',8)  == '  abc  d'
-    RIGHT('abc def',5) == 'c def'
-    RIGHT('12',5,0)    == '00012'
+    RIGHT('abc  d', 8)   == '  abc  d'
+    RIGHT('abc def', 5)  == 'c def'
+    RIGHT('12', 5, 0)    == '00012'

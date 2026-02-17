@@ -12,8 +12,8 @@ not specified.
 Examples:
 
     COMPARE('abc', 'abc')       == 0
-    COMPARE('abc' , 'ak')       == 2
-    COMPARE('ab ' , 'ab')       == 0
-    COMPARE('ab ' , 'ab' , ' ') == 0
-    COMPARE('ab ' , 'ab' , 'x') == 3
-    COMPARE('ab-- ','ab','-')   == 5
+    COMPARE('abc', 'ak')        == 2
+    COMPARE('ab ', 'ab')        == 0
+    COMPARE('ab ', 'ab' , ' ')  == 0
+    COMPARE('ab ', 'ab', 'x')   == 3
+    COMPARE('ab-- ', 'ab', '-') == 5

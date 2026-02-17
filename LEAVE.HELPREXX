@@ -7,8 +7,8 @@ LEAVE instruction
 The LEAVE instruction terminates the execution of a repeating DO instruction,
 without regard to its condition controls.
 
-The name, if specified must match the variable named on one of the executing DO
-instructions.  The named instruction, and any others active within it, are
+The name, if specified, must match the variable named on one of the executing
+DO instructions.  The named instruction, and any others active within it, are
 terminated.
 
 Examples:

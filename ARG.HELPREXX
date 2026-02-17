@@ -5,10 +5,9 @@ ARG instruction and function
 +-----------------------------------------------------------------------------+
 
 Parse the argument string to an EXEC or a routine within an EXEC.  The
-argument string's value is translated to upper case before parsing.  This is
-an exact shorthand for:
+argument string's value is translated to upper case before parsing.
 
-    PARSE UPPER ARG [parse_template]
+This is an exact shorthand for PARSE UPPER ARG [parse_template]
 
 See the PARSE instruction for further information.
 
@@ -44,13 +43,13 @@ Examples:
     ARG(l, 'o') == 1
 
     /* Following "Call name 1,, 2;" */
-    ARG()        == 3
-    ARG(1)       == 1
-    ARG(2)       == ''
-    ARG(3)       == 2
-    ARG(n)       == '' /* for n>=4 */
-    ARG (1, 'e') == 1
-    ARG (2, 'E') == 0
-    ARG (2, 'O') == 1
-    ARG(3, 'o')  == 0
-    ARG(4, 'o')  == 1
+    ARG()       == 3
+    ARG(1)      == 1
+    ARG(2)      == ''
+    ARG(3)      == 2
+    ARG(n)      == '' /* for n>=4 */
+    ARG(1, 'e') == 1
+    ARG(2, 'E') == 0
+    ARG(2, 'O') == 1
+    ARG(3, 'o') == 0
+    ARG(4, 'o') == 1

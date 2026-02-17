@@ -8,7 +8,8 @@ The ITERATE instruction terminates the current repetition of a repeating DO
 instruction, and causes the DO instruction to begin the next repetition
 immediately, or to terminate if the DO conditions say to do so.
 
-The name, if specified must match the variable named on the DO instruction.
+The name, if specified must match the variable named on one of the active DO
+instructions.
 
 Examples:
 

@@ -48,6 +48,3 @@ is composed of a whole_number (the "integer part"), a period ('.'), and
 another whole_number (the "decimal part").  An exponential_number is composed
 of a decimal_number and an exponent ('E' or 'e' followed by a whole_number),
 with an implied base of 10.
-
-Examples:
-

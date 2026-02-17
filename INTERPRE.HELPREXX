@@ -1,7 +1,7 @@
 INTERPRET instruction
 
 +-----------------------------------------------------------------------------+
-| INTERPRET [expression];                                                     |
+| INTERPRET expression;                                                       |
 +-----------------------------------------------------------------------------+
 
 The INTERPRET instruction evaluates the expression and executes the resulting

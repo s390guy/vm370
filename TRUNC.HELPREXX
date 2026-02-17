@@ -13,7 +13,7 @@ necessary.  If the number of digits is 0, no decimal point is returned.
 
 Examples:
 
-    TRUNC(12.3)        == 12
-    TRUNC(127.09782,3) == 127.097
-    TRUNC(127.l,3)     == 127.100
-    TRUNC(127,2)       == 127.00
+    TRUNC(12.3)         == 12
+    TRUNC(127.09782, 3) == 127.097
+    TRUNC(127.l, 3)     == 127.100
+    TRUNC(127, 2)       == 127.00

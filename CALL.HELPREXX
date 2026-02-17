@@ -25,7 +25,8 @@ CALL RTN ARG1,,ARG3).
 
 Internal routines must end their processing with a RETURN instruction, which
 may optionally specify a value to return as the routine's value.  External
-routines
+routines may end their processing with either an EXIT or a RETURN instruction,
+or by an implicit EXIT at the end of the routine.
 
 The CALL instruction sets the SIGL special variable to the source line number
 of the CALL instruction.

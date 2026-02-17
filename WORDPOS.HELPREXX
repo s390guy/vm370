@@ -13,10 +13,10 @@ characters are compared exactly.
 
 Examples:
 
-    WORDPOS('the','now is the time')        == 3
-    WORDPOS('The','now is the time')        == 0
-    WORDPOS('is the','now is the time')     == 2
-    WORDPOS('is    the','now is the time')  == 2
-    WORDPOS('is  time ','now is  the time') == 0
-    WORDPOS('be','To be or not to be')      == 2
-    WORDPOS('be','To be or not to be',3)    == 6
+    WORDPOS('the', 'now is the time')        == 3
+    WORDPOS('The', 'now is the time')        == 0
+    WORDPOS('is the', 'now is the time')     == 2
+    WORDPOS('is    the', 'now is the time')  == 2
+    WORDPOS('is  time ', 'now is  the time') == 0
+    WORDPOS('be', 'To be or not to be')      == 2
+    WORDPOS('be', 'To be or not to be',3)    == 6

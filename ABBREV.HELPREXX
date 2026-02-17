@@ -11,8 +11,8 @@ characters long.
 Examples:
 
     ABBREV('Print', 'Pri')    == 1
-    ABBREV ('PRINT' , 'Pri')  == 0
+    ABBREV('PRINT', 'Pri')    == 0
     ABBREV('PRINT', 'PRI' ,4) == 0
     ABBREV('PRINT', 'PRY')    == 0
-    ABBREV ( 'PRINT' , ' ' )  == 1
-    ABBREV('PRINT','' ,1)     == 0
+    ABBREV('PRINT', ' ')      == 1
+    ABBREV('PRINT', '' ,1)    == 0

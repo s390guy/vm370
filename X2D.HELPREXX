@@ -12,13 +12,13 @@ If the length is specified as 0, the value is always 0.
 
     Examples:
 
-        X2D('003l',0) == 0
+        X2D('003l', 0) == 0
 
 If the length is omitted, the string is interpreted as an unsigned number.
 
     Examples:
 
-        X2D('OE')    == 14
+        X2D('0E')    == 14
         X2D('81')    == 129
         X2D('F81')   == 3969
         X2D('FF81')  == 65409
@@ -31,9 +31,9 @@ truncated if it is smaller than the result.
 
     Examples:
 
-        X2D('8l',l)   == -127
-        X2D('8l',4)   == 129
-        X2D('F08l',2) == -3967
-        X2D('F08l',3) == 129
-        X2D('F08l',2) == -127
-        X2D('F08l',l) == 1
+        X2D('8l', l)   == -127
+        X2D('8l', 4)   == 129
+        X2D('F08l', 2) == -3967
+        X2D('F08l', 3) == 129
+        X2D('F08l', 2) == -127
+        X2D('F08l', l) == 1

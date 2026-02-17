@@ -12,12 +12,12 @@ that length, or truncated on the left if the length is shorter than the result.
 
 Examples:
 
-    D2C(9)      == '09'x
-    D2C(l29)    == '81'x
-    D2C(l29,l)  == '81'x
-    D2C(l29,2)  == '0081'x
-    D2C(257,1)  == '01'x
-    D2C(-127,l) == '81'x
-    D2C(-127,2) == 'FF81'x
-    D2C(-l,4)   == 'FFFFFFFF'x
-    D2C(l2,0)   == ''
+    D2C(9)       == '09'x
+    D2C(l29)     == '81'x
+    D2C(l29, l)  == '81'x
+    D2C(l29, 2)  == '0081'x
+    D2C(257, 1)  == '01'x
+    D2C(-127, l) == '81'x
+    D2C(-127, 2) == 'FF81'x
+    D2C(-l, 4)   == 'FFFFFFFF'x
+    D2C(l2, 0)   == ''

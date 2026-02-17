@@ -13,6 +13,9 @@ IF instructions can be nested, and if they are, the ELSE keyword closes the
 most recent open IF.  Under certain circumstances, using ELSE NOP may be
 necessary to align further ELSEs to the intended IFs.
 
+NOTE: Unlike some other languages, in REXX, the entire expression is always
+evaluated.
+
 Examples:
 
     /* Using indentation to show how IFs and ELSEs are bound */

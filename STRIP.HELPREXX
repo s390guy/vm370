@@ -6,14 +6,16 @@ INSERT function
 
 Returns the specified string with leading and/or trailing instances of the
 specified character, which defaults to blank, removed, depending on the option.
-The option is upper-cased and only the first character is examined.  If the 
-option is 'L' or 'B', or omitted, leading characters are removed.  If the option
-is 'T' or 'B', or omitted, trailing characters are removed.
+The option is upper-cased and only the first character is examined.
+
+If the option is 'L' or 'B', or omitted, leading characters are removed.
+
+If the option is 'T' or 'B', or omitted, trailing characters are removed.
 
 Examples:
 
-    STRIP('  ab c  ')     == 'ab c    '
-    STRIP('  ab c  ','L') == 'ab c  '
-    STRIP('  ab c  ','t') == '  ab c'
-    STRIP('l2.7000',,0)   == '12.7'
-    STRIP('0012.700',,0)  == '12.7'
+    STRIP('  ab c  ')       == 'ab c    '
+    STRIP('  ab c  ', 'L')  == 'ab c  '
+    STRIP('  ab c  ', 't')  == '  ab c'
+    STRIP('l2.7000', ,0)    == '12.7'
+    STRIP('0012.700', , 0)  == '12.7'

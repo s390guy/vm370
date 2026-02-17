@@ -9,4 +9,4 @@ Returns the number of blank-separated words in the string.
 Examples:
 
     WORDS('Now is the time') == 4
-    WORDS (' ')              == 0
+    WORDS(' ')               == 0
