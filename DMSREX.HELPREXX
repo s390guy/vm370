@@ -1,11 +1,11 @@
-DMSREX                                                             CMS MODULE
+DMSREX                                                              CMS COMMAND
 
-The DMSREX command is part of the bREXX Rexx implementation for VM/370.
+The DMSREX command is part of the bREXX REXX implementation for VM/370.
 
-+---------+-----------------------------------------------------------------+
-| DMSREX  | [DEBUG [ ON | OFF ]]                                            |
-|         | [VERSION]                                                       |
-+---------+-----------------------------------------------------------------+
++---------+-------------------------------------------------------------------+
+| DMSREX  | [DEBUG [ ON | OFF ]]                                              |
+|         | [VERSION]                                                         |
++---------+-------------------------------------------------------------------+
 
 With no operands, the DMSREX command installs bREXX and returns 0.
 

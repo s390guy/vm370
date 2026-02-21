@@ -13,8 +13,8 @@ it defaults to XRANGE('00'x,'FF'x).  The pad character defaults to blank.
 
 Examples:
 
-    TRANSLATE('abcdef')                 == 'ABCDEF'
-    TRANSLATE('abbc','&','b')           == 'a&&c'
-    TRANSLATE('abcdef','12','ec')       == 'ab2dlf'
-    TRANSLATE('abcdef','12','abcd','.') == '12 .. ef'
-    TRANSLATE('4123','abcd','1234')     == 'dabc'
+    TRANSLATE('abcdef')                    == 'ABCDEF'
+    TRANSLATE('abbc', '&', 'b')            == 'a&&c'
+    TRANSLATE('abcdef', '12', 'ec')        == 'ab2dlf'
+    TRANSLATE('abcdef', '12', 'abcd', '.') == '12 .. ef'
+    TRANSLATE('4123', 'abcd', '1234')      == 'dabc'

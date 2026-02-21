@@ -7,17 +7,18 @@ PROCEDURE instruction
 This instruction may be used as the first instruction in an internal routine,
 to isolate some or all of the callers variables from use or alteration by the
 called routine.  If this instruction is not used, an internal routine has full
-access to all variables in its caller.  If the EXPOSE keyword is specified, the
-specified variables are "exposed" (i.e., not isolated), and may be read or
-written by the routine.  The variablelist parameter is a blank-separated list
-of variables and parenthesized variables.  Each variable is exposed in
-left-to-right order.  If a variable is part of a parenthesized variablelist, in
-addition to being exposed, its value is used as a list of additional variables
-to expose, again in left-to-right order.  The additional variable names cannot
-be themselves parenthesized (e.g, PROCEDURE EXPOSE (X) with X='(Y)' is not
-allowed).
+access to all variables in its caller.
 
-NOTE: Exposed variables may be exposed in deeper nested internal routines.
+If the EXPOSE keyword is specified, the specified variables are "exposed"
+(i.e., not isolated), and may be read or written by the routine.  The
+variablelist parameter is a blank-separated list of variables and parenthesized
+variables.  Each variable is exposed in left-to-right order.  If a variable is
+part of a parenthesized variablelist, in addition to being exposed, its value
+is used as a list of additional variables to expose, again in left-to-right
+order.  The additional variable names cannot be themselves parenthesized (e.g,
+PROCEDURE EXPOSE (X) with X='(Y)' is not allowed).
+
+NOTE: Exposed variables may be exposed in deeper-nested internal routines.
 
 Examples:
 

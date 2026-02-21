@@ -17,11 +17,12 @@ any additional limits or restrictions.
   result in loss of numeric precision, even with high settings for NUMERIC
   DIGITS.  For example:
     numeric digits 100
-    say 1234567890 * 1234567890* 1234567890
+    say 1234567890 * 1234567890 * 1234567890
   produces:
     1881676371789150000000000000
 
-* The right-hand term of an exponentiation may not exceed maximum long number.
+* The right-hand term of an exponentiation may not exceed the maximum long
+  number.
 
 * The control stack (for DO, IF, CALL, etc.) is limited to a nesting level of
   256. (See rexx.h:STCK_SIZE in the bREXX source code.)

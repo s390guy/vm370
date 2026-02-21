@@ -8,8 +8,8 @@ If the type is omitted, this function returns 'NUM' if string is a number
 (i.e., can be added to '0' without an error), or 'CHAR' if not.
 
 If the type is specified, this function returns 1 if the string is a valid
-value for the specified type (only the first character of the type, upppercased,
-is checked).  The types are:
+value for the specified type (only the first character of the type,
+upppercased, is checked).  The types are:
 
 A - Alphanumeric (i.e., composed only of 'a'-'z', 'A'-'Z', and '0'-'9')
 B - Binary (i.e., composed only of '0', and '1', with blanks allowed between
@@ -29,17 +29,17 @@ will return the actual C datatype of the variable as currently stored:
 
 Examples:
 
-    DATATYPE(' 12 ')      == 'NUM'
-    DATATYPE('')          == 'CHAR'
-    DATATYPE('l23*')      == 'CHAR'
-    DATATYPE('l2.3','N')  == 1
-    DATATYPE('12.3','W')  == 0
-    DATATYPE('Fred','M')  == 1
-    DATATYPE('','M')      == 0
-    DATATYPE('Minx','L')  == 0
-    DATATYPE('3d?','s')   == 1
-    DATATYPE('BCd3','X')  == 1
-    DATATYPE('BC d3','X') == 1
-    DATATYPE(2, 'T')      == 'STRING'
-    DATATYPE(2+0.0, 't')  == 'REAL'
-    DATATYPE(2+0, 'T')    == 'INTEGER'
+    DATATYPE(' 12 ')       == 'NUM'
+    DATATYPE('')           == 'CHAR'
+    DATATYPE('l23*')       == 'CHAR'
+    DATATYPE('l2.3', 'N')  == 1
+    DATATYPE('12.3', 'W')  == 0
+    DATATYPE('Fred', 'M')  == 1
+    DATATYPE('', 'M')      == 0
+    DATATYPE('Minx', 'L')  == 0
+    DATATYPE('3d?', 's')   == 1
+    DATATYPE('BCd3', 'X')  == 1
+    DATATYPE('BC d3', 'X') == 1
+    DATATYPE(2, 'T')       == 'STRING'
+    DATATYPE(2+0.0, 't')   == 'REAL'
+    DATATYPE(2+0, 'T')     == 'INTEGER'

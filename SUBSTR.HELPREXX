@@ -11,6 +11,6 @@ the string's length, the returned string is composed only of pad characters.
 
 Examples:
 
-    SUBSTR('abc',2)       == 'bc'
-    SUBSTR('abc',2,4)     == 'bc'
-    SUBSTR('abc',2,6,'.') == 'bc....'
+    SUBSTR('abc', 2)         == 'bc'
+    SUBSTR('abc', 2, 4)      == 'bc'
+    SUBSTR('abc', 2, 6, '.') == 'bc....'

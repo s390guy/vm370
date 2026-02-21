@@ -14,4 +14,4 @@ Examples:
 
     X2C('F7F2 A2') == '72s'
     X2C('F7f2a2')  == '72s'
-    X2C('F')       == 'OF'x
+    X2C('F')       == '0F'x

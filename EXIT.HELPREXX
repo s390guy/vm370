@@ -5,8 +5,8 @@ EXIT instruction
 +-----------------------------------------------------------------------------+
 
 The EXIT instruction unconditionally terminates a REXX program, and returns the
-value of the expression to its caller, if specified.  All current DO groups,
-and internal routines are terminated without any further processing.
+value of the expression to its caller, if specified.  All current DO groups and
+internal routines are terminated without any further processing.
 
 If a REXX program reaches its last instruction without encountering an EXIT,
 REXX behaves as if an "EXIT;" was encountered.

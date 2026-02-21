@@ -9,5 +9,5 @@ string, concatenated.
 
 Examples:
 
-    COPIES ('abc' , 3) == 'abcabcabc'
-    COPIES ('abc', 0)  == ''
+    COPIES ('abc', 3) == 'abcabcabc'
+    COPIES ('abc', 0) == ''

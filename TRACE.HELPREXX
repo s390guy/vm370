@@ -46,6 +46,8 @@ and PULL clauses.
 
 In bREXX, if the setting is 'SCAN', nothing happens.
 
+NOTE: bREXX does not currently support 'TRACE number'.
+
 +-----------------------------------------------------------------------------+
 | TRACE([option])                                                             |
 +-----------------------------------------------------------------------------+
