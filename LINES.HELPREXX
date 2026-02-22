@@ -5,9 +5,8 @@ LINES function
 +-----------------------------------------------------------------------------+
 
 Returns the number of complete lines remaining in the specified character
-input stream, which defaults to the console.  The count includes any line
-separator characters, if they are defined for the stream.  If the value cannot
-be determined, 1 is returned.
+input stream, which defaults to the console.  If the value cannot be
+determined, 1 is returned.
 
 Examples:
 

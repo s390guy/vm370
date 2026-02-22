@@ -28,5 +28,6 @@ Variants:
     NUMERIC [VALUE] expr
         specifies the numeric form to be the value of the expression, which
         must evaluate to either 'SCIENTIFIC' or 'ENGINEERING'.  The VALUE
-        keyword may be omitted if the expression starts with a specifial
-        character.
+        keyword may be omitted if the expression starts with a special
+        character.  The expression is upper-cased and only the first character
+        is examined.

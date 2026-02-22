@@ -8,7 +8,7 @@ Specify handling options.  The expression is evaluated, and individual words
 in the result that are meaningful to bREXX will be obeyed (these might control
 optimizations, enforce standards, enable implementation-dependent features,
 etc.).  Words in the result that are not recognized will be ignored (they are
-assumed to be instructions to a different Rexx implementation).
+assumed to be instructions to a different REXX implementation).
 
 bREXX supports the following options, which are processed case-independently:
 

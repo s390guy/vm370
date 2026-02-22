@@ -1,25 +1,26 @@
 LINEIN function
 
 +-----------------------------------------------------------------------------+
-| LINEIN([stream], [line], [length])                                          |
+| LINEIN([stream], [line], [count])                                           |
 +-----------------------------------------------------------------------------+
 
-Returns a string containing length lines of characters from from the specified
+Returns a string containing count lines of characters from from the specified
 stream, which defaults to the console or stack, starting at line position
-start, which defaults to 1.  If length is 0, the stream is positioned to the
-start position, but no data is read and a null string is returned.  If the
-stream cannot be positioned and start is specified, an error occurs.  If there
-are less than length lines available, and it is impossible for more to become
-available, the NOTREADY condition is raised and whatever characters are
-available will be returned.
+start, which defaults to 1.  If count is 0, the stream is positioned to the
+line position of the line, but no data is read and a null string is returned.
+If the stream cannot be positioned and line is specified, the NOTREADY
+condition is raised.  If a complete line is not available, and it is possible
+for more data to become available, the function will wait for it.  If, instead,
+it is impossible for more to become available, the NOTREADY condition is raised
+and whatever characters are available will be returned.
 
-Rexx normally limits length to 0 or 1, however in bREXX, it can be any
+REXX normally limits length to 0 or 1, however in bREXX, it can be any
 non-negative number, up to the stream size in lines.
 
 Examples:
 
-    LINEIN(mine)     == 'MFC'    /* perhaps */
-    LINEIN(mine,5)   == 'Line5'  /* perhaps */
-    LINEIN(mine,5,0) == ''
-    LINEIN(mine)     == 'Line5'  /* after last */
-    LINEIN()         == 'Hello'  /* perhaps */
+    LINEIN(mine)       == 'MFC'    /* perhaps */
+    LINEIN(mine, 5)    == 'Line5'  /* perhaps */
+    LINEIN(mine, 5, 0) == ''
+    LINEIN(mine)       == 'Line5'  /* after last */
+    LINEIN()           == 'Hello'  /* perhaps */

@@ -10,5 +10,5 @@ returned.
 
 Examples:
 
-    WORD('Now is the time',3) == 8
-    WORD('Now is the time',6) == 0
+    WORD('Now is the time', 3) == 8
+    WORD('Now is the time', 6) == 0

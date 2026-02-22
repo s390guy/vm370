@@ -4,13 +4,13 @@ BITAND function
 | BITAND(string1, [string2], [pad])                                           |
 +-----------------------------------------------------------------------------+
 
-Returns a string that is a bitwise logical and of the two input strings,
+Returns a string that is a bitwise logical-and of the two input strings,
 extended to the right with the pad character.  If the pad character is not
 specified, 'FF'x (i.e., all 1 bits) is used.  If string2 is not specified,
 a null string (i.e., '') is used.
 
 Examples:
 
-    BITAND('73'x, '27'x)         == '23'x
-    BITAND('13'x, '5555'x)       == 'll55'x
-    BITAND('13'x,'5555'x, '74'X) == '1154'x
+    BITAND('73'x, '27'x)          == '23'x
+    BITAND('13'x, '5555'x)        == 'll55'x
+    BITAND('13'x, '5555'x, '74'X) == '1154'x

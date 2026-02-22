@@ -10,8 +10,10 @@ returned.  All blanks between the selected words are returned unchanged, and
 no leading or trailing blanks are returned.  If start exceeds the number of
 words in the string, a null string is returned.
 
+SUBWORD(string, pos, 1) is exactly equivalent to WORD(string, pos).
+
 Examples:
 
-    SUBWORD('Now is the  time',2,2) == 'is the'
-    SUBWORD('Now is the  time',3)   == 'the  time'
-    SUBWORD('Now is the  time',5)   == ''
+    SUBWORD('Now is the  time', 2, 2) == 'is the'
+    SUBWORD('Now is the  time', 3)    == 'the  time'
+    SUBWORD('Now is the  time', 5)    == ''

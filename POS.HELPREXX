@@ -11,7 +11,7 @@ string, the position is returned as 0.
 
 Examples:
 
-    POS('day','Saturday')    == 6
-    POS('x','abc def ghi')   == 0
-    POS(' ','abc def ghi')   == 4
-    POS(' ','abc def ghi',5) == 8
+    POS('day', 'Saturday')     == 6
+    POS('x', 'abc def ghi')    == 0
+    POS(' ', 'abc def ghi')    == 4
+    POS(' ', 'abc def ghi', 5) == 8

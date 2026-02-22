@@ -12,6 +12,6 @@ also deleted.
 
 Examples:
 
-    DELWORD('Now is the  time',2,2) == 'Now time'
-    DELWORD('Now is the time ',3)   == 'Now is '
-    DELWORD('Now  time' ,5)         == 'Now  time'
+    DELWORD('Now is the  time', 2, 2) == 'Now time'
+    DELWORD('Now is the time ', 3)    == 'Now is '
+    DELWORD('Now  time', 5)           == 'Now  time'

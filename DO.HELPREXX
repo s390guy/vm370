@@ -16,6 +16,7 @@ parts specified, the group may be repeated. A DO instruction may include both a
 repetitor and a conditional.
 
 Repetitors
+
     If the FOREVER keyword is specified, the instructions are repeated until a
     LEAVE or SIGNAL instruction terminates the repetitions.
 
@@ -46,14 +47,16 @@ Repetitors
     values are rounded according to the current NUMERIC DIGITS settings.
 
 Conditionals
-    If the UNTIL keyword is specified, the expru expression,
-    which must evaluate to either 0 or 1, is evaluated at the end of each
-    repetition, and the repetitions are terminated if it is 1. If the WHILE
-    keyword is specified, the exprw expression, which must evaluate to either
-    0 or 1, is evaluated at the start of each repetition, and the repetitions
-    are terminated if it is 1.
+
+    If the UNTIL keyword is specified, the expru expression, which must
+    evaluate to either 0 or 1, is evaluated at the end of each repetition, and
+    the repetitions are terminated if it is 1. If the WHILE keyword is
+    specified, the exprw expression, which must evaluate to either 0 or 1, is
+    evaluated at the start of each repetition, and the repetitions are
+    terminated if it is 1.
 
 Instruction list
+
     Any instruction is permitted in the instruction-list.
 
     If a symbol is specified on the END instruction that closes the group, it
@@ -61,6 +64,7 @@ Instruction list
     closing nested DO loops, to ensure each is properly closed.
 
 NOTES:
+
     The keywords UNTIL and WHILE are reserved in a DO instruction, and may not
     be used as symbols in any of the expressions.
 

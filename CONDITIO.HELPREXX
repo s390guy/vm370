@@ -6,19 +6,23 @@ CONDITION function
 
 Returns the condition information associated with the current trapped
 condition, as specified by the option.  Only the first character of the option
-is examined, and is treated in upper case.  If the option is 'CONDITION',
-the function returns the name of the condition.  If the option is
-'DESCRIPTION', the function returns the description of the condition, or a null
-string if none is available.  If the option is 'INSTRUCTION', or omitted, the
-function returns the keyword of the REXX instruction that  triggered the
-condition, either 'CALL' or 'SIGNAL'.  If the option is 'STATE', the function
-returns the current state of the trapped condition, either 'ON' (enabled),
-'OFF' (disabled), or 'DELAY' (new occurannces of the condition will be delayed
-or completely ignored).
+is examined, and is treated in upper case.
+
+If the option is 'CONDITION', the function returns the name of the condition.
+
+If the option is 'DESCRIPTION', the function returns the description of the
+condition, or a null string if none is available.
+
+If the option is 'INSTRUCTION', or omitted, the function returns the keyword of
+the REXX instruction that  triggered the condition, either 'CALL' or 'SIGNAL'.
+
+If the option is 'STATE', the function returns the current state of the trapped
+condition, either 'ON' (enabled), 'OFF' (disabled), or 'DELAY' (new occurannces
+of the condition will be delayed or completely ignored).
 
 NOTE: The condition information is saved and restored during CALL processing
-      thus once a subroutine invoked via CALL ON returns, the previous
-      condition (if any) will again be current.
+thus once a subroutine invoked via CALL ON returns, the previous condition (if
+any) will again be current.
 
 Example:
 

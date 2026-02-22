@@ -11,15 +11,18 @@ SIGNAL instruction
 +-----------------------------------------------------------------------------+
 
 This instruction either diverts the path of execution to another instruction,
-or establishes a handler for a condition that will divert at a later time.  If
-the labelname parameter is specified, the program diverts execution to the
+or establishes a handler for a condition that will divert at a later time.
+
+If the labelname parameter is specified, the program diverts execution to the
 instruction with the corresponding label.  If the VALUE keyword is specified or
 implied, the expression is evaluated and its value specifies the label to
 divert to.  The keyword may be omitted if the expression starts with a special
-character.  If the ON keyword is specified, this instruction causes execution
-to be diverted to the the specified traplabel, which defaults to the condition
-name, when the specified condition occurs.  If the OFF keyword is specified,
-any existing handling for the specified condition is terminated.
+character.
+
+If the ON keyword is specified, the instruction causes execution to be diverted
+to the the specified traplabel, which defaults to the condition name, when the
+specified condition occurs.  If the OFF keyword is specified, any existing
+handling for the specified condition is terminated.
 
 When the path of execution is diverted by a signal, all active control
 structures (i.e., DO, IF, INTERPRET, and SELECT instructions) are terminated,

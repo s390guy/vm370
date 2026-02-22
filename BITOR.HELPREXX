@@ -4,14 +4,14 @@ BITOR function
 | BITOR(string1, [string2], [pad])                                            |
 +-----------------------------------------------------------------------------+
 
-Returns a string that is a bitwise logical or of the two input strings,
-extended to the right with the pad character.  If the pad character is not
-specified, '00'x (i.e., all 0 bits) is used.  If string2 is not specified,
-a null string (i.e., '') is used.
+Returns a string that is a bitwise logical-or of the two input strings,extended
+to the right with the pad character.  If the pad character is not specified,
+'00'x (i.e., all 0 bits) is used.  If string2 is not specified, a null string
+(i.e., '') is used.
 
 Examples:
 
     BITOR('l5'x, '24'x)          == '35 'x
     BITOR('l5'x, '2456'x)        == '3556'x
     BITOR('15'x, '2456'x, 'F0'x) == '35F6'x
-    BITOR('llll'x,, '4D'x)       == '5D5D'x
+    BITOR('llll'x, , '4D'x)      == '5D5D'x
