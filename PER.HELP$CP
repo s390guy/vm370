@@ -43,9 +43,6 @@ GREG[n] [hex-number]
          occurs the instruction doing the altering and the new contents of the
          register are displayed.
  
-         Note: Emulation of the hardware support required for GREG is not
-               implemented in Hercules at the time of writing.
- 
 IFETCH [hex-data]
          causes instruction fetches to be traced. If hex-data is specified only
          instructions that match the hex-data will be traced.
@@ -196,7 +193,7 @@ Usage notes:
     information define another printer with a lower virtual address than the
     previously defined printer.
  
-9.  Whenvever 10000 interrupts of a given type (Ifetch, Branch, Greg or Store)
+9.  Whenever 10000 interrupts of a given type (Ifetch, Branch, Greg or Store)
     occur with no PER output a PER "blip" is produced.  This consists of an *
     followed by the first character of the interrupt type (i.e.  *I for Ifetch).
  
