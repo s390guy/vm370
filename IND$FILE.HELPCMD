@@ -1,0 +1,70 @@
+IND$FILE                                              MECAFF File Transfer
+IND$FILE transfers files between the 3270 terminal and the VM/370 host
+using the IND$FILE CUT-mode protocol. It supports both binary and ASCII
+text transfers with various record format options.
+
+  Command syntax:
+    IND$FILE PUT|GET fn ft fm [ options ]
+    IND$FILE TST     fn ft fm [ options ]    (local test mode only)
+
+  Operations:
+    PUT    Upload a file from the terminal to the host.
+    GET    Download a file from the host to the terminal.
+    TST    Test mode: verify symmetric encode/decode of a host file.
+           This command runs locally and must not be issued remotely.
+
+  Required parameters:
+    fn     CMS file name (1-8 characters).
+    ft     CMS file type (1-8 characters).
+    fm     CMS file mode (A-Z, or * for accessed disk).
+
+  Options:
+    ASCII      Transfer as ASCII text instead of binary.
+               When uploading, EBCDIC is converted to ASCII.
+               When downloading, ASCII is converted to EBCDIC.
+               Lines are trimmed of trailing blanks on download.
+    CRLF       Use CR/LF line endings (only valid with ASCII).
+               Without this option, LF line endings are used.
+               Lines shorter than LRECL are padded with spaces.
+    APPEND     Append to an existing file instead of overwriting.
+    RECFM V    Use variable-length records (default).
+    RECFM F    Use fixed-length records, padded to LRECL.
+    LRECL nn   Set the logical record length to nn (1-255).
+               Default is 80. Fixed records are padded to this
+               length; variable records wrap at this length.
+    MAP name   Use a custom character mapping from file
+               'name IND$MAP *'. This overrides default EBCDIC
+               character remappings.
+    DUMP       Dump additional diagnostic information during
+               transfers. For troubleshooting only.
+
+  Examples:
+    IND$FILE GET MYFILE TXT A ASCII
+    IND$FILE PUT DATA TXT A ASCII CRLF LRECL 132
+    IND$FILE GET BINPROG EXE A
+    IND$FILE PUT NOTES TXT A ASCII APPEND RECFM V
+
+  Notes:
+    - Binary transfers (without ASCII) preserve all bytes as-is
+      and do not perform line-end conversion or blank trimming.
+    - ASCII transfers convert between ASCII and EBCDIC using the
+      standard IBM code page. Character remapping files (IND$MAP)
+      can override specific character pairs.
+    - When uploading ASCII text with CRLF, lines that fill the
+      full LRECL width are written as a single record without
+      generating a spurious empty trailing record.
+    - Fixed-length records (RECFM F) shorter than LRECL are
+      padded with spaces (ASCII) or nulls (binary).
+    - The TST command performs a round-trip encode/decode test
+      on a file already on the host, reporting any mismatches.
+
+  Error codes:
+    TRANS03  File transfer complete.
+    TRANS04  File transfer complete, records were segmented.
+    TRANS06  Command incomplete or invalid option.
+    TRANS16  Incorrect request code (invalid PUT/GET/TST).
+    TRANS17  Invalid file name or record format.
+    TRANS34  CMS file not found or error accessing file.
+    TRANS35  CMS disk is read-only.
+    TRANS37  CMS disk is full.
+    TRANS99  Protocol error, conversion error, or internal error.
